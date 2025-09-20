@@ -17,6 +17,10 @@ export const darkTheme = {
     mutedTextColor: "rgba(255,255,255,0.5)", // Secondary text
     textSecondary: "rgba(255,255,255,0.3)",  // Muted text
     
+    // Additional colors for full compatibility
+    gray: "rgba(225, 225, 225,0.5)",
+    gray100: "rgba(225, 225, 225,0.05)",
+    
     // Brand colors (keep unchanged in both themes)
     blue: "#7A40F8",
     blue100: "#6BB0f5", 
@@ -50,6 +54,10 @@ export const lightTheme = {
     textColor: "#000000",         // Primary text (was #FFFFFF)
     mutedTextColor: "rgba(0, 0, 0, 0.6)", // Secondary text (was rgba(255,255,255,0.5))
     textSecondary: "rgba(0, 0, 0, 0.3)",  // Muted text (was rgba(255,255,255,0.3))
+    
+    // Additional colors for full compatibility (inverted for light theme)
+    gray: "rgba(0, 0, 0, 0.5)",           // Inverted from rgba(225, 225, 225,0.5)
+    gray100: "rgba(0, 0, 0, 0.05)",       // Inverted from rgba(225, 225, 225,0.05)
     
     // Brand colors (keep unchanged - identical to dark theme)
     blue: "#7A40F8",
