@@ -6,7 +6,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { GlobalStyles } from "../constants/Styles.js";
 import { useTheme } from "../store/theme-context";
 import Body from "../components/home/body/Body.js";
-import { TouchableOpacity, Text } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -17,7 +16,7 @@ import StorySvg from "../components/home/head/StorySvg.js";
 import { StatusBar } from "expo-status-bar";
 
 const HomeScreen = ({ navigation }) => {
-  const { theme, toggleTheme, isDarkMode } = useTheme();
+  const { theme } = useTheme();
   const [followings, setFollowings] = React.useState({ data: [], list: [] });
   const [headerHeight, setHeaderHeight] = React.useState(50);
   const StoryTranslate = useSharedValue(false);
@@ -86,23 +85,6 @@ const HomeScreen = ({ navigation }) => {
         </Animated.View>
       </View>
       <Body StoryTranslate={StoryTranslate} />
-      
-      {/* Temporary test button - remove after testing */}
-              <TouchableOpacity
-                style={{
-                  position: 'absolute',
-                  top: 100,
-                  right: 20,
-                  backgroundColor: theme.colors.blue,
-                  padding: 10,
-                  borderRadius: 5,
-                }}
-                onPress={toggleTheme}
-              >
-                <Text style={{ color: theme.colors.textColor, fontSize: 12 }}>
-                  {isDarkMode ? 'Switch to Light' : 'Switch to Dark'}
-                </Text>
-              </TouchableOpacity>
     </SafeAreaView>
   );
 };
