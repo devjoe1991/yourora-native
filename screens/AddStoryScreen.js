@@ -75,9 +75,9 @@ const AddStoryScreen = ({ navigation, route }) => {
               ref={textInputRef}
               style={{
                 width: "100%",
-                color: "white",
+                color: theme.colors.textColor,
                 textAlign: "center",
-                backgroundColor: "rgba(0,0,0,0.5)",
+                backgroundColor: theme.colors.primary500,
                 padding: 10,
                 fontSize: 18,
               }}

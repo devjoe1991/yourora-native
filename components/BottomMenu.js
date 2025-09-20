@@ -27,7 +27,7 @@ function BottomMenu({ menu, visible, setVisible }) {
         indicatorStyle={{
           width: 50,
           marginVertical: 10,
-          backgroundColor: "white",
+          backgroundColor: theme.colors.textColor,
         }}
         gestureEnabled={true}
         onClose={() => {
@@ -49,15 +49,15 @@ function BottomMenu({ menu, visible, setVisible }) {
                 paddingVertical: 10,
               }}
             >
-              <Ionicons name={button.icon} size={25} color={"white"} />
-              <Text style={{ color: "white", fontSize: 20, marginLeft: 10 }}>
+              <Ionicons name={button.icon} size={25} color={theme.colors.textColor} />
+              <Text style={{ color: theme.colors.textColor, fontSize: 20, marginLeft: 10 }}>
                 {button.title}
               </Text>
             </Pressable>
             {index + 1 < menu.length && (
               <View
                 style={{
-                  borderBottomColor: "white",
+                  borderBottomColor: theme.colors.textColor,
                   borderBottomWidth: StyleSheet.hairlineWidth,
                 }}
               />

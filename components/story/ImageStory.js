@@ -49,7 +49,7 @@ export const StoryListItem = ({ stories, setShowStory }) => {
       zIndex: -100,
       position: "absolute",
       justifyContent: "center",
-      backgroundColor: "black",
+      backgroundColor: theme.colors.primary,
       alignItems: "center",
       width,
       height: hpx(763, 763),
@@ -57,7 +57,7 @@ export const StoryListItem = ({ stories, setShowStory }) => {
     storyContainer: {
       height: hpx(763, 763),
       width,
-      backgroundColor: "black",
+      backgroundColor: theme.colors.primary,
     },
     storyImage: {
       height: hpx(763, 763),
@@ -92,12 +92,12 @@ export const StoryListItem = ({ stories, setShowStory }) => {
       marginRight: 10,
     },
     username: {
-      color: "white",
+      color: theme.colors.textColor,
       fontSize: 14,
       fontWeight: "bold",
     },
     time: {
-      color: "white",
+      color: theme.colors.textColor,
       fontSize: 12,
       marginLeft: 5,
     },
@@ -112,7 +112,7 @@ export const StoryListItem = ({ stories, setShowStory }) => {
       alignItems: "center",
     },
     swipeUpText: {
-      color: "white",
+      color: theme.colors.textColor,
       fontSize: 16,
       fontWeight: "bold",
     },
@@ -261,7 +261,7 @@ export const StoryListItem = ({ stories, setShowStory }) => {
       onTouchEnd={(e) => onTouchEndF(e)}
       style={{
         flex: 1,
-        backgroundColor: "black",
+        backgroundColor: theme.colors.primary,
       }}
     >
       {/* TOP VIEW */}

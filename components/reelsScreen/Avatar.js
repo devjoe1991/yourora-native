@@ -40,7 +40,7 @@ const Avatar = () => {
         <View style={{ marginHorizontal: 10 }}>
           <Text
             style={{
-              color: "white",
+              color: theme.colors.textColor,
               fontSize: 16,
               fontWeight: "bold",
             }}

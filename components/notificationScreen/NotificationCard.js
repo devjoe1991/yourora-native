@@ -35,7 +35,7 @@ function NotificationCard({ mode = "LIKE" }) {
         />
         <View style={{ marginHorizontal: 20, justifyContent: "space-between" }}>
           <View style={{ marginBottom: 10 }}>
-            <Text style={{ fontWeight: "bold", fontSize: 18, color: "white" }}>
+            <Text style={{ fontWeight: "bold", fontSize: 18, color: theme.colors.textColor }}>
               John Doe
             </Text>
             <Text style={{ fontSize: 14, color: theme.colors.purple }}>
@@ -60,7 +60,7 @@ function NotificationCard({ mode = "LIKE" }) {
           />
           <View
             style={{
-              backgroundColor: "white",
+              backgroundColor: theme.colors.textColor,
               borderRadius: 50,
               padding: 3,
               position: "absolute",

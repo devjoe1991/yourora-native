@@ -155,7 +155,7 @@ function NewPostScreen({ navigation, route }) {
                 >
                   <Pressable
                     style={{
-                      backgroundColor: "white",
+                      backgroundColor: theme.colors.textColor,
                       borderRadius: 50,
                       padding: 10,
                     }}
@@ -174,7 +174,7 @@ function NewPostScreen({ navigation, route }) {
             </View>
             <View style={{ marginTop: 10 }}>
               <InputField
-                style={{ color: "white" }}
+                style={{ color: theme.colors.textColor }}
                 placeholder="What's on your mind?"
                 multiline={true}
                 onChangeText={setCaption}

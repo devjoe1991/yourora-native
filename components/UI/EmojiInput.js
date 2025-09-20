@@ -79,7 +79,7 @@ const EmojiInput = ({ opacity = 1 }) => {
       </View>
       <TextInput
         style={{
-          color: "white",
+          color: theme.colors.textColor,
           marginHorizontal: 40,
           marginVertical: 20,
           marginTop: 0,

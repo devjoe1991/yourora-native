@@ -48,7 +48,7 @@ const EmojiSVGShape = ({
       />
       <View
         style={{
-          backgroundColor: "white",
+          backgroundColor: theme.colors.textColor,
           width: size,
           height: size + paddingTop,
           alignSelf: "center",

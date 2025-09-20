@@ -37,7 +37,7 @@ const MessageCard = () => {
         }}
       >
         <View style={{ marginHorizontal: 10 }}>
-          <Text style={{ fontSize: 18, fontWeight: "bold", color: "white" }}>
+          <Text style={{ fontSize: 18, fontWeight: "bold", color: theme.colors.textColor }}>
             John Doe
           </Text>
           <Text style={{ fontSize: 14, color: theme.colors.mutedTextColor }}>
@@ -67,7 +67,7 @@ const MessageCard = () => {
               style={{
                 fontSize: 12,
                 fontWeight: "bold",
-                color: "white",
+                color: theme.colors.textColor,
               }}
             >
               {Math.round(Math.random() * 9)}

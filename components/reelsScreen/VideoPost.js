@@ -127,7 +127,7 @@ const VideoPost = ({ post, activePostId, index }) => {
           <ActivityIndicator
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
             size={50}
-            color={"white"}
+            color={theme.colors.textColor}
           />
         </View>
       )}

@@ -33,7 +33,7 @@ function CommentSheet({ visible, setVisible }) {
         indicatorStyle={{
           width: 50,
           marginVertical: 10,
-          backgroundColor: "white",
+          backgroundColor: theme.colors.textColor,
         }}
         gestureEnabled={true}
         onClose={() => {
@@ -72,7 +72,7 @@ function CommentSheet({ visible, setVisible }) {
               marginLeft: 10,
             }}
           >
-            <Ionicons name="send" color={"white"} size={30} />
+            <Ionicons name="send" color={theme.colors.textColor} size={30} />
           </View> */}
           <EmojiInput />
         </View>
