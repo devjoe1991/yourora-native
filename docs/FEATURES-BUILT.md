@@ -72,6 +72,7 @@
 - [x] Posts from users at similar fitness levels
 - [x] Real-time feed updates
 - [x] Content filtering and sorting
+- [x] **Instagram-Style Sizing** - Modern social media aspect ratios (1:1 square, 4:5 portrait, 1.91:1 landscape, 9:16 videos)
 
 ---
 
@@ -133,7 +134,7 @@
 
 ## 📈 **FEATURE STATISTICS**
 
-- **Total Features Built:** 36
+- **Total Features Built:** 37
 - **Authentication:** 5 features
 - **Navigation:** 4 features
 - **Streak System:** 13 features (including premium unlock)
@@ -141,7 +142,7 @@
 - **Reaction System:** 7 features
 - **Posting System:** 5 features
 - **Visual Design:** 5 features
-- **Feed System:** 4 features
+- **Feed System:** 5 features (including Instagram sizing)
 - **Monetization:** 3 features
 
 ---

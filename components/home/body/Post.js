@@ -144,10 +144,16 @@ function Post({ post }) {
     useEffect(() => {
       Image.getSize(post.picturePath, (width, height) => {
         const imageRatio = width / height;
-        if (imageRatio < 0.9) {
-          setRatio(1);
+        // Instagram standard ratios
+        if (imageRatio >= 1.8) {
+          // Landscape: 1.91:1 ratio
+          setRatio(1.91);
+        } else if (imageRatio <= 0.8) {
+          // Portrait: 4:5 ratio
+          setRatio(0.8);
         } else {
-          setRatio(imageRatio);
+          // Square: 1:1 ratio
+          setRatio(1);
         }
       });
     }, [post]);

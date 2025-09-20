@@ -1,19 +1,11 @@
 
-<h1 align="center">
-	YourOra - React Native
-</h1>
-
-
-## 🏋️ YourOra - Your Fitness Aura
+# 🏋️ YourOra - Your Fitness Aura
 
 **Build the social layer of everyday effort. YourOra turns each workout or positive habit into a proud, judgment-free daily post that fuels accountability via streaks and community.**
 
 
-## Description
+## About YourOra
 
-**YourOra** - Build the social layer of everyday effort. YourOra turns each workout or positive habit into a proud, judgment-free daily post that fuels accountability via streaks and community.
-
-### **Vision & Core Concept**
 YourOra is a streak-driven, fitness-first social app that leverages the power of social accountability and social proof to keep users engaged and consistent. By posting daily proof of effort, users not only track their personal progress but also contribute to a collective environment of positive action.
 
 ### **Key Principles**
@@ -28,8 +20,6 @@ YourOra is a streak-driven, fitness-first social app that leverages the power of
 - **Lifestyle Changers:** Weight-loss or habit-building journeys, needing supportive community
 - **Beginner to Intermediate Gym-Goers:** Building habits, wanting to share progress without pressure
 - **Status Trackers:** Love streaks, badges, progress bars. Motivated by visual representation of effort
-
-Built entirely using React Native, this project provides a seamless, intuitive, and visually appealing mobile experience with modern animations to enhance user interactions and engagement.
 
 
 ## Core Features
@@ -75,99 +65,74 @@ Built entirely using React Native, this project provides a seamless, intuitive, 
 - **Real-time Updates:** Instant feed refresh and streak counter updates
 - **Privacy-First:** Strong privacy controls and safety features
 
-## Animations & Transitions
-This app is not just functional but also focuses on delivering a visually delightful experience through the use of:
+## Technology Stack
 
-- **Smooth Transitions:** Screen transitions are crafted to be smooth and engaging, ensuring a fluid navigation experience.
-- **Interactive Animations:** Every interaction, from button presses to screen changes, is complemented by subtle animations that enhance the overall user experience.
-- **Real-time Feedback:** User actions are immediately acknowledged with visual cues, making the app feel responsive and alive.
+- **React Native** - Cross-platform mobile development
+- **Expo** - Development platform and tools
+- **React Navigation** - Navigation library
+- **React Native Reanimated** - Smooth animations
+- **Expo Camera** - Camera integration
+- **Expo Image Picker** - Image selection
+- **AsyncStorage** - Local data persistence
 
 
-## Installation
+## Getting Started
 
-Be sure, you have installed all dependencies and applications to run React Native project on your computer : [Getting Started with React Native](https://facebook.github.io/react-native/docs/getting-started).
+### Prerequisites
 
-### Running the project
+- Node.js (v16 or higher)
+- pnpm package manager
+- Expo CLI
+- iOS Simulator (for iOS development) or Android Studio (for Android development)
 
-Clone this repository :
+### Installation
 
-```
+1. Clone the repository:
+```bash
 git clone https://github.com/devjoe1991/yourora-app.git
 cd yourora-app
 ```
 
-Install packages :
-
-```
+2. Install dependencies:
+```bash
 pnpm install
 ```
 
-When installation is complete, run the project :
-
+3. Start the development server:
 ```bash
 npx expo start
 ```
+
+4. Run on your preferred platform:
+- **iOS:** Press `i` in the terminal or scan QR code with Expo Go app
+- **Android:** Press `a` in the terminal or scan QR code with Expo Go app
+- **Web:** Press `w` in the terminal
+
+## Features
+
+### ✅ **Completed Features**
+- **Authentication System** - Login/Signup with email validation
+- **Streak System** - Progressive streak tracking with daily goals
+- **Social Features** - User profiles, follow system, real-time messaging
+- **Posting System** - Camera integration, image upload, story creation
+- **Reaction System** - Emoji reactions with long-press interaction
+- **Feed System** - Instagram-style sizing and modern social media layout
+- **Navigation** - Bottom tab navigation with smooth transitions
+
+### 🚧 **In Development**
+- Premium subscription features
+- Advanced analytics dashboard
+- Health app integrations
 
 ## Contributing
 
 Contributions are welcome! If you have ideas for new features, improvements, or bug fixes, feel free to submit a pull request or open an issue.
 
-## Contact Me
+## License
 
-Contact me for any Feedback or questions
+This project is private and proprietary.
 
-<table>
-  <tr>
-    <td align="center" width="500px">
-      <a href="https://www.upwork.com/freelancers/~01c437b099d917194b" title="View my Upwork profile">
-        <img src="https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/48/null/external-upwork-a-global-freelancing-platform-where-professionals-connect-and-collaborate-remotely-logo-shadow-tal-revivo.png" alt="Upwork Icon" width="60" height="60"/>
-      </a>
-    </td>
-    <td align="center" width="500px">
-      <a href="https://www.fiverr.com/shahrozatiq" title="View my Fiverr profile">
-        <img src="https://ml.globenewswire.com/Resource/Download/dcc91863-eeb0-4879-a556-9f7608b19744" alt="Fiverr Icon" width="60" height="60"/>
-      </a>
-    </td>
-    <td align="center" width="500px">
-      <a href="mailto:shahrozatiq123@gmail.com" title="Send me an email">
-        <img src="https://www.svgrepo.com/show/452213/gmail.svg" alt="Gmail Icon" height="60" width="60"/>
-      </a>
-    </td>
-    <td align="center" width="500px">
-      <a href="https://wa.me/923014317809" title="Chat with me on WhatsApp">
-        <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/whatsapp.svg" alt="WhatsApp Icon" height="60" width="60"/>
-      </a>
-    </td>
-    <td align="center" width="500px">
-      <a href="https://linkedin.com/in/shahroz-atiq" title="Connect with me on LinkedIn">
-        <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="LinkedIn Icon" height="60" width="60"/>
-      </a>
-    </td>
-    <td align="center" width="500px">
-      <a href="https://instagram.com/shahahahahroz" title="Follow me on Instagram">
-        <img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="Instagram Icon" height="60" width="60"/>
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="500px">
-      <a href="https://www.upwork.com/freelancers/~01c437b099d917194b">Upwork</a>
-    </td>
-    <td align="center" width="500px">
-      <a href="https://www.fiverr.com/shahrozatiq">Fiverr</a>
-    </td>
-    <td align="center" width="500px">
-      <a href="mailto:shahrozatiq123@gmail.com">Gmail<br>shahrozatiq123@gmail.com</a>
-    </td>
-    <td align="center" width="500px">
-      <a href="https://wa.me/923014317809">WhatsApp<br>+923014317809</a>
-    </td>
-    <td align="center" width="500px">
-      <a href="https://linkedin.com/in/shahroz-atiq">LinkedIn</a>
-    </td>
-    <td align="center" width="500px">
-      <a href="https://instagram.com/shahahahahroz">Instagram</a>
-    </td>
-  </tr>
-</table>
+## Contact
+
+For any feedback or questions about this project, please open an issue on GitHub.
 

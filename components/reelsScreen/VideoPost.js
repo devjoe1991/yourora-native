@@ -148,6 +148,8 @@ const styles = StyleSheet.create({
   },
   video: {
     flex: 1,
+    // Instagram Reels use 9:16 aspect ratio
+    aspectRatio: 9/16,
   },
 });
 
