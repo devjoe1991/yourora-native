@@ -174,22 +174,60 @@ function Post({ post }) {
   }
   function PostStats() {
     const [liked, setLiked] = useState(false);
+    const [showReactionBar, setShowReactionBar] = useState(false);
+    const [selectedReaction, setSelectedReaction] = useState(null);
 
     const [totalLikes, setTotalLikes] = useState(post.likes.length);
     const [showCaptions, setShowCaptions] = useState(false);
     const [showComments, setShowComments] = useState(false);
+    
+    // Common emojis for reaction bar
+    const commonEmojis = ['❤️', '🔥', '💪', '👏', '🎉'];
+    
     async function handleLike() {
       setTotalLikes((prevData) => (liked ? prevData - 1 : prevData + 1));
-
       setLiked(!liked);
     }
 
-    function FooterButton({ icon, number, onPress, color = "white" }) {
+    function handleReactionPress(emoji) {
+      setSelectedReaction(emoji);
+      setShowReactionBar(false);
+      // Handle reaction logic here
+      console.log(`User reacted with: ${emoji}`);
+      
+      // Reset to original heart icon after 2 seconds
+      setTimeout(() => {
+        setSelectedReaction(null);
+        setLiked(false); // Reset to unliked state
+      }, 2000);
+    }
+
+    function handleLongPress() {
+      setShowReactionBar(true);
+    }
+
+    function handleCloseReactionBar() {
+      setShowReactionBar(false);
+      // Reset to original heart icon when closing
+      setSelectedReaction(null);
+      setLiked(false); // Reset to unliked state
+    }
+
+    function FooterButton({ icon, number, onPress, onLongPress, color = "white", showReaction = false }) {
       return (
         <View>
-          <Pressable style={[styles.footerIcon]} onPress={onPress}>
+          <Pressable 
+            style={[styles.footerIcon]} 
+            onPress={onPress}
+            onLongPress={onLongPress}
+            delayLongPress={500}
+          >
             <PressEffect>
-              <Ionicons name={icon} size={25} color={color} />
+              {showReaction && selectedReaction ? (
+                <Text style={{ fontSize: 25 }}>{selectedReaction}</Text>
+              ) : (
+                <Ionicons name={icon} size={25} color={color} />
+              )}
             </PressEffect>
             <Text
               style={{
@@ -220,7 +258,9 @@ function Post({ post }) {
               icon={liked ? "heart" : "heart-outline"}
               number={totalLikes}
               onPress={handleLike}
+              onLongPress={handleLongPress}
               color={GlobalStyles.colors.greenLight}
+              showReaction={true}
             />
             <FooterButton
               icon={"chatbubble-ellipses-outline"}
@@ -238,6 +278,75 @@ function Post({ post }) {
             <FooterButton icon={"bookmark"} onPress={() => {}} />
           </View>
         </View>
+        
+        {/* Reaction Bar */}
+        {showReactionBar && (
+          <>
+            {/* Backdrop to close reaction bar when tapping outside */}
+            <Pressable
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                zIndex: 999,
+              }}
+              onPress={handleCloseReactionBar}
+            />
+            <View style={{
+              position: 'absolute',
+              bottom: 50,
+              right: 0,
+              backgroundColor: 'rgba(0,0,0,0.8)',
+              borderRadius: 20,
+              padding: 8,
+              flexDirection: 'column',
+              justifyContent: 'space-around',
+              alignItems: 'center',
+              height: 200,
+              width: 50,
+              zIndex: 1000,
+            }}>
+            {commonEmojis.map((emoji, index) => (
+              <Pressable
+                key={index}
+                onPress={() => handleReactionPress(emoji)}
+                style={{
+                  padding: 8,
+                  borderRadius: 15,
+                  backgroundColor: 'rgba(255,255,255,0.1)',
+                  width: 35,
+                  height: 35,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
+                <Text style={{ fontSize: 20 }}>{emoji}</Text>
+              </Pressable>
+            ))}
+            <Pressable
+              onPress={() => {
+                // Open emoji keyboard
+                console.log('Open emoji keyboard');
+                handleCloseReactionBar();
+              }}
+              style={{
+                padding: 8,
+                borderRadius: 15,
+                backgroundColor: 'rgba(255,255,255,0.1)',
+                width: 35,
+                height: 35,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Ionicons name="add" size={20} color="white" />
+            </Pressable>
+            </View>
+          </>
+        )}
+        
         {post.description && (
           <Text
             onPress={() => setShowCaptions(!showCaptions)}
@@ -290,3 +399,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+

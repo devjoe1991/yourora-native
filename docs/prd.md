@@ -82,11 +82,34 @@ YourOra maintains the familiar social media interface while transforming it into
 - **Authentication:**  
   Login/Signup screens with email validation (currently bypassed for development)
 
-- **Streak Circles System:**  
-  - Color-coded circles showing fitness journey levels (Newcomer, Rising, Committed, etc.)
-  - Streak day numbers displayed in circles
-  - Current user streak highlighted with special border
-  - Tap to unlock feeds based on streak level
+- **Progressive Streak System:**  
+  - **Sequential Streak Numbers:** Streak 1, Streak 2, Streak 3, etc. (not activity-specific)
+  - **Progressive Unlock System:** Each streak unlocks the next day by completing daily goals
+  - **Locked Streaks:** Future streaks are padlocked until user completes daily goal
+  - **Color-Coded Progression:** Blue ORA for Streak 1, red for milestone streaks (10, 20, 30, etc.)
+  - **Progression Emojis:** Dynamic emoji indicators showing streak progression (🎯🔥💪⚡🚀⭐🌟👑💎🏆🎉🎊🎆🏅)
+  - **Interactive Modal:** Tap locked streaks to see unlock requirements and "Complete Daily Goal" button
+  - **Premium Streak Unlock:** Pay to unlock future streaks ahead of schedule
+  - **Streak Unlock Packages:** Unlock 5 or 10 streaks (£2.49-£4.49)
+  - **YourOra+ Subscription:** Subscribe for unlimited streak access (£8.99/month)
+  - **Premium Modal Design:** Monetization options integrated into locked streak popup
+
+- **Streak Circle Features:**  
+  - **Add Story Circle:** First circle for creating new posts
+  - **Current Streak Circle:** User's active streak with progression emoji
+  - **Locked Streak Circles:** Future streaks with padlock icons and "LOCKED" text
+  - **Streak Level Indicators:** Small badges showing streak level numbers
+  - **Lock Indicators:** Padlock icons in top-right corner for locked streaks
+
+- **Modal System:**  
+  - **X Close Button:** Top-right corner close button
+  - **Swipe-Down Gesture:** Swipe down to close modal
+  - **Swipe Indicator:** Visual bar at top showing swipe capability
+  - **Locked Streak Messages:** Special messages for locked streaks with unlock instructions
+  - **Complete Daily Goal Button:** Direct navigation to AddStoryScreen
+  - **Premium Unlock Options:** Pay to unlock future streaks ahead of schedule
+  - **Streak Packages:** Unlock 5 or 10 streaks (£2.49-£4.49)
+  - **Subscription Integration:** Monthly subscription for unlimited streak access (£8.99/month)
 
 - **Bottom Tab Navigation:**  
   - **Home:** Streak circles + fitness feed
@@ -109,6 +132,8 @@ YourOra maintains the familiar social media interface while transforming it into
   - Follow/unfollow system
   - Real-time messaging
   - Notification system
+  - **Online Indicators:** Green dots on user avatars showing online status
+  - **Reaction Bar System:** Long-press heart icon to show 5 common emojis + plus icon for emoji keyboard
 
 - **Visual Design:**  
   - Dark theme with fitness-focused colors
@@ -139,6 +164,14 @@ YourOra maintains the familiar social media interface while transforming it into
   - Advanced badges and achievements
   - Seasonal challenges and events
   - Leaderboards and competitions
+
+- **Monetization Features:**  
+  - **Premium Streak Unlock System:** Pay to unlock future streaks ahead
+  - **Streak Unlock Packages:** Unlock 5 or 10 streaks (£2.49-£4.49)
+  - **YourOra+ Subscription:** Monthly subscription for unlimited access (£8.99/month)
+  - **Subscription Management:** Monthly/yearly subscription options
+  - **Payment Integration:** Stripe/Apple Pay/Google Pay integration
+  - **Premium Analytics:** Advanced streak insights for subscribers
 
 ### 5.3 Future Scaling (Phase 3)
 
@@ -173,11 +206,14 @@ YourOra maintains the familiar social media interface while transforming it into
 - **Posting:** Quick access to Add Story and New Post screens
 - **Social Interaction:** Like, comment, share functionality maintained
 
-### 7.2 Streak System (Current)
-- **Visual Display:** Streak day numbers in color-coded circles
-- **Level System:** Newcomer (blue), Rising (teal), Committed (green), etc.
-- **User Highlighting:** Current user streak highlighted with special border
-- **Feed Unlocking:** Tap circles to access feeds from users at similar levels
+### 7.2 Progressive Streak System (Current)
+- **Sequential Numbering:** Streak 1, Streak 2, Streak 3, etc. (not activity-specific)
+- **Progressive Unlock:** Each streak unlocks by completing daily goals
+- **Locked State:** Future streaks show padlock icons and "LOCKED" text
+- **Color Progression:** Blue ORA for Streak 1, red for milestones (10, 20, 30, etc.)
+- **Progression Emojis:** Dynamic emoji indicators (🎯🔥💪⚡🚀⭐🌟👑💎🏆🎉🎊🎆🏅)
+- **Interactive Modals:** Tap locked streaks for unlock instructions
+- **Daily Goal Integration:** "Complete Daily Goal" button navigates to AddStoryScreen
 
 ### 7.3 Social Features (Current)
 - **Real-time Updates:** Feed refreshes and updates in real time

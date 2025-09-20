@@ -607,10 +607,101 @@ const Stories = ({ followingsData }) => {
                     fontSize: 14,
                     color: '#FFD700',
                     textAlign: 'center',
-                    marginBottom: 15,
+                    marginBottom: 20,
                   }}>
                     Complete today's daily goal by making a new post to unlock this streak!
                   </Text>
+                  
+                  {/* Premium Unlock Options */}
+                  <View style={{
+                    backgroundColor: 'rgba(255,255,255,0.1)',
+                    borderRadius: 15,
+                    padding: 20,
+                    marginBottom: 20,
+                    width: '100%',
+                  }}>
+                    <Text style={{
+                      fontSize: 16,
+                      fontWeight: 'bold',
+                      color: '#FFD700',
+                      textAlign: 'center',
+                      marginBottom: 15,
+                    }}>
+                      💎 Unlock Streaks Ahead
+                    </Text>
+                    
+                    {/* Streak Packages */}
+                    <View style={{ marginBottom: 15 }}>
+                      <Pressable
+                        style={{
+                          backgroundColor: '#00BFA5',
+                          paddingHorizontal: 20,
+                          paddingVertical: 12,
+                          borderRadius: 20,
+                          marginBottom: 10,
+                          flexDirection: 'row',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                        }}
+                      >
+                        <Text style={{ color: 'white', fontSize: 14, fontWeight: 'bold' }}>
+                          Unlock 5 Streaks
+                        </Text>
+                        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>
+                          £2.49
+                        </Text>
+                      </Pressable>
+                      
+                      <Pressable
+                        style={{
+                          backgroundColor: '#0077B6',
+                          paddingHorizontal: 20,
+                          paddingVertical: 12,
+                          borderRadius: 20,
+                          marginBottom: 10,
+                          flexDirection: 'row',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                        }}
+                      >
+                        <Text style={{ color: 'white', fontSize: 14, fontWeight: 'bold' }}>
+                          Unlock 10 Streaks
+                        </Text>
+                        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>
+                          £4.49
+                        </Text>
+                      </Pressable>
+                    </View>
+                    
+                    {/* Subscription Option */}
+                    <Pressable
+                      style={{
+                        backgroundColor: 'rgba(255,255,255,0.2)',
+                        paddingHorizontal: 20,
+                        paddingVertical: 12,
+                        borderRadius: 20,
+                        borderWidth: 2,
+                        borderColor: '#FFD700',
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <View>
+                        <Text style={{ color: '#FFD700', fontSize: 14, fontWeight: 'bold' }}>
+                          YourOra+ Subscription
+                        </Text>
+                        <Text style={{ color: '#FFD700', fontSize: 12 }}>
+                          £8.99/month
+                        </Text>
+                      </View>
+                      <Text style={{ color: '#FFD700', fontSize: 12, fontWeight: 'bold' }}>
+                        BEST VALUE
+                      </Text>
+                    </Pressable>
+                  </View>
+                  
+                  {/* Free Option */}
                   <Pressable
                     onPress={() => {
                       setSelectedStreakFeed(null);
@@ -628,7 +719,7 @@ const Stories = ({ followingsData }) => {
                       fontSize: 16,
                       fontWeight: 'bold',
                     }}>
-                      Complete Daily Goal
+                      Complete Daily Goal (Free)
                     </Text>
                   </Pressable>
                 </View>
