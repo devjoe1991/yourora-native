@@ -4,16 +4,9 @@
 </h1>
 
 
-https://github.com/user-attachments/assets/8862b1be-b04a-4286-bf58-783840ca72c8
+## 🏋️ YourOra - Your Fitness Aura
 
-
-<h1 align="center">
-	ScreenShots
-</h1>
-<p align="center">
-	<img src="https://github.com/ShahrozAtiq/Social-Media-App/blob/main/1.jpg">
-	<img src="https://github.com/ShahrozAtiq/Social-Media-App/blob/main/2.jpg">
-</p>
+**Build the social layer of everyday effort. YourOra turns each workout or positive habit into a proud, judgment-free daily post that fuels accountability via streaks and community.**
 
 
 ## Description
@@ -99,14 +92,14 @@ Be sure, you have installed all dependencies and applications to run React Nativ
 Clone this repository :
 
 ```
-git clone https://github.com/ShahrozAtiq/Social-Media-App.git
-cd Social-Media-App
+git clone https://github.com/devjoe1991/yourora-app.git
+cd yourora-app
 ```
 
 Install packages :
 
 ```
-npm install
+pnpm install
 ```
 
 When installation is complete, run the project :
