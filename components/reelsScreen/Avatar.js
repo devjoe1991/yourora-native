@@ -4,8 +4,10 @@ import { USERS } from "../../data/users";
 import { Image } from "react-native";
 import { GlobalStyles } from "../../constants/Styles";
 import PressEffect from "../UI/PressEffect";
+import { useTheme } from "../../store/theme-context";
 
 const Avatar = () => {
+  const { theme } = useTheme();
   return (
     <PressEffect>
       <View
@@ -29,23 +31,23 @@ const Avatar = () => {
               width: 12,
               height: 12,
               borderRadius: 6,
-              backgroundColor: GlobalStyles.colors.greenLight,
+              backgroundColor: theme.colors.greenLight,
               borderWidth: 2,
-              borderColor: GlobalStyles.colors.primary300,
+              borderColor: theme.colors.primary300,
             }}
           />
         </View>
         <View style={{ marginHorizontal: 10 }}>
           <Text
             style={{
-              color: "white",
+              color: theme.colors.textColor,
               fontSize: 16,
               fontWeight: "bold",
             }}
           >
             {USERS[0].name}
           </Text>
-          <Text style={{ color: GlobalStyles.colors.gray, fontSize: 12 }}>
+          <Text style={{ color: theme.colors.mutedTextColor, fontSize: 12 }}>
             @{USERS[0].user}
           </Text>
         </View>

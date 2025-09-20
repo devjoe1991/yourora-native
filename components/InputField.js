@@ -8,6 +8,7 @@ import {
 import Validator from "email-validator";
 import React, { useRef, useState } from "react";
 import { GlobalStyles } from "../constants/Styles";
+import { useTheme } from "../store/theme-context";
 import { Ionicons } from "@expo/vector-icons";
 import PressEffect from "./UI/PressEffect";
 import Animated, { ZoomIn, ZoomOut } from "react-native-reanimated";
@@ -28,8 +29,21 @@ const InputField = ({
   multiline,
   containerStyle,
 }) => {
+  const { theme } = useTheme();
   const txtRef = useRef(null);
   const [isFocused, setIsFocused] = useState(false);
+
+  const styles = StyleSheet.create({
+    inputField: {
+      flexDirection: "row",
+      alignItems: "center",
+      backgroundColor: theme.colors.primary500,
+      borderRadius: 50,
+      borderWidth: 1,
+      borderColor: theme.colors.primary500,
+      padding: 15,
+    },
+  });
 
   return (
     <View
@@ -37,13 +51,13 @@ const InputField = ({
         styles.inputField,
         {
           borderColor: inValid
-            ? GlobalStyles.colors.primary500
-            : GlobalStyles.colors.red,
+            ? theme.colors.primary500
+            : theme.colors.red,
         },
         containerStyle,
         isFocused && {
           borderWidth: 1,
-          borderColor: GlobalStyles.colors.purple,
+          borderColor: theme.colors.purple,
         },
       ]}
     >
@@ -52,15 +66,15 @@ const InputField = ({
           <Ionicons
             name="search-outline"
             size={25}
-            color={GlobalStyles.colors.purple}
+            color={theme.colors.purple}
           />
         </View>
       )}
       <View style={{ flex: 1 }}>
         <TextInput
-          style={{ color: "white" }}
+          style={{ color: theme.colors.textColor }}
           ref={txtRef}
-          placeholderTextColor="#bdbdbd"
+          placeholderTextColor={theme.colors.mutedTextColor}
           autoCapitalize="none"
           placeholder={placeholder}
           keyboardType={keyboardType}
@@ -100,7 +114,7 @@ const InputField = ({
             <Ionicons
               name="close"
               size={25}
-              color={GlobalStyles.colors.purple}
+              color={theme.colors.purple}
             />
           </Animated.View>
         </PressEffect>
@@ -110,15 +124,3 @@ const InputField = ({
 };
 
 export default InputField;
-
-const styles = StyleSheet.create({
-  inputField: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: GlobalStyles.colors.primary500,
-    borderRadius: 50,
-    borderWidth: 1,
-    borderColor: GlobalStyles.colors.primary500,
-    padding: 15,
-  },
-});

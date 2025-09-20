@@ -4,7 +4,23 @@ import { USERS } from "../../data/users";
 import { GlobalStyles } from "../../constants/Styles";
 import { Ionicons } from "@expo/vector-icons";
 import Button from "../Button";
+import { useTheme } from "../../store/theme-context";
 function NotificationCard({ mode = "LIKE" }) {
+  const { theme } = useTheme();
+
+  const styles = StyleSheet.create({
+    container: {
+      backgroundColor: theme.colors.primary500,
+      borderRadius: 20,
+      marginHorizontal: 10,
+      marginVertical: 5,
+      padding: 15,
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+    },
+  });
+
   return (
     <View style={styles.container}>
       <View style={{ flexDirection: "row", width: "70%" }}>
@@ -19,10 +35,10 @@ function NotificationCard({ mode = "LIKE" }) {
         />
         <View style={{ marginHorizontal: 20, justifyContent: "space-between" }}>
           <View style={{ marginBottom: 10 }}>
-            <Text style={{ fontWeight: "bold", fontSize: 18, color: "white" }}>
+            <Text style={{ fontWeight: "bold", fontSize: 18, color: theme.colors.textColor }}>
               John Doe
             </Text>
-            <Text style={{ fontSize: 14, color: GlobalStyles.colors.purple }}>
+            <Text style={{ fontSize: 14, color: theme.colors.purple }}>
               {mode === "LIKE" && "liked your photo"}
               {mode === "COMMENT" && "comments on your photo"}
               {mode === "FOLLOW" && "starts following you"}
@@ -44,7 +60,7 @@ function NotificationCard({ mode = "LIKE" }) {
           />
           <View
             style={{
-              backgroundColor: "white",
+              backgroundColor: theme.colors.textColor,
               borderRadius: 50,
               padding: 3,
               position: "absolute",
@@ -55,7 +71,7 @@ function NotificationCard({ mode = "LIKE" }) {
             <Ionicons
               name={mode === "LIKE" ? "heart" : "chatbubble-ellipses"}
               size={12}
-              color={GlobalStyles.colors.blue}
+              color={theme.colors.blue}
             />
           </View>
         </View>
@@ -74,16 +90,3 @@ function NotificationCard({ mode = "LIKE" }) {
 }
 
 export default NotificationCard;
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: GlobalStyles.colors.primary500,
-    borderRadius: 20,
-    marginHorizontal: 10,
-    marginVertical: 5,
-    padding: 15,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-});

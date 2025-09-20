@@ -4,27 +4,29 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import Feed from "./Feed";
 import Video from "./Video";
 import { GlobalStyles } from "../../../constants/Styles";
+import { useTheme } from "../../../store/theme-context";
 import TopTabBar from "./TopTabBar";
 const TopTab = createMaterialTopTabNavigator();
 const Body = ({ StoryTranslate }) => {
+  const { theme } = useTheme();
   return (
     <TopTab.Navigator
       //   tabBar={(props) => <TopTabBar {...props} />}
       screenOptions={{
-        tabBarActiveTintColor: "white",
+        tabBarActiveTintColor: theme.colors.textColor,
         tabBarLabelStyle: {
           textTransform: "none",
           fontSize: 18,
           padding: 0,
           margin: 0,
         },
-        tabBarInactiveTintColor: "rgba(255,255,255,0.3)",
+        tabBarInactiveTintColor: theme.colors.textSecondary,
         tabBarIndicatorStyle: {
           height: 3,
           width: "10%",
           left: "20%",
           borderRadius: 30,
-          backgroundColor: GlobalStyles.colors.purple,
+          backgroundColor: theme.colors.purple,
         },
         tabBarStyle: {
           padding: 0,
@@ -34,9 +36,9 @@ const Body = ({ StoryTranslate }) => {
           elevation: 0,
           backgroundColor: "transparent",
           borderBottomWidth: 1,
-          borderBottomColor: "rgba(255,255,255,0.1)",
+          borderBottomColor: theme.colors.primary600,
         },
-        tabBarPressColor: "white",
+        tabBarPressColor: theme.colors.textColor,
       }}
     >
       <TopTab.Screen name="Feed">

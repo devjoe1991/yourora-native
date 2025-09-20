@@ -3,19 +3,21 @@ import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { GlobalStyles } from "../../constants/Styles";
 import PressEffect from "../UI/PressEffect";
+import { useTheme } from "../../store/theme-context";
 
-function IconButton({ name, size = 20, color = "white" }) {
+function IconButton({ name, size = 20, color }) {
+  const { theme } = useTheme();
   return (
     <View
       style={{
-        backgroundColor: GlobalStyles.colors.primary300,
+        backgroundColor: theme.colors.primary300,
         alignSelf: "center",
         padding: 10,
         borderRadius: 50,
       }}
     >
       <PressEffect>
-        <Ionicons name={name} size={size} color={color} />
+        <Ionicons name={name} size={size} color={color || theme.colors.textColor} />
       </PressEffect>
     </View>
   );

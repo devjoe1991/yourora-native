@@ -1,9 +1,25 @@
-import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { View, Text, Image, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { GlobalStyles } from "../../constants/Styles";
 import { USERS } from "../../data/users";
+import { useTheme } from "../../store/theme-context";
 function CommentCard() {
+  const { theme } = useTheme();
+
+  const styles = StyleSheet.create({
+    container: {
+      backgroundColor: theme.colors.primary300,
+      borderRadius: 20,
+      marginHorizontal: 10,
+      marginVertical: 5,
+      padding: 15,
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+    },
+  });
+
   return (
     <View style={styles.container}>
       <View style={{ flexDirection: "row" }}>
@@ -23,7 +39,7 @@ function CommentCard() {
             justifyContent: "center",
           }}
         >
-          <Text style={{ fontWeight: "bold", fontSize: 14, color: "white" }}>
+          <Text style={{ fontWeight: "bold", fontSize: 14, color: theme.colors.textColor }}>
             John Doe asdlaksm aslkdmsdksad as
             aaksjdlmakjndsmlasknjdlmlskcnmsalmcksacansldsakdalsdlnsdksadm;samdas;dm;
           </Text>
@@ -43,16 +59,3 @@ function CommentCard() {
 }
 
 export default CommentCard;
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: GlobalStyles.colors.primary300,
-    borderRadius: 20,
-    marginHorizontal: 10,
-    marginVertical: 5,
-    padding: 15,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-});

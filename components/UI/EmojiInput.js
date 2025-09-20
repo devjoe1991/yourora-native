@@ -4,6 +4,7 @@ import { Path, Svg } from "react-native-svg";
 import { GlobalStyles } from "../../constants/Styles";
 import EMOJIS from "../../data/EMOJIS";
 import { TextInput } from "react-native";
+import { useTheme } from "../../store/theme-context";
 
 const LENGTH = 9;
 const ITEM_SIZE = GlobalStyles.styles.windowWidth / LENGTH;
@@ -14,6 +15,7 @@ const INPUT_HEIGHT = 14 + 20;
 const WIDTH = GlobalStyles.styles.windowWidth;
 
 const EmojiInput = ({ opacity = 1 }) => {
+  const { theme } = useTheme();
   const [text, setText] = useState("");
   const [HEIGHT, setHEIGHT] = useState(
     ITEM_SIZE + (TRANSLATE_VALUE * LENGTH) / 2 + MARIN_VER + INPUT_HEIGHT
@@ -40,10 +42,10 @@ const EmojiInput = ({ opacity = 1 }) => {
       >
         <Path
           d={path}
-          fill={GlobalStyles.colors.primary500}
+          fill={theme.colors.primary500}
           opacity={opacity}
           strokeWidth={1}
-          stroke={GlobalStyles.colors.primary600}
+          stroke={theme.colors.primary600}
         />
       </Svg>
 
@@ -77,7 +79,7 @@ const EmojiInput = ({ opacity = 1 }) => {
       </View>
       <TextInput
         style={{
-          color: "white",
+          color: theme.colors.textColor,
           marginHorizontal: 40,
           marginVertical: 20,
           marginTop: 0,

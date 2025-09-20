@@ -21,6 +21,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import InputField from "../InputField";
 import { Ionicons } from "@expo/vector-icons";
 import { GlobalStyles } from "../../constants/Styles";
+import { useTheme } from "../../store/theme-context";
 import ReAnimated, {
   FadeIn,
   FadeInDown,
@@ -33,7 +34,92 @@ import ReAnimated, {
 const { width, height } = Dimensions.get("window");
 
 export const StoryListItem = ({ stories, setShowStory }) => {
+  const { theme } = useTheme();
   // const { stories } = props;
+
+  const styles = StyleSheet.create({
+    headerConatiner: {
+      height: hpx(143, 763),
+      position: "absolute",
+      width,
+      paddingTop: 20,
+      paddingHorizontal: wpx(16),
+    },
+    spinnerContainer: {
+      zIndex: -100,
+      position: "absolute",
+      justifyContent: "center",
+      backgroundColor: theme.colors.primary,
+      alignItems: "center",
+      width,
+      height: hpx(763, 763),
+    },
+    storyContainer: {
+      height: hpx(763, 763),
+      width,
+      backgroundColor: theme.colors.primary,
+    },
+    storyImage: {
+      height: hpx(763, 763),
+      width,
+    },
+    gradient: {
+      position: "absolute",
+      left: 0,
+      right: 0,
+      top: 0,
+      height: hpx(143, 763),
+    },
+    topContainer: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+      paddingTop: 10,
+    },
+    topLeft: {
+      flexDirection: "row",
+      alignItems: "center",
+      flex: 1,
+    },
+    topRight: {
+      flexDirection: "row",
+      alignItems: "center",
+    },
+    avatar: {
+      width: 30,
+      height: 30,
+      borderRadius: 15,
+      marginRight: 10,
+    },
+    username: {
+      color: theme.colors.textColor,
+      fontSize: 14,
+      fontWeight: "bold",
+    },
+    time: {
+      color: theme.colors.textColor,
+      fontSize: 12,
+      marginLeft: 5,
+    },
+    closeButton: {
+      padding: 10,
+    },
+    swipeUpContainer: {
+      position: "absolute",
+      bottom: 50,
+      left: 0,
+      right: 0,
+      alignItems: "center",
+    },
+    swipeUpText: {
+      color: theme.colors.textColor,
+      fontSize: 16,
+      fontWeight: "bold",
+    },
+    swipeUpIcon: {
+      marginTop: 10,
+    },
+  });
 
   const longPressed = useRef(false);
   const [load, setLoad] = useState(true);
@@ -175,7 +261,7 @@ export const StoryListItem = ({ stories, setShowStory }) => {
       onTouchEnd={(e) => onTouchEndF(e)}
       style={{
         flex: 1,
-        backgroundColor: "black",
+        backgroundColor: theme.colors.primary,
       }}
     >
       {/* TOP VIEW */}
@@ -198,7 +284,7 @@ export const StoryListItem = ({ stories, setShowStory }) => {
         <ImageZoom
           uri={content[current].image}
           activityIndicatorProps={{
-            color: "white",
+            color: theme.colors.textColor,
             style: styles.loader,
           }}
           // onLongPressActiveInteration={onInteractionStart}
@@ -231,7 +317,7 @@ export const StoryListItem = ({ stories, setShowStory }) => {
                     flex: current == key ? progress : content[key].finish,
                     height: 5,
                     borderRadius: 50,
-                    backgroundColor: "white",
+                    backgroundColor: theme.colors.textColor,
                   }}
                 />
               </View>
@@ -301,7 +387,7 @@ export const StoryListItem = ({ stories, setShowStory }) => {
 
             <View
               style={{
-                backgroundColor: GlobalStyles.colors.gray,
+                backgroundColor: theme.colors.mutedTextColor,
                 padding: 10,
                 borderRadius: 50,
                 marginLeft: 10,
@@ -309,7 +395,7 @@ export const StoryListItem = ({ stories, setShowStory }) => {
             >
               <Ionicons
                 name="send"
-                color={GlobalStyles.colors.blue}
+                color={theme.colors.blue}
                 size={30}
               />
             </View>
@@ -321,40 +407,3 @@ export const StoryListItem = ({ stories, setShowStory }) => {
 };
 
 export default StoryListItem;
-
-const styles = StyleSheet.create({
-  headerConatiner: {
-    height: hpx(143, 763),
-    position: "absolute",
-    width,
-    paddingTop: 20,
-    paddingHorizontal: wpx(16),
-  },
-  spinnerContainer: {
-    zIndex: -100,
-    position: "absolute",
-    justifyContent: "center",
-    backgroundColor: "black",
-    alignSelf: "center",
-    width: width,
-    height: height,
-  },
-  animationBarContainer: {
-    flexDirection: "row",
-    borderRadius: 10,
-    marginVertical: 20,
-  },
-  animationBackground: {
-    height: 5,
-    flex: 1,
-    flexDirection: "row",
-    backgroundColor: "gray",
-    marginHorizontal: 2,
-    borderRadius: 50,
-  },
-  pressContainer: {
-    flex: 1,
-    flexDirection: "row",
-  },
-  rowCenter: { flexDirection: "row", alignItems: "center" },
-});

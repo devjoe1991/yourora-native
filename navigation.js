@@ -2,8 +2,8 @@ import { View, Text, Pressable } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useTheme } from "./store/theme-context";
 
 import TabBar from "./components/tabBar/TabBar";
 
@@ -28,38 +28,44 @@ import ViewStoryScreen from "./screens/ViewStoryScreen";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const screenOptions = ({ navigation, route }) => ({
-  headerShown: false,
-  headerTitleStyle: {
-    fontWeight: "bold",
-  },
-  headerTitleAlign: "left",
-  headerTitleStyle: { fontSize: 30, fontWeight: "bold" },
-  headerTintColor: "white",
-  headerShadowVisible: false,
-  headerStyle: {
-    backgroundColor: GlobalStyles.colors.primary,
-    elevation: 0,
-    borderWidth: 0,
-  },
+const screenOptions = ({ navigation, route }) => {
+  const { theme } = useTheme();
+  
+  return {
+    headerShown: false,
+    headerTitleStyle: {
+      fontWeight: "bold",
+    },
+    headerTitleAlign: "left",
+    headerTitleStyle: { fontSize: 30, fontWeight: "bold" },
+    headerTintColor: theme.colors.textColor,
+    headerShadowVisible: false,
+    headerStyle: {
+      backgroundColor: theme.colors.primary,
+      elevation: 0,
+      borderWidth: 0,
+    },
 
-  headerLeft: () => (
-    <PressEffect>
-      <Pressable
-        style={{ marginLeft: 20 }}
-        onPress={() => {
-          navigation.goBack();
-        }}
-      >
-        <Ionicons name="arrow-back" size={25} color={"white"} />
-      </Pressable>
-    </PressEffect>
-  ),
-});
+    headerLeft: () => (
+      <PressEffect>
+        <Pressable
+          style={{ marginLeft: 20 }}
+          onPress={() => {
+            navigation.goBack();
+          }}
+        >
+          <Ionicons name="arrow-back" size={25} color={theme.colors.textColor} />
+        </Pressable>
+      </PressEffect>
+    ),
+  };
+};
 
 function HomeStack() {
+  const { theme } = useTheme();
+  
   return (
-    <View style={{ flex: 1, backgroundColor: "white" }}>
+    <View style={{ flex: 1, backgroundColor: theme.colors.primary }}>
       <Stack.Navigator screenOptions={screenOptions}>
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="UserProfileScreen" component={UserProfileScreen} />
@@ -103,49 +109,45 @@ export const SignedInStack = () => {
   }
   return (
     <AppContextProvider>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={screenOptions}>
-          <Stack.Screen
-            name="BottomTabNavigator"
-            component={BottomTabNavigator}
-          />
+      <Stack.Navigator screenOptions={screenOptions}>
+        <Stack.Screen
+          name="BottomTabNavigator"
+          component={BottomTabNavigator}
+        />
 
-          <Stack.Screen name="NewPostScreen" component={NewPostScreen} />
-          <Stack.Screen name="AddStoryScreen" component={AddStoryScreen} />
-          <Stack.Screen name="ChatScreen" component={ChatScreen} />
+        <Stack.Screen name="NewPostScreen" component={NewPostScreen} />
+        <Stack.Screen name="AddStoryScreen" component={AddStoryScreen} />
+        <Stack.Screen name="ChatScreen" component={ChatScreen} />
 
-          <Stack.Screen
-            name="EditProfileScreen"
-            component={EditProfileScreen}
-          />
-          {/* <Stack.Screen name="CameraScreen" component={CameraScreen} /> */}
-          <Stack.Screen
-            name="NotificationsScreen"
-            component={NotificationsScreen}
-          />
-          {/* <Stack.Screen name="UsersListScreen" component={UsersListScreen} /> */}
-          <Stack.Screen
-            name="UserProfileScreen"
-            component={UserProfileScreen}
-          />
-          <Stack.Screen name="SearchScreen" component={SearchScreen} />
+        <Stack.Screen
+          name="EditProfileScreen"
+          component={EditProfileScreen}
+        />
+        {/* <Stack.Screen name="CameraScreen" component={CameraScreen} /> */}
+        <Stack.Screen
+          name="NotificationsScreen"
+          component={NotificationsScreen}
+        />
+        {/* <Stack.Screen name="UsersListScreen" component={UsersListScreen} /> */}
+        <Stack.Screen
+          name="UserProfileScreen"
+          component={UserProfileScreen}
+        />
+        <Stack.Screen name="SearchScreen" component={SearchScreen} />
 
-          <Stack.Screen name="MessagesScreen" component={MessagesScreen} />
-          <Stack.Screen name="ViewStoryScreen" component={ViewStoryScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
+        <Stack.Screen name="MessagesScreen" component={MessagesScreen} />
+        <Stack.Screen name="ViewStoryScreen" component={ViewStoryScreen} />
+      </Stack.Navigator>
     </AppContextProvider>
   );
 };
 
 export const SignedOutStack = () => (
-  <NavigationContainer>
-    <Stack.Navigator
-      initialRouteName="LoginScreen"
-      screenOptions={screenOptions}
-    >
-      <Stack.Screen name="LoginScreen" component={LoginScreen} />
-      <Stack.Screen name="SignupScreen" component={SignupScreen} />
-    </Stack.Navigator>
-  </NavigationContainer>
+  <Stack.Navigator
+    initialRouteName="LoginScreen"
+    screenOptions={screenOptions}
+  >
+    <Stack.Screen name="LoginScreen" component={LoginScreen} />
+    <Stack.Screen name="SignupScreen" component={SignupScreen} />
+  </Stack.Navigator>
 );

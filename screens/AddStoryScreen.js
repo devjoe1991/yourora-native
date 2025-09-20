@@ -14,8 +14,10 @@ import { TextInput } from "react-native";
 import { Keyboard } from "react-native";
 import Button from "../components/Button";
 import { GlobalStyles } from "../constants/Styles";
+import { useTheme } from "../store/theme-context";
 
 const AddStoryScreen = ({ navigation, route }) => {
+  const { theme } = useTheme();
   const [showCamera, setShowCamera] = useState(true);
   const [story, setStory] = useState("");
   const [caption, setCaption] = useState("");
@@ -26,6 +28,14 @@ const AddStoryScreen = ({ navigation, route }) => {
       navigation.goBack();
     }
   }, [exit]);
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: theme.colors.primary,
+    },
+  });
+
   return (
     <View style={styles.container}>
       <CameraScreen
@@ -65,14 +75,14 @@ const AddStoryScreen = ({ navigation, route }) => {
               ref={textInputRef}
               style={{
                 width: "100%",
-                color: "white",
+                color: theme.colors.textColor,
                 textAlign: "center",
-                backgroundColor: "rgba(0,0,0,0.5)",
+                backgroundColor: theme.colors.primary500,
                 padding: 10,
                 fontSize: 18,
               }}
               placeholder="Add a caption"
-              placeholderTextColor={GlobalStyles.colors.gray}
+              placeholderTextColor={theme.colors.mutedTextColor}
               autoCapitalize="none"
               onChangeText={setCaption}
               value={caption}
@@ -89,10 +99,3 @@ const AddStoryScreen = ({ navigation, route }) => {
 };
 
 export default AddStoryScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: GlobalStyles.colors.primary,
-  },
-});

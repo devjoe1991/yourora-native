@@ -2,6 +2,7 @@ import { Dimensions, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Circle, Path, Svg } from "react-native-svg";
 import { GlobalStyles } from "../../constants/Styles";
+import { useTheme } from "../../store/theme-context";
 const { width: WIDTH } = Dimensions.get("window");
 // const HEIGHT = 30 * 6;
 const radius = 20;
@@ -12,6 +13,7 @@ const EmojiSVGShape = ({
   paddingTop,
   bottomFilled,
 }) => {
+  const { theme } = useTheme();
   const path = `
     M0,${height / 2 - size / visible_items}
     Q${WIDTH * 0.4},0 ${WIDTH / 2},${0}
@@ -42,17 +44,17 @@ const EmojiSVGShape = ({
     >
       <Path
         d={bottomFilled ? path2 : path}
-        fill={GlobalStyles.colors.primary500}
+        fill={theme.colors.primary500}
       />
       <View
         style={{
-          backgroundColor: "white",
+          backgroundColor: theme.colors.textColor,
           width: size,
           height: size + paddingTop,
           alignSelf: "center",
           borderRadius: 50,
           borderWidth: bottomFilled ? 5 : 3,
-          borderColor: GlobalStyles.colors.primary500,
+          borderColor: theme.colors.primary500,
           transform: [{ scale: 1.2 }, { scaleY: 1.1 }],
         }}
       />

@@ -9,11 +9,28 @@ import Animated, {
   runOnJS,
 } from "react-native-reanimated";
 import { GlobalStyles } from "../../constants/Styles";
+import { useTheme } from "../../store/theme-context";
 
 const DURATION = 5;
 const ProgressBar = ({ onFinish, start, completed }) => {
+  const { theme } = useTheme();
   const progress = useSharedValue(0);
   const isCompleted = useSharedValue(false);
+
+  const styles = StyleSheet.create({
+    container: {
+      width: "100%",
+      height: 5,
+      backgroundColor: theme.colors.primary500,
+      borderRadius: 10,
+      overflow: "hidden",
+    },
+    progressBar: {
+      height: "100%",
+      backgroundColor: theme.colors.purple,
+      borderRadius: 10,
+    },
+  });
 
   useEffect(() => {
     if (start) {
@@ -54,20 +71,5 @@ const ProgressBar = ({ onFinish, start, completed }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    height: 5,
-    backgroundColor: GlobalStyles.colors.primary500,
-    borderRadius: 10,
-    overflow: "hidden",
-  },
-  progressBar: {
-    height: "100%",
-    backgroundColor: GlobalStyles.colors.purple,
-    borderRadius: 10,
-  },
-});
 
 export default ProgressBar;

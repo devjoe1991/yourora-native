@@ -11,8 +11,10 @@ import Animated, {
   useAnimatedStyle,
   withTiming,
 } from "react-native-reanimated";
+import { useTheme } from "../../store/theme-context";
 
 function Icon({ icon, size = 20, line, onPress = () => {} }) {
+  const { theme } = useTheme();
   return (
     <Pressable
       onPress={onPress}
@@ -23,7 +25,7 @@ function Icon({ icon, size = 20, line, onPress = () => {} }) {
         line && {
           borderWidth: 0,
           borderBottomWidth: 1,
-          borderColor: GlobalStyles.colors.primary,
+          borderColor: theme.colors.primary,
         },
       ]}
     >
@@ -33,7 +35,7 @@ function Icon({ icon, size = 20, line, onPress = () => {} }) {
           style={{
             width: size,
             height: size,
-            tintColor: "white",
+            tintColor: theme.colors.textColor,
             margin: 10,
           }}
         />
@@ -43,8 +45,22 @@ function Icon({ icon, size = 20, line, onPress = () => {} }) {
 }
 
 const Avatar = ({ imgUri, displayName, avatarSize, remainingSpace }) => {
+  const { theme } = useTheme();
   const [showOptions, setShowOptions] = useState(false);
   const [OptionsHeight, setOptionsHeight] = useState(200);
+
+  const styles = StyleSheet.create({
+    triangle: {
+      width: 0,
+      height: 0,
+      borderLeftWidth: 7,
+      borderRightWidth: 7,
+      borderBottomWidth: 10,
+      borderLeftColor: "transparent",
+      borderRightColor: "transparent",
+      borderBottomColor: theme.colors.primary500,
+    },
+  });
   const animatedStyle = useAnimatedStyle(() => {
     return {
       zIndex: showOptions ? withTiming(10) : withTiming(0),
@@ -78,7 +94,7 @@ const Avatar = ({ imgUri, displayName, avatarSize, remainingSpace }) => {
         >
           <View
             style={{
-              backgroundColor: GlobalStyles.colors.primary500,
+              backgroundColor: theme.colors.primary500,
               borderRadius: 20,
             }}
           >
@@ -117,15 +133,15 @@ const Avatar = ({ imgUri, displayName, avatarSize, remainingSpace }) => {
                 width: Math.max(8, avatarSize * 0.2),
                 height: Math.max(8, avatarSize * 0.2),
                 borderRadius: Math.max(4, avatarSize * 0.1),
-                backgroundColor: GlobalStyles.colors.greenLight,
+                backgroundColor: theme.colors.greenLight,
                 borderWidth: 2,
-                borderColor: GlobalStyles.colors.primary300,
+                borderColor: theme.colors.primary300,
               }}
             />
           </View>
           <Text
             style={{
-              color: "white",
+              color: theme.colors.textColor,
               fontSize: 15,
               fontWeight: "500",
               paddingTop: 10,
@@ -150,7 +166,7 @@ const Avatar = ({ imgUri, displayName, avatarSize, remainingSpace }) => {
           <View style={styles.triangle} />
           <View
             style={{
-              backgroundColor: GlobalStyles.colors.primary500,
+              backgroundColor: theme.colors.primary500,
               borderRadius: 20,
             }}
           >
@@ -165,17 +181,3 @@ const Avatar = ({ imgUri, displayName, avatarSize, remainingSpace }) => {
 };
 
 export default Avatar;
-
-const styles = StyleSheet.create({
-  triangle: {
-    width: 0,
-    height: 0,
-    borderLeftWidth: 7,
-    borderRightWidth: 7,
-    borderBottomWidth: 10,
-    borderLeftColor: "transparent",
-    borderRightColor: "transparent",
-    borderBottomColor: GlobalStyles.colors.primary500,
-    top: 1,
-  },
-});

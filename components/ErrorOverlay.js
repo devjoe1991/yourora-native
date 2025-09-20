@@ -2,8 +2,10 @@ import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { GlobalStyles } from "../constants/Styles";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
+import { useTheme } from "../store/theme-context";
 
 function ErrorOverlay({ message, onClose }) {
+  const { theme } = useTheme();
   return (
     <Animated.View
       entering={FadeIn}
@@ -11,7 +13,7 @@ function ErrorOverlay({ message, onClose }) {
       style={{
         width: "100%",
         height: "100%",
-        backgroundColor: "rgba(90, 90, 205,0.8)",
+        backgroundColor: theme.colors.primary500,
         position: "absolute",
         justifyContent: "center",
         alignItems: "center",
@@ -21,22 +23,22 @@ function ErrorOverlay({ message, onClose }) {
         source={require("../assets/warning.png")}
         style={{ width: 50, height: 50 }}
       />
-      <Text style={{ color: "white", fontWeight: "bold", marginTop: 5 }}>
+      <Text style={{ color: theme.colors.textColor, fontWeight: "bold", marginTop: 5 }}>
         {message}
       </Text>
       <Text
         onPress={onClose}
         style={{
-          color: "white",
+          color: theme.colors.textColor,
           fontWeight: "bold",
           marginTop: 5,
           fontSize: 18,
-          backgroundColor: "rgba(255,255,255,0.3)",
+          backgroundColor: theme.colors.primary600,
           padding: 10,
           paddingHorizontal: 15,
           borderRadius: 15,
           borderWidth: 1,
-          borderColor: GlobalStyles.colors.blue,
+          borderColor: theme.colors.blue,
         }}
       >
         Ok

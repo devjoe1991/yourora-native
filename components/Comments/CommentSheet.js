@@ -7,8 +7,10 @@ import { GlobalStyles } from "../../constants/Styles";
 import { FlatList } from "react-native-gesture-handler";
 import InputField from "../InputField";
 import EmojiInput from "../UI/EmojiInput";
+import { useTheme } from "../../store/theme-context";
 
 function CommentSheet({ visible, setVisible }) {
+  const { theme } = useTheme();
   const [comment, setComment] = useState("");
   const actionSheetRef = useRef(null);
   useEffect(() => {
@@ -24,14 +26,14 @@ function CommentSheet({ visible, setVisible }) {
       <ActionSheet
         ref={actionSheetRef}
         containerStyle={{
-          backgroundColor: GlobalStyles.colors.primary,
+          backgroundColor: theme.colors.primary,
           borderTopLeftRadius: 30,
           borderTopRightRadius: 30,
         }}
         indicatorStyle={{
           width: 50,
           marginVertical: 10,
-          backgroundColor: "white",
+          backgroundColor: theme.colors.textColor,
         }}
         gestureEnabled={true}
         onClose={() => {
@@ -70,7 +72,7 @@ function CommentSheet({ visible, setVisible }) {
               marginLeft: 10,
             }}
           >
-            <Ionicons name="send" color={"white"} size={30} />
+            <Ionicons name="send" color={theme.colors.textColor} size={30} />
           </View> */}
           <EmojiInput />
         </View>

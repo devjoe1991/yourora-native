@@ -1,6 +1,7 @@
 import { Animated, StatusBar, StyleSheet, View } from "react-native";
 import React, { useCallback, useRef, useState } from "react";
 import { GlobalStyles } from "../constants/Styles";
+import { useTheme } from "../store/theme-context";
 
 import RenderStory from "../components/ViewStoryScreen/RenderStory";
 
@@ -8,6 +9,7 @@ const ITEM_WIDTH = GlobalStyles.styles.windowWidth;
 const ITEM_HEIGHT = GlobalStyles.styles.windowHeight;
 
 const ViewStoryScreen = () => {
+  const { theme } = useTheme();
   const [users, setUsers] = useState([1, 2, 3, 4, 5]);
   const scrollX = useRef(new Animated.Value(0)).current;
   const [currentUser, setCurrentUser] = useState(0);
@@ -84,11 +86,18 @@ const ViewStoryScreen = () => {
     [currentUser, scrollX]
   );
 
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: theme.colors.primary,
+    },
+  });
+
   return (
     <View style={styles.container}>
       <View
         style={{
-          backgroundColor: GlobalStyles.colors.primary,
+          backgroundColor: theme.colors.primary,
           borderTopLeftRadius: 20,
           borderTopRightRadius: 20,
           overflow: "hidden",
@@ -121,10 +130,3 @@ const ViewStoryScreen = () => {
 };
 
 export default ViewStoryScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "black",
-  },
-});

@@ -2,8 +2,10 @@ import { Dimensions, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Path, Svg } from "react-native-svg";
 import { GlobalStyles } from "../../../constants/Styles";
+import { useTheme } from "../../../store/theme-context";
 
 const StorySvg = ({ headerHeight, storyHeight }) => {
+  const { theme } = useTheme();
   const { width: WIDTH } = Dimensions.get("screen");
   const HEIGHT = headerHeight + storyHeight;
 
@@ -48,13 +50,13 @@ const StorySvg = ({ headerHeight, storyHeight }) => {
       height={HEIGHT * 2}
       viewBox={`0 0 ${WIDTH} ${HEIGHT * 2}`}
     >
-      <Path d={path2} fill={GlobalStyles.colors.primary200} />
+      <Path d={path2} fill={theme.colors.primary200} />
       {/* Render the dynamically generated lines */}
       {lines.map((linePath, index) => (
         <Path
           key={index}
           d={linePath}
-          stroke={GlobalStyles.colors.primary}
+          stroke={theme.colors.primary}
           strokeWidth={1}
           fill="none"
         />

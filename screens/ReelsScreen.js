@@ -10,6 +10,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import VideoPost from "../components/reelsScreen/VideoPost";
 import { GlobalStyles } from "../constants/Styles";
+import { useTheme } from "../store/theme-context";
 import { Animated } from "react-native";
 
 const dummyPosts = [
@@ -115,6 +116,7 @@ const ITEM_SIZE =
   GlobalStyles.styles.windowHeight - GlobalStyles.styles.tabBarPadding + 25;
 
 const ReelsScreen = () => {
+  const { theme } = useTheme();
   const [activePostId, setActivePostId] = useState(dummyPosts[0].id);
   const [posts, setPosts] = useState([]);
   const ScrollY = useRef(new Animated.Value(0)).current;
@@ -144,9 +146,17 @@ const ReelsScreen = () => {
     // setPosts((currentPosts) => [...currentPosts, ...dummyPosts]);
   };
 
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: theme.colors.primary,
+      paddingBottom: GlobalStyles.styles.tabBarPadding - 25,
+    },
+  });
+
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor={"black"} />
+      <StatusBar backgroundColor={theme.colors.primary} barStyle={theme.colors.textColor === "#FFFFFF" ? "light-content" : "dark-content"} />
 
       <Animated.FlatList
         data={posts}
@@ -192,13 +202,5 @@ const ReelsScreen = () => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "black",
-    paddingBottom: GlobalStyles.styles.tabBarPadding - 25,
-  },
-});
 
 export default ReelsScreen;

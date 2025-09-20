@@ -4,8 +4,10 @@ import { Ionicons } from "@expo/vector-icons";
 import dummyPost from "../../data/dummyPost";
 import { GlobalStyles } from "../../constants/Styles";
 import PressEffect from "../UI/PressEffect";
+import { useTheme } from "../../store/theme-context";
 
 const CardHeader = ({ radius }) => {
+  const { theme } = useTheme();
   return (
     <View
       style={{
@@ -32,10 +34,10 @@ const CardHeader = ({ radius }) => {
             marginLeft: 10,
           }}
         >
-          <Text style={{ color: "white", fontWeight: "600" }}>
+          <Text style={{ color: theme.colors.textColor, fontWeight: "600" }}>
             {dummyPost.username}
           </Text>
-          <Text style={{ color: "rgba(255,255,255,0.5)" }}>
+          <Text style={{ color: theme.colors.mutedTextColor }}>
             {dummyPost.time}
           </Text>
         </View>
@@ -48,7 +50,7 @@ const CardHeader = ({ radius }) => {
             borderRadius: 50,
           }}
         >
-          <Ionicons name="heart" size={30} color={GlobalStyles.colors.purple} />
+          <Ionicons name="heart" size={30} color={theme.colors.purple} />
         </Pressable>
       </PressEffect>
     </View>

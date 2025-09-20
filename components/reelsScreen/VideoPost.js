@@ -7,8 +7,10 @@ import CommentSheet from "../Comments/CommentSheet";
 import Avatar from "./Avatar";
 import ActionButtons from "./ActionButtons";
 import VideoInfo from "./VideoInfo";
+import { useTheme } from "../../store/theme-context";
 
 const VideoPost = ({ post, activePostId, index }) => {
+  const { theme } = useTheme();
   const video = useRef(null);
   const [showComment, setShowComment] = useState(false);
   const [showCaptions, setShowCaptions] = useState(false);
@@ -45,7 +47,7 @@ const VideoPost = ({ post, activePostId, index }) => {
       style={[
         styles.container,
         {
-          backgroundColor: GlobalStyles.colors.primary500,
+          backgroundColor: theme.colors.primary500,
         },
       ]}
     >
@@ -125,7 +127,7 @@ const VideoPost = ({ post, activePostId, index }) => {
           <ActivityIndicator
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
             size={50}
-            color={"white"}
+            color={theme.colors.textColor}
           />
         </View>
       )}

@@ -4,8 +4,10 @@ import NotificationCard from "../components/notificationScreen/NotificationCard"
 import { Ionicons } from "@expo/vector-icons";
 import SettingsIcon from "../components/AnimatedUi/SettingsIcon";
 import { GlobalStyles } from "../constants/Styles";
+import { useTheme } from "../store/theme-context";
 import { StatusBar } from "expo-status-bar";
 const NotificationsScreen = ({ navigation, route }) => {
+  const { theme } = useTheme();
   useEffect(() => {
     navigation.setOptions({
       headerShown: true,
@@ -19,9 +21,13 @@ const NotificationsScreen = ({ navigation, route }) => {
       },
     });
   }, []);
+  const styles = StyleSheet.create({
+    container: { flex: 1, backgroundColor: theme.colors.primary },
+  });
+
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={GlobalStyles.colors.primary} />
+      <StatusBar backgroundColor={theme.colors.primary} />
       <NotificationCard mode="LIKE" />
       <NotificationCard mode="COMMENT" />
       <NotificationCard mode="FOLLOW" />
@@ -30,7 +36,3 @@ const NotificationsScreen = ({ navigation, route }) => {
 };
 
 export default NotificationsScreen;
-
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: GlobalStyles.colors.primary },
-});

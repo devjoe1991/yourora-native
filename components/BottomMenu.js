@@ -3,7 +3,9 @@ import { View, Text, Pressable, StyleSheet } from "react-native";
 import ActionSheet from "react-native-actions-sheet";
 import { Ionicons } from "@expo/vector-icons";
 import { GlobalStyles } from "../constants/Styles";
+import { useTheme } from "../store/theme-context";
 function BottomMenu({ menu, visible, setVisible }) {
+  const { theme } = useTheme();
   const actionSheetRef = useRef(null);
   useEffect(() => {
     if (visible) {
@@ -18,14 +20,14 @@ function BottomMenu({ menu, visible, setVisible }) {
       <ActionSheet
         ref={actionSheetRef}
         containerStyle={{
-          backgroundColor: GlobalStyles.colors.blue,
+          backgroundColor: theme.colors.blue,
           borderTopLeftRadius: 30,
           borderTopRightRadius: 30,
         }}
         indicatorStyle={{
           width: 50,
           marginVertical: 10,
-          backgroundColor: "white",
+          backgroundColor: theme.colors.textColor,
         }}
         gestureEnabled={true}
         onClose={() => {
@@ -47,15 +49,15 @@ function BottomMenu({ menu, visible, setVisible }) {
                 paddingVertical: 10,
               }}
             >
-              <Ionicons name={button.icon} size={25} color={"white"} />
-              <Text style={{ color: "white", fontSize: 20, marginLeft: 10 }}>
+              <Ionicons name={button.icon} size={25} color={theme.colors.textColor} />
+              <Text style={{ color: theme.colors.textColor, fontSize: 20, marginLeft: 10 }}>
                 {button.title}
               </Text>
             </Pressable>
             {index + 1 < menu.length && (
               <View
                 style={{
-                  borderBottomColor: "white",
+                  borderBottomColor: theme.colors.textColor,
                   borderBottomWidth: StyleSheet.hairlineWidth,
                 }}
               />
