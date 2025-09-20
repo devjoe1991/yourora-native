@@ -5,13 +5,10 @@ import { GlobalStyles } from "../../../constants/Styles";
 import { useTheme } from "../../../store/theme-context";
 import PressEffect from "../../UI/PressEffect";
 import ThemeToggleSwitch from "../../UI/ThemeToggleSwitch";
+import YourOraTextLogo from "../../UI/YourOraTextLogo";
 
 const Header = ({ navigation }) => {
   const { theme, isDark } = useTheme();
-  
-  const logoSource = isDark 
-    ? require("../../../assets/logo-black.png")  // Black logo for dark theme
-    : require("../../../assets/logo-white.png"); // White logo for light theme
 
   const styles = StyleSheet.create({
     container: {
@@ -25,11 +22,6 @@ const Header = ({ navigation }) => {
       position: "absolute",
       right: 0,
       flexDirection: "row",
-    },
-    logo: {
-      width: 220,
-      height: 80,
-      resizeMode: "contain",
     },
     icon: {
       marginLeft: 10,
@@ -75,13 +67,10 @@ const Header = ({ navigation }) => {
       </View>
 
       <View style={{ alignItems: "center" }}>
-        <Image
-          style={styles.logo}
-          source={logoSource}
+        <YourOraTextLogo 
+          size="large" 
+          showSubtitle={true}
         />
-        <Text style={{ color: theme.colors.mutedTextColor, fontSize: 15 }}>
-          Your fitness ora
-        </Text>
       </View>
 
       <View style={styles.iconsContainer}>
