@@ -19,7 +19,7 @@ const dummyPosts = [
       "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/vertical-videos/2.mp4",
     title: "My New Year View",
     date: "1 Jan, 2022",
-    location: "New York, USA",
+    location: "Covent Garden, London",
   },
   {
     id: "1",
@@ -27,7 +27,7 @@ const dummyPosts = [
       "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/vertical-videos/1.mp4",
     title: "Some Workout",
     date: "31 Dec, 2024",
-    location: "Omsk, Russia",
+    location: "Shoreditch, London",
   },
   {
     id: "3",
@@ -35,7 +35,7 @@ const dummyPosts = [
       "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/vertical-videos/3.mp4",
     title: "Some Workout",
     date: "31 Dec, 2024",
-    location: "Omsk, Russia",
+    location: "Camden, London",
   },
   {
     id: "2",
@@ -43,7 +43,7 @@ const dummyPosts = [
       "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/vertical-videos/2.mp4",
     title: "My New Year View",
     date: "1 Jan, 2022",
-    location: "New York, USA",
+    location: "Notting Hill, London",
   },
   {
     id: "1",
@@ -51,7 +51,7 @@ const dummyPosts = [
       "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/vertical-videos/1.mp4",
     title: "Some Workout",
     date: "31 Dec, 2024",
-    location: "Omsk, Russia",
+    location: "Brick Lane, London",
   },
   {
     id: "3",
@@ -59,7 +59,7 @@ const dummyPosts = [
       "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/vertical-videos/3.mp4",
     title: "Some Workout",
     date: "31 Dec, 2024",
-    location: "Omsk, Russia",
+    location: "King's Cross, London",
   },
   {
     id: "2",
@@ -67,7 +67,7 @@ const dummyPosts = [
       "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/vertical-videos/2.mp4",
     title: "My New Year View",
     date: "1 Jan, 2022",
-    location: "New York, USA",
+    location: "Greenwich, London",
   },
   {
     id: "1",
@@ -75,7 +75,7 @@ const dummyPosts = [
       "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/vertical-videos/1.mp4",
     title: "Some Workout",
     date: "31 Dec, 2024",
-    location: "Omsk, Russia",
+    location: "Borough Market, London",
   },
   {
     id: "3",
@@ -83,7 +83,7 @@ const dummyPosts = [
       "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/vertical-videos/3.mp4",
     title: "Some Workout",
     date: "31 Dec, 2024",
-    location: "Omsk, Russia",
+    location: "Spitalfields, London",
   },
   // {
   //   id: "3",

@@ -102,7 +102,7 @@ function PostAdvance({ post }) {
             <Text
               style={{ color: GlobalStyles.colors.gray, paddingHorizontal: 5 }}
             >
-              Lahore, Pakistan
+              Tower Bridge, London
             </Text>
           </View>
           <Text

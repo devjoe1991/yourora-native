@@ -19,106 +19,84 @@ import { Ionicons } from "@expo/vector-icons";
 import PressEffect from "../../UI/PressEffect";
 // https://github.com/birdwingo/react-native-instagram-stories?tab=readme-ov-file
 
+// Streak-based data for fitness app - realistic beginner numbers
 const data = [
   {
     user_id: 0,
-    user_image:
-      "https://p16.tiktokcdn.com/tos-maliva-avt-0068/2f134ee6b5d3a1340aeb0337beb48f2d~c5_720x720.jpeg",
-    user_name: "Ajmal",
+    streak_days: 0, // Special case for "Add Story" button
+    streak_level: 0,
+    user_name: "Add Story",
     active: false,
-    stories: [
-      {
-        story_id: 1,
-        story_image:
-          "https://image.freepik.com/free-vector/universe-mobile-wallpaper-with-planets_79603-600.jpg",
-      },
-    ],
+    isCurrentUser: true,
   },
   {
     user_id: 1,
-    user_image: "https://randomuser.me/api/portraits/women/2.jpg",
-    user_name: "Ajmal",
-    active: false,
-    stories: [
-      {
-        story_id: 1,
-        story_image:
-          "https://image.freepik.com/free-vector/universe-mobile-wallpaper-with-planets_79603-600.jpg",
-      },
-    ],
+    streak_days: 1,
+    streak_level: 1, // Newcomer level
+    user_name: "Your Streak",
+    active: true,
+    isCurrentUser: true,
   },
   {
     user_id: 2,
-    user_image: "https://randomuser.me/api/portraits/women/5.jpg",
-    user_name: "Ajmal",
-    stories: [
-      {
-        story_id: 1,
-        story_image:
-          "https://image.freepik.com/free-vector/universe-mobile-wallpaper-with-planets_79603-600.jpg",
-      },
-    ],
+    streak_days: 2,
+    streak_level: 1, // Same level as user
+    user_name: "Same Level",
+    active: false,
+    isCurrentUser: false,
   },
   {
     user_id: 3,
-    user_image: "https://randomuser.me/api/portraits/women/8.jpg",
-    user_name: "Ajmal",
-    active: true,
-
-    stories: [
-      {
-        story_id: 1,
-        story_image:
-          "https://image.freepik.com/free-vector/universe-mobile-wallpaper-with-planets_79603-600.jpg",
-      },
-    ],
+    streak_days: 3,
+    streak_level: 1, // Same level as user
+    user_name: "Same Level",
+    active: false,
+    isCurrentUser: false,
   },
   {
     user_id: 4,
-    user_image: "https://randomuser.me/api/portraits/women/10.jpg",
-    user_name: "Ajmal",
+    streak_days: 5,
+    streak_level: 1, // Same level as user
+    user_name: "Same Level",
     active: false,
-
-    stories: [
-      {
-        story_id: 1,
-        story_image:
-          "https://image.freepik.com/free-vector/universe-mobile-wallpaper-with-planets_79603-600.jpg",
-      },
-    ],
+    isCurrentUser: false,
   },
   {
     user_id: 5,
-    user_image: "https://randomuser.me/api/portraits/women/25.jpg",
-    user_name: "Ajmal",
+    streak_days: 7,
+    streak_level: 1, // Same level as user
+    user_name: "Same Level",
     active: false,
-
-    stories: [
-      {
-        story_id: 1,
-        story_image:
-          "https://image.freepik.com/free-vector/universe-mobile-wallpaper-with-planets_79603-600.jpg",
-      },
-    ],
+    isCurrentUser: false,
   },
   {
     user_id: 6,
-    user_image: "https://randomuser.me/api/portraits/women/52.jpg",
-    user_name: "Ajmal",
+    streak_days: 9,
+    streak_level: 2, // Next level - Rising
+    user_name: "Next Level",
     active: false,
-    stories: [
-      {
-        story_id: 1,
-        story_image:
-          "https://image.freepik.com/free-vector/universe-mobile-wallpaper-with-planets_79603-600.jpg",
-      },
-    ],
+    isCurrentUser: false,
   },
 ];
 const { width: SCREEN_WIDTH } = Dimensions.get("screen");
 const ITEM_SIZE = SCREEN_WIDTH / 5;
 const TRANSLATE_VALUE = ITEM_SIZE / 2;
 export const CONTAINER_HEIGHT = ITEM_SIZE + TRANSLATE_VALUE + 10;
+
+// Streak level color function
+const getStreakLevelColor = (level) => {
+  switch(level) {
+    case 0: return '#333333';      // Add Story - Dark
+    case 1: return '#45B7D1';      // Newcomer - Blue
+    case 2: return '#4ECDC4';      // Rising - Teal  
+    case 3: return '#96CEB4';      // Committed - Green
+    case 4: return '#FFEAA7';      // Dedicated - Yellow
+    case 5: return '#DDA0DD';      // Elite - Purple
+    case 6: return '#FFD700';      // Legendary - Gold
+    case 7: return '#FF6B6B';      // Master - Red
+    default: return '#333333';
+  }
+};
 
 const Stories = ({ followingsData }) => {
   const storiesRef = useRef(null);
@@ -174,9 +152,19 @@ const Stories = ({ followingsData }) => {
               <Pressable
                 onPress={() => {
                   if (item.user_id == 0) {
+                    // Add Story button
                     navigation.navigate("AddStoryScreen");
+                  } else if (item.isCurrentUser) {
+                    // Your personal streak - show personal feed
+                    console.log("Show personal streak feed for", item.streak_days, "days");
+                    // navigation.navigate("PersonalStreakFeed", { streakDays: item.streak_days });
                   } else {
-                    navigation.navigate("ViewStoryScreen");
+                    // Other streaks - unlock feed based on level
+                    console.log("Unlock feed for streak level", item.streak_level, "with", item.streak_days, "days");
+                    // navigation.navigate("StreakFeed", { 
+                    //   streakLevel: item.streak_level, 
+                    //   streakDays: item.streak_days 
+                    // });
                   }
                 }}
               >
@@ -193,50 +181,59 @@ const Stories = ({ followingsData }) => {
                   //   setShowStory(true);
                   // }}
                 >
-                  <ImageBackground
-                    source={{ uri: item.user_image }}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                    }}
-                    imageStyle={[
+                  {/* Streak Score Circle */}
+                  <View
+                    style={[
                       {
-                        resizeMode: "cover",
+                        width: "100%",
+                        height: "100%",
                         borderRadius: 60,
-                        backgroundColor: GlobalStyles.colors.gray,
-                      },
-                      item.user_id == 0 && {
-                        borderWidth: 2,
-                        borderColor: GlobalStyles.colors.magenta,
+                        backgroundColor: getStreakLevelColor(item.streak_level),
+                        justifyContent: "center",
+                        alignItems: "center",
+                        borderWidth: item.isCurrentUser ? 3 : 0,
+                        borderColor: item.isCurrentUser ? '#00BFA5' : 'transparent',
                       },
                     ]}
                   >
-                    <View
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        alignItems: "flex-end",
-                        justifyContent: "flex-end",
-                      }}
-                    >
-                      {item.user_id == 0 && (
+                    {item.user_id == 0 ? (
+                      // Add Story button
+                      <Ionicons
+                        name="add-circle"
+                        size={30}
+                        color="white"
+                      />
+                    ) : (
+                      // Streak score number
+                      <Text
+                        style={{
+                          fontSize: 24,
+                          fontWeight: "bold",
+                          color: "white",
+                          textAlign: "center",
+                        }}
+                      >
+                        {item.streak_days}
+                      </Text>
+                    )}
+                    
+                    {/* Active indicator */}
+                    {item.active && (
+                      <View
+                        style={{
+                          position: "absolute",
+                          right: 3,
+                          bottom: 5,
+                        }}
+                      >
                         <Ionicons
-                          style={{}}
-                          name="add-circle"
-                          size={25}
-                          color={GlobalStyles.colors.magenta}
-                        />
-                      )}
-                      {item.active && (
-                        <Ionicons
-                          style={{ right: 3, bottom: 5 }}
                           name="ellipse"
                           size={15}
                           color={GlobalStyles.colors.greenLight}
                         />
-                      )}
-                    </View>
-                  </ImageBackground>
+                      </View>
+                    )}
+                  </View>
                 </Animated.View>
               </Pressable>
             </PressEffect>

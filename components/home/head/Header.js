@@ -22,10 +22,10 @@ const Header = ({ navigation }) => (
 
     <View style={{ alignItems: "center" }}>
       <Text style={{ color: "white", fontSize: 30, fontWeight: "bold" }}>
-        Social
+        YourOra
       </Text>
       <Text style={{ color: "rgba(255,255,255,0.5)", fontSize: 15 }}>
-        Welcome To Social
+        Your fitness ora
       </Text>
     </View>
 

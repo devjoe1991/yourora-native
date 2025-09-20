@@ -5,9 +5,13 @@ import { AuthContext } from "./store/auth-context";
 const AuthNavigation = () => {
   const authCtx = useContext(AuthContext);
 
-  return (
-    <>{authCtx.isAuthenticated ? <SignedInStack /> : <SignedOutStack />}</>
-  );
+  // Temporarily bypass authentication - always show main app
+  return <SignedInStack />;
+  
+  // Original code (commented out for now):
+  // return (
+  //   <>{authCtx.isAuthenticated ? <SignedInStack /> : <SignedOutStack />}</>
+  // );
 };
 
 export default AuthNavigation;
