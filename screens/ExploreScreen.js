@@ -4,6 +4,7 @@ import { GlobalStyles } from "../constants/Styles";
 import { StatusBar } from "react-native";
 import Avatar from "../components/exploreScreen/Avatar";
 import { AppContext } from "../store/app-context";
+import { useTheme } from "../store/theme-context";
 import BackgroundSVG from "../components/exploreScreen/BackgroundSVG";
 import { getRandomUser } from "../utils/helperFunctions";
 
@@ -11,6 +12,7 @@ const ITEM_SIZE = 70;
 const MIN_DISTANCE = ITEM_SIZE + 20;
 
 const ExploreScreen = ({ navigation }) => {
+  const { theme } = useTheme();
   const appCtx = useContext(AppContext);
   const [usersData, setUsersData] = useState([]);
   const [positions, setPositions] = useState([]);
@@ -123,6 +125,13 @@ const ExploreScreen = ({ navigation }) => {
     );
   });
 
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: theme.colors.primary,
+    },
+  });
+
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor={"transparent"} translucent={true} />
@@ -130,7 +139,7 @@ const ExploreScreen = ({ navigation }) => {
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text
           style={{
-            color: "white",
+            color: theme.colors.textColor,
             fontSize: 24,
             fontWeight: "500",
             marginBottom: 20,
@@ -138,10 +147,10 @@ const ExploreScreen = ({ navigation }) => {
         >
           Nearby Friends
         </Text>
-        <Text style={{ color: "rgba(255,255,255,0.5)", fontSize: 18 }}>
+        <Text style={{ color: theme.colors.mutedTextColor, fontSize: 18 }}>
           Connect with new people.
         </Text>
-        <Text style={{ color: "rgba(255,255,255,0.5)", fontSize: 18 }}>
+        <Text style={{ color: theme.colors.mutedTextColor, fontSize: 18 }}>
           Expand your network!
         </Text>
       </View>
@@ -157,10 +166,3 @@ const ExploreScreen = ({ navigation }) => {
 };
 
 export default ExploreScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: GlobalStyles.colors.primary,
-  },
-});

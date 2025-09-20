@@ -5,9 +5,25 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import SettingsIcon from "../AnimatedUi/SettingsIcon";
 import { useNavigation } from "@react-navigation/native";
 import PressEffect from "../UI/PressEffect";
+import { useTheme } from "../../store/theme-context";
 
 const Header = ({ viewMode }) => {
+  const { theme } = useTheme();
   const navigation = useNavigation();
+
+  const styles = StyleSheet.create({
+    container: {
+      marginHorizontal: 10,
+      paddingTop: 15,
+    },
+
+    headerText: {
+      color: theme.colors.textColor,
+      fontWeight: "500",
+      fontSize: 16,
+    },
+  });
+
   return (
     <View>
       <SafeAreaView
@@ -26,7 +42,7 @@ const Header = ({ viewMode }) => {
             }}
             name="arrow-back"
             size={25}
-            color={"white"}
+            color={theme.colors.textColor}
           />
         </PressEffect>
         <SettingsIcon onPress={() => {}} />
@@ -35,16 +51,3 @@ const Header = ({ viewMode }) => {
   );
 };
 export default Header;
-
-const styles = StyleSheet.create({
-  container: {
-    marginHorizontal: 10,
-    paddingTop: 15,
-  },
-
-  headerText: {
-    color: "#fff",
-    fontWeight: "500",
-    fontSize: 16,
-  },
-});

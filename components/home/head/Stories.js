@@ -15,6 +15,7 @@ import React, { useRef, useState } from "react";
 import { USERS } from "../../../data/users";
 import { useNavigation } from "@react-navigation/native";
 import { GlobalStyles } from "../../../constants/Styles";
+import { useTheme } from "../../../store/theme-context";
 import ImageStory from "../../story/ImageStory";
 import { Ionicons } from "@expo/vector-icons";
 import PressEffect from "../../UI/PressEffect";
@@ -227,12 +228,23 @@ const getStreakFeedTitle = (feedType, streakDays) => {
 };
 
 const Stories = ({ followingsData }) => {
+  const { theme } = useTheme();
   const storiesRef = useRef(null);
   const [showStory, setShowStory] = useState(false);
   const [selectedStreakFeed, setSelectedStreakFeed] = useState(null);
   const ScrollX = useRef(new Animated.Value(0)).current;
   const modalTranslateY = useRef(new Animated.Value(0)).current;
   const navigation = useNavigation();
+
+  const styles = StyleSheet.create({
+    story: {
+      width: 70,
+      height: 70,
+      borderRadius: 50,
+      borderWidth: 3,
+      borderColor: theme.colors.cyan,
+    },
+  });
 
   // Pan responder for swipe down to close modal
   const panResponder = useRef(
@@ -375,7 +387,7 @@ const Stories = ({ followingsData }) => {
                       <Ionicons
                         name={item.icon}
                         size={30}
-                        color="white"
+                        color={theme.colors.textColor}
                       />
                     ) : item.isLocked ? (
                       // Locked streak - show padlock
@@ -383,14 +395,14 @@ const Stories = ({ followingsData }) => {
                         <Ionicons
                           name="lock-closed"
                           size={25}
-                          color="white"
+                          color={theme.colors.textColor}
                           style={{ marginBottom: 2 }}
                         />
                         <Text
                           style={{
                             fontSize: 12,
                             fontWeight: "bold",
-                            color: "white",
+                            color: theme.colors.textColor,
                             textAlign: "center",
                           }}
                         >
@@ -403,7 +415,7 @@ const Stories = ({ followingsData }) => {
                         style={{
                           fontSize: 24,
                           fontWeight: "bold",
-                          color: "white",
+                          color: theme.colors.textColor,
                           textAlign: "center",
                         }}
                       >
@@ -476,7 +488,7 @@ const Stories = ({ followingsData }) => {
                         <Ionicons
                           name="lock-closed"
                           size={12}
-                          color="white"
+                          color={theme.colors.textColor}
                         />
                       </View>
                     )}
@@ -486,7 +498,7 @@ const Stories = ({ followingsData }) => {
                   <Text
                     style={{
                       fontSize: 10,
-                      color: "white",
+                      color: theme.colors.textColor,
                       textAlign: "center",
                       marginTop: 5,
                       fontWeight: "600",
@@ -522,7 +534,7 @@ const Stories = ({ followingsData }) => {
           }}>
             <Animated.View 
               style={[{
-                backgroundColor: GlobalStyles.colors.primary300,
+                backgroundColor: theme.colors.primary300,
                 borderRadius: 20,
                 padding: 30,
                 alignItems: 'center',
@@ -547,7 +559,7 @@ const Stories = ({ followingsData }) => {
                   zIndex: 1,
                 }}
               >
-                <Ionicons name="close" size={20} color="white" />
+                <Ionicons name="close" size={20} color={theme.colors.textColor} />
               </Pressable>
               <View style={{
                 width: 80,
@@ -563,13 +575,13 @@ const Stories = ({ followingsData }) => {
                   <Ionicons
                     name="lock-closed"
                     size={40}
-                    color="white"
+                    color={theme.colors.textColor}
                   />
                 ) : (
                   <Ionicons
                     name={selectedStreakFeed.icon}
                     size={40}
-                    color="white"
+                    color={theme.colors.textColor}
                   />
                 )}
               </View>
@@ -577,7 +589,7 @@ const Stories = ({ followingsData }) => {
               <Text style={{
                 fontSize: 24,
                 fontWeight: 'bold',
-                color: 'white',
+                color: theme.colors.textColor,
                 marginBottom: 10,
                 textAlign: 'center',
               }}>
@@ -586,7 +598,7 @@ const Stories = ({ followingsData }) => {
               
               <Text style={{
                 fontSize: 16,
-                color: 'white',
+                color: theme.colors.textColor,
                 marginBottom: 20,
                 textAlign: 'center',
               }}>
@@ -644,7 +656,7 @@ const Stories = ({ followingsData }) => {
                           alignItems: 'center',
                         }}
                       >
-                        <Text style={{ color: 'white', fontSize: 14, fontWeight: 'bold' }}>
+                        <Text style={{ color: theme.colors.textColor, fontSize: 14, fontWeight: 'bold' }}>
                           Unlock 5 Streaks
                         </Text>
                         <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>
@@ -664,7 +676,7 @@ const Stories = ({ followingsData }) => {
                           alignItems: 'center',
                         }}
                       >
-                        <Text style={{ color: 'white', fontSize: 14, fontWeight: 'bold' }}>
+                        <Text style={{ color: theme.colors.textColor, fontSize: 14, fontWeight: 'bold' }}>
                           Unlock 10 Streaks
                         </Text>
                         <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>
@@ -744,7 +756,7 @@ const Stories = ({ followingsData }) => {
                     }}
                   >
                     <Text style={{
-                      color: 'white',
+                      color: theme.colors.textColor,
                       fontSize: 16,
                       fontWeight: 'bold',
                     }}>
@@ -772,13 +784,3 @@ const Stories = ({ followingsData }) => {
 };
 
 export default Stories;
-
-const styles = StyleSheet.create({
-  story: {
-    width: 70,
-    height: 70,
-    borderRadius: 50,
-    borderWidth: 3,
-    borderColor: GlobalStyles.colors.cyan,
-  },
-});

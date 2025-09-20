@@ -9,8 +9,10 @@ import validateEmail from "../../utils/validateEmail";
 import Button from "../Button";
 import InputField from "../InputField";
 import { GlobalStyles } from "../../constants/Styles";
+import { useTheme } from "../../store/theme-context";
 
 const SignupForm = ({ navigation }) => {
+  const { theme } = useTheme();
   const SignupFormSchema = yup.object().shape({
     email: yup.string().email().required("Email address is required."),
     password: yup.string().min(8, "Password must have a tleast 8 chracters."),
@@ -123,13 +125,13 @@ const SignupForm = ({ navigation }) => {
             </View>
 
             <View style={styles.signupContainer}>
-              <Text style={{ color: GlobalStyles.colors.gray }}>
+              <Text style={{ color: theme.colors.mutedTextColor }}>
                 Already have an account?
               </Text>
               <TouchableOpacity
                 onPress={() => navigation.navigate("LoginScreen")}
               >
-                <Text style={{ color: "#6BB0F5" }}> Log in</Text>
+                <Text style={{ color: theme.colors.blue100 }}> Log in</Text>
               </TouchableOpacity>
             </View>
           </>

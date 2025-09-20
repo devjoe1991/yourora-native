@@ -17,10 +17,12 @@ import Post from "../../components/userProfileScreen/Post";
 import { AuthContext } from "../../store/auth-context";
 import { Ionicons } from "@expo/vector-icons";
 import { POSTS } from "../../data/posts.js";
+import { useTheme } from "../../store/theme-context";
 
 const TopTab = createMaterialTopTabNavigator();
 
 function Posts({ navigation, route, refreshing }) {
+  const { theme } = useTheme();
   const authCtx = useContext(AuthContext);
   const [fetching, setFetching] = useState(true);
   const [errorFetching, setErrorFetching] = useState(false);
@@ -47,12 +49,12 @@ function Posts({ navigation, route, refreshing }) {
     }
   }, [refreshing]);
   return (
-    <View style={{ flex: 1, backgroundColor: GlobalStyles.colors.primary }}>
+    <View style={{ flex: 1, backgroundColor: theme.colors.primary }}>
       {fetching ? (
         <View
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
-          <ActivityIndicator size={50} color={GlobalStyles.colors.purple} />
+          <ActivityIndicator size={50} color={theme.colors.purple} />
         </View>
       ) : errorFetching ? (
         <View
@@ -61,11 +63,11 @@ function Posts({ navigation, route, refreshing }) {
           <Pressable onPress={getPosts}>
             <Ionicons
               name="reload-circle"
-              color={GlobalStyles.colors.purple}
+              color={theme.colors.purple}
               size={50}
             />
             <Text
-              style={{ color: GlobalStyles.colors.purple, fontWeight: "bold" }}
+              style={{ color: theme.colors.purple, fontWeight: "bold" }}
             >
               Reload
             </Text>
@@ -118,8 +120,9 @@ function Posts({ navigation, route, refreshing }) {
 }
 
 function Videos() {
+  const { theme } = useTheme();
   return (
-    <View style={{ backgroundColor: GlobalStyles.colors.primary }}>
+    <View style={{ backgroundColor: theme.colors.primary }}>
       <FlatList
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
@@ -142,23 +145,24 @@ function Videos() {
   );
 }
 const ProfileBody = ({ refreshing }) => {
+  const { theme } = useTheme();
   return (
     <TopTab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: "white",
+        tabBarActiveTintColor: theme.colors.textColor,
         tabBarLabelStyle: {
           textTransform: "none",
           fontSize: 18,
           padding: 0,
           margin: 0,
         },
-        tabBarInactiveTintColor: "rgba(255,255,255,0.3)",
+        tabBarInactiveTintColor: theme.colors.textSecondary,
         tabBarIndicatorStyle: {
           height: 3,
           width: "10%",
           left: "20%",
           borderRadius: 30,
-          backgroundColor: GlobalStyles.colors.purple,
+          backgroundColor: theme.colors.purple,
         },
         tabBarStyle: {
           padding: 0,
@@ -168,9 +172,9 @@ const ProfileBody = ({ refreshing }) => {
           elevation: 0,
           backgroundColor: "transparent",
           borderBottomWidth: 1,
-          borderBottomColor: "rgba(255,255,255,0.1)",
+          borderBottomColor: theme.colors.primary600,
         },
-        tabBarPressColor: "white",
+        tabBarPressColor: theme.colors.textColor,
       }}
     >
       <TopTab.Screen

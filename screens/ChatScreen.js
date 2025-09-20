@@ -4,7 +4,9 @@ import ChatCard from "../components/messagesScreen/ChatCard";
 import InputField from "../components/InputField";
 import { Ionicons } from "@expo/vector-icons";
 import { GlobalStyles } from "../constants/Styles";
+import { useTheme } from "../store/theme-context";
 const ChatScreen = ({ navigation, route }) => {
+  const { theme } = useTheme();
   const [message, setMessage] = useState("");
   useEffect(() => {
     navigation.setOptions({
@@ -12,6 +14,11 @@ const ChatScreen = ({ navigation, route }) => {
       title: "John Doe",
     });
   }, []);
+
+  const styles = StyleSheet.create({
+    container: { flex: 1, backgroundColor: theme.colors.primary },
+  });
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -44,14 +51,14 @@ const ChatScreen = ({ navigation, route }) => {
         </View>
         <View
           style={{
-            backgroundColor: "rgba(122, 64, 248,0.5)",
+            backgroundColor: theme.colors.primary500,
 
             padding: 10,
             borderRadius: 50,
             marginLeft: 10,
           }}
         >
-          <Ionicons name="send" color={"white"} size={30} />
+          <Ionicons name="send" color={theme.colors.textColor} size={30} />
         </View>
       </View>
     </View>
@@ -59,7 +66,3 @@ const ChatScreen = ({ navigation, route }) => {
 };
 
 export default ChatScreen;
-
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: GlobalStyles.colors.primary },
-});

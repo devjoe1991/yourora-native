@@ -5,10 +5,12 @@ import ProfileBody from "../components/userProfileScreen/ProfileBody.js";
 
 import { AuthContext } from "../store/auth-context.js";
 import { GlobalStyles } from "../constants/Styles.js";
+import { useTheme } from "../store/theme-context";
 import Header from "../components/userProfileScreen/Header.js";
 import HeaderSvg from "../components/userProfileScreen/HeaderSVG.js";
 
 const UserProfileScreen = ({ navigation, route }) => {
+  const { theme } = useTheme();
   const authCtx = useContext(AuthContext);
   const userData = useState(authCtx.userData)[0];
   const [refreshing, setRefreshing] = useState(false);
@@ -18,6 +20,13 @@ const UserProfileScreen = ({ navigation, route }) => {
       headerShown: false,
     });
   }, []);
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: theme.colors.primary,
+    },
+  });
 
   return (
     <View style={styles.container}>
@@ -36,12 +45,5 @@ const UserProfileScreen = ({ navigation, route }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: GlobalStyles.colors.primary,
-  },
-});
 
 export default UserProfileScreen;

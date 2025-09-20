@@ -14,6 +14,7 @@ import PostsList from "../components/searchScreen/PostsList";
 import EmojisList from "../components/searchScreen/EmojisList";
 
 import { GlobalStyles } from "../constants/Styles";
+import { useTheme } from "../store/theme-context";
 import Animated, {
   FadeInDown,
   FadeInLeft,
@@ -22,6 +23,7 @@ import Animated, {
 import { USER_DATA } from "../data/USER";
 
 const SearchScreen = ({ navigation }) => {
+  const { theme } = useTheme();
   const [search, setSearch] = useState("");
   const [users, setUsers] = useState([]);
   const [inputFocused, setInputFocused] = useState(false);
@@ -43,12 +45,19 @@ const SearchScreen = ({ navigation }) => {
       title: "Search Friends",
     });
   }, []);
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: theme.backgroundColor,
+    },
+  });
+
   return (
     <KeyboardAvoidingView
       keyboardVerticalOffset={Platform.OS === "ios" ? 40 : 0}
       style={styles.container}
     >
-      <StatusBar backgroundColor={GlobalStyles.colors.primary} />
+      <StatusBar backgroundColor={theme.colors.primary} />
       <View
         style={{
           margin: 10,
@@ -104,10 +113,3 @@ const SearchScreen = ({ navigation }) => {
 };
 
 export default SearchScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: GlobalStyles.colors.primary,
-  },
-});

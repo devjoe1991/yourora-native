@@ -18,7 +18,9 @@ import ProgressBar from "./ProgressBar";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 import EmojiInput from "../UI/EmojiInput";
+import { useTheme } from "../../store/theme-context";
 const RenderStory = ({ active, nextUser, previousUser, index }) => {
+  const { theme } = useTheme();
   const navigation = useNavigation();
   const [currentStory, setCurrentStory] = useState(0);
   const noOfStories = USERS[0].stories.length;
@@ -42,7 +44,7 @@ const RenderStory = ({ active, nextUser, previousUser, index }) => {
     return (
       <>
         <LinearGradient
-          colors={["rgba(0,0,0,0.5)", "transparent"]}
+          colors={[theme.colors.primary500, "transparent"]}
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
           style={{
@@ -85,9 +87,9 @@ const RenderStory = ({ active, nextUser, previousUser, index }) => {
                   style={{ width: 40, height: 40, borderRadius: 50 }}
                 />
                 <View style={{ paddingLeft: 10 }}>
-                  <Text style={{ color: "white" }}>{USERS[0].user}</Text>
+                  <Text style={{ color: theme.colors.textColor }}>{USERS[0].user}</Text>
                   <Text
-                    style={{ color: GlobalStyles.colors.gray, fontSize: 10 }}
+                    style={{ color: theme.colors.mutedTextColor, fontSize: 10 }}
                   >
                     10 mins ago
                   </Text>
@@ -100,14 +102,14 @@ const RenderStory = ({ active, nextUser, previousUser, index }) => {
                   navigation.goBack();
                 }}
                 style={{
-                  backgroundColor: GlobalStyles.colors.primary500,
+                  backgroundColor: theme.colors.primary500,
                   padding: 5,
                   borderRadius: 15,
                   borderWidth: 1,
-                  borderColor: GlobalStyles.colors.primary600,
+                  borderColor: theme.colors.primary600,
                 }}
               >
-                <Ionicons name="close" size={25} color={"white"} />
+                <Ionicons name="close" size={25} color={theme.colors.textColor} />
               </Pressable>
             </PressEffect>
           </View>

@@ -4,10 +4,20 @@ import InputField from "../components/InputField";
 import MessageCard from "../components/messagesScreen/MessageCard";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { GlobalStyles } from "../constants/Styles";
+import { useTheme } from "../store/theme-context";
 
 const MessagesScreen = ({ navigation, route }) => {
+  const { theme } = useTheme();
   const [search, setSearch] = useState("");
   const [paddingTop, setPaddingTop] = useState(0);
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: theme.colors.primary,
+    },
+  });
+
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -53,10 +63,3 @@ const MessagesScreen = ({ navigation, route }) => {
 };
 
 export default MessagesScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: GlobalStyles.colors.primary,
-  },
-});

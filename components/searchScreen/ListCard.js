@@ -8,21 +8,23 @@ import {
 } from "react-native";
 import React from "react";
 import { DEFAULT_DP, GlobalStyles } from "../../constants/Styles";
+import { useTheme } from "../../store/theme-context";
 
 const ListCard = ({ userData }) => {
+  const { theme } = useTheme();
   return (
     <Pressable
       style={({ pressed }) =>
         Platform.OS === "ios" && pressed && { opacity: 0.5 }
       }
       android_ripple={{
-        color: "rgba(86, 86, 202,0.5)",
+        color: theme.colors.primary500,
         foreground: true,
       }}
     >
       <View
         style={{
-          backgroundColor: GlobalStyles.colors.primary300,
+          backgroundColor: theme.colors.primary300,
           flexDirection: "row",
           alignItems: "center",
           padding: 10,
@@ -40,10 +42,10 @@ const ListCard = ({ userData }) => {
           }}
         />
         <View style={{ marginLeft: 10 }}>
-          <Text style={{ fontWeight: "bold", color: "white" }}>
+          <Text style={{ fontWeight: "bold", color: theme.colors.textColor }}>
             {userData.username}
           </Text>
-          <Text style={{ color: "rgba(255,255,255,0.6)" }}>
+          <Text style={{ color: theme.colors.mutedTextColor }}>
             {userData.fullName}
           </Text>
         </View>
@@ -52,7 +54,7 @@ const ListCard = ({ userData }) => {
         style={{
           height: 1,
           width: "100%",
-          backgroundColor: GlobalStyles.colors.primary,
+          backgroundColor: theme.colors.primary,
         }}
       />
     </Pressable>

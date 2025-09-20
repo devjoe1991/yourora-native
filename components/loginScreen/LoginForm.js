@@ -9,8 +9,10 @@ import Button from "../Button";
 import InputField from "../InputField";
 import { GlobalStyles } from "../../constants/Styles";
 import { AuthContext } from "../../store/auth-context";
+import { useTheme } from "../../store/theme-context";
 
 const LoginForm = ({ navigation }) => {
+  const { theme } = useTheme();
   const authCtx = useContext(AuthContext);
 
   const LoginFormSchema = yup.object().shape({
@@ -72,7 +74,7 @@ const LoginForm = ({ navigation }) => {
             <TouchableOpacity>
               <Text
                 style={{
-                  color: GlobalStyles.colors.blue100,
+                  color: theme.colors.blue100,
                   fontSize: 18,
                   textAlign: "center",
                   marginVertical: 15,
@@ -92,13 +94,13 @@ const LoginForm = ({ navigation }) => {
                 <Text style={{color: 'red'}}>{errors.email}</Text> */}
 
             <View style={styles.signupContainer}>
-              <Text style={{ color: GlobalStyles.colors.gray }}>
+              <Text style={{ color: theme.colors.mutedTextColor }}>
                 Don't have an account?
               </Text>
               <TouchableOpacity
                 onPress={() => navigation.navigate("SignupScreen")}
               >
-                <Text style={{ color: "#6BB0F5" }}> Sign up</Text>
+                <Text style={{ color: theme.colors.blue100 }}> Sign up</Text>
               </TouchableOpacity>
             </View>
           </>

@@ -12,8 +12,10 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { GlobalStyles, DEFAULT_DP } from "../../constants/Styles.js";
 import PressEffect from "../UI/PressEffect.js";
+import { useTheme } from "../../store/theme-context";
 
 const ProfileHead = ({ userData, viewMode }) => {
+  const { theme } = useTheme();
   const [profilePic, setProfilePic] = React.useState(
     !!userData.picturePath ? userData.picturePath : DEFAULT_DP
   );
@@ -22,10 +24,10 @@ const ProfileHead = ({ userData, viewMode }) => {
   function ProfileStat({ text, subText, onPress }) {
     return (
       <Pressable style={{ alignItems: "center" }} onPress={onPress}>
-        <Text style={{ fontWeight: "400", fontSize: 25, color: "white" }}>
+        <Text style={{ fontWeight: "400", fontSize: 25, color: theme.colors.textColor }}>
           {text}
         </Text>
-        <Text style={{ fontSize: 12, color: "rgba(255,255,255,0.6)" }}>
+        <Text style={{ fontSize: 12, color: theme.colors.mutedTextColor }}>
           {subText}
         </Text>
       </Pressable>
@@ -61,7 +63,7 @@ const ProfileHead = ({ userData, viewMode }) => {
           >
             <PressEffect
               style={{
-                backgroundColor: GlobalStyles.colors.primary300,
+                backgroundColor: theme.colors.primary300,
                 padding: 10,
                 borderRadius: 50,
               }}
@@ -77,7 +79,7 @@ const ProfileHead = ({ userData, viewMode }) => {
                       ? require("../../assets/add-friend.png")
                       : require("../../assets/edit.png")
                   }
-                  style={{ width: 25, height: 25, tintColor: "white" }}
+                  style={{ width: 25, height: 25, tintColor: theme.colors.textColor }}
                 />
               </Pressable>
             </PressEffect>
@@ -99,7 +101,7 @@ const ProfileHead = ({ userData, viewMode }) => {
                 >
                   <Image
                     source={require("../../assets/chat-focused.png")}
-                    style={{ width: 30, height: 30, tintColor: "white" }}
+                    style={{ width: 30, height: 30, tintColor: theme.colors.textColor }}
                   />
                 </Pressable>
               </PressEffect>
@@ -110,7 +112,7 @@ const ProfileHead = ({ userData, viewMode }) => {
           style={{
             fontWeight: "bold",
             fontSize: 25,
-            color: "white",
+            color: theme.colors.textColor,
           }}
         >
           {userData.fullName}
@@ -118,7 +120,7 @@ const ProfileHead = ({ userData, viewMode }) => {
         <Text
           style={{
             fontSize: 15,
-            color: "rgba(255,255,255,0.6)",
+            color: theme.colors.mutedTextColor,
           }}
         >
           @{userData.username}
@@ -131,7 +133,7 @@ const ProfileHead = ({ userData, viewMode }) => {
           justifyContent: "space-around",
           alignItems: "center",
           marginBottom: 20,
-          backgroundColor: GlobalStyles.colors.primary200,
+          backgroundColor: theme.colors.primary200,
           borderRadius: 20,
           marginHorizontal: 10,
           paddingVertical: 10,

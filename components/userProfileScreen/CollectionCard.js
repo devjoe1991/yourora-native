@@ -10,14 +10,16 @@ import React from "react";
 import { POSTS } from "../../data/posts";
 import { USERS } from "../../data/users";
 import { useNavigation } from "@react-navigation/native";
+import { useTheme } from "../../store/theme-context";
 const { height, width } = Dimensions.get("window");
 const size = width / 4 - 10;
 const CollectionCard = () => {
+  const { theme } = useTheme();
   const navigation = useNavigation();
   return (
     <Pressable
       onPress={() => {}}
-      android_ripple={{ color: "rgba(255, 255, 255,0.5)", foreground: true }}
+      android_ripple={{ color: theme.colors.textSecondary, foreground: true }}
       style={styles.container}
     >
       <View style={styles.row}>
@@ -47,7 +49,7 @@ const CollectionCard = () => {
       <View style={{ position: "absolute" }}>
         <Text
           style={{
-            color: "white",
+            color: theme.colors.textColor,
             textAlign: "center",
             fontWeight: "bold",
             fontSize: 18,

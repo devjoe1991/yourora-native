@@ -4,8 +4,10 @@ import { USERS } from "../../data/users";
 import { Image } from "react-native";
 import { GlobalStyles } from "../../constants/Styles";
 import { useNavigation } from "@react-navigation/native";
+import { useTheme } from "../../store/theme-context";
 
 const MessageCard = () => {
+  const { theme } = useTheme();
   const navigation = useNavigation();
   return (
     <Pressable
@@ -38,7 +40,7 @@ const MessageCard = () => {
           <Text style={{ fontSize: 18, fontWeight: "bold", color: "white" }}>
             John Doe
           </Text>
-          <Text style={{ fontSize: 14, color: GlobalStyles.colors.gray }}>
+          <Text style={{ fontSize: 14, color: theme.colors.mutedTextColor }}>
             Say Hi to your friend
           </Text>
         </View>
@@ -47,7 +49,7 @@ const MessageCard = () => {
             justifyContent: "space-around",
           }}
         >
-          <Text style={{ fontSize: 10, color: GlobalStyles.colors.gray }}>
+          <Text style={{ fontSize: 10, color: theme.colors.mutedTextColor }}>
             2 mins ago
           </Text>
           <View
@@ -57,7 +59,7 @@ const MessageCard = () => {
               width: 20,
               height: 20,
               borderRadius: 50,
-              backgroundColor: GlobalStyles.colors.blue,
+              backgroundColor: theme.colors.blue,
               alignSelf: "center",
             }}
           >

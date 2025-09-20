@@ -9,6 +9,7 @@ import {
 
 import React, { useContext, useEffect, useState } from "react";
 import { GlobalStyles } from "../constants/Styles";
+import { useTheme } from "../store/theme-context";
 import Button from "../components/Button";
 import InputField from "../components/InputField";
 import { Ionicons } from "@expo/vector-icons";
@@ -26,6 +27,7 @@ const PLACEHOLDER_IMAGE =
   "https://img.freepik.com/free-vector/image-folder-concept-illustration_114360-114.jpg?t=st=1708625623~exp=1708629223~hmac=155af0101788f9a6c147e4a7fa105127a5089c3bf46ded7b7cd2f15de53ec39c&w=740";
 
 function NewPostScreen({ navigation, route }) {
+  const { theme } = useTheme();
   const authCtx = useContext(AuthContext);
   const [type, setType] = useState();
   const [post, setPost] = useState(null);
@@ -84,9 +86,9 @@ function NewPostScreen({ navigation, route }) {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={[styles.container]}
+      style={[styles.container, { backgroundColor: theme.colors.primary }]}
     >
-      <StatusBar backgroundColor={GlobalStyles.colors.primary} />
+      <StatusBar backgroundColor={theme.colors.primary} />
       <CameraScreen
         showCamera={showCamera}
         setShowCamera={setShowCamera}
@@ -116,7 +118,7 @@ function NewPostScreen({ navigation, route }) {
             style={{
               width: "100%",
               borderRadius: 40,
-              backgroundColor: GlobalStyles.colors.primary300,
+              backgroundColor: theme.colors.primary300,
               padding: 10,
             }}
           >
@@ -124,7 +126,7 @@ function NewPostScreen({ navigation, route }) {
               style={{
                 width: "100%",
                 height: height / 2,
-                backgroundColor: GlobalStyles.colors.primary300,
+                backgroundColor: theme.colors.primary300,
                 borderRadius: 30,
                 overflow: "hidden",
               }}
@@ -164,7 +166,7 @@ function NewPostScreen({ navigation, route }) {
                     <Ionicons
                       name="sync-outline"
                       size={25}
-                      color={GlobalStyles.colors.blue}
+                      color={theme.colors.blue}
                     />
                   </Pressable>
                 </Pressable>
@@ -211,11 +213,10 @@ function NewPostScreen({ navigation, route }) {
   );
 }
 
-export default NewPostScreen;
-
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: GlobalStyles.colors.primary,
     flex: 1,
   },
 });
+
+export default NewPostScreen;

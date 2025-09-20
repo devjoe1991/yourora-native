@@ -5,6 +5,7 @@ import InputField from "../components/InputField";
 import { DEFAULT_DP, GlobalStyles } from "../constants/Styles";
 import { Image } from "react-native";
 import { AuthContext } from "../store/auth-context";
+import { useTheme } from "../store/theme-context";
 import CameraScreen from "./CameraScreen";
 import { getFilename } from "../utils/helperFunctions";
 import ProgressOverlay from "../components/ProgressOverlay";
@@ -12,6 +13,7 @@ import ErrorOverlay from "../components/ErrorOverlay";
 import PressEffect from "../components/UI/PressEffect";
 
 const EditProfileScreen = ({ navigation, route }) => {
+  const { theme } = useTheme();
   const authCtx = useContext(AuthContext);
   const [profilePic, setProfilePic] = useState("");
   const [showCamera, setShowCamera] = useState(false);
@@ -29,6 +31,28 @@ const EditProfileScreen = ({ navigation, route }) => {
     status: false,
     progress: 0,
     success: true,
+  });
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: theme.colors.primary,
+    },
+    title: {
+      fontSize: 18,
+      fontWeight: "bold",
+      color: theme.colors.textColor,
+      margin: 15,
+      marginBottom: 5,
+    },
+    input: {
+      backgroundColor: theme.colors.primary500,
+      margin: 15,
+      marginTop: 5,
+      padding: 15,
+      borderRadius: 10,
+      color: theme.colors.textColor,
+    },
   });
 
   async function updateBtnHandler() {
@@ -108,7 +132,7 @@ const EditProfileScreen = ({ navigation, route }) => {
                     bottom: 0,
                     right: 0,
                     padding: 5,
-                    backgroundColor: GlobalStyles.colors.primary500,
+                    backgroundColor: theme.colors.primary500,
                     borderRadius: 50,
                   }}
                 >
@@ -118,7 +142,7 @@ const EditProfileScreen = ({ navigation, route }) => {
                       width: 20,
                       height: 20,
                       resizeMode: "cover",
-                      tintColor: "white",
+                      tintColor: theme.colors.textColor,
                     }}
                   />
                 </View>
@@ -230,17 +254,3 @@ const EditProfileScreen = ({ navigation, route }) => {
 };
 
 export default EditProfileScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: GlobalStyles.colors.primary,
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "white",
-    margin: 15,
-    marginBottom: 5,
-  },
-});

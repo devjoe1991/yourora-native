@@ -13,6 +13,7 @@ import { useNavigation } from "@react-navigation/native";
 import { GlobalStyles } from "../../../constants/Styles";
 import ImageStory from "../../story/ImageStory";
 import { Ionicons } from "@expo/vector-icons";
+import { useTheme } from "../../../store/theme-context";
 // https://github.com/birdwingo/react-native-instagram-stories?tab=readme-ov-file
 
 const data = {
@@ -45,10 +46,21 @@ const data = {
 };
 
 const Stories = ({ followingsData }) => {
+  const { theme } = useTheme();
   const storiesRef = useRef(null);
   const [showStory, setShowStory] = useState(false);
 
   const navigation = useNavigation();
+
+  const styles = StyleSheet.create({
+    story: {
+      width: 70,
+      height: 70,
+      borderRadius: 50,
+      borderWidth: 3,
+      borderColor: theme.colors.cyan,
+    },
+  });
   return (
     <View style={{ marginBottom: 13, flexDirection: "row" }}>
       <Pressable
@@ -79,9 +91,9 @@ const Stories = ({ followingsData }) => {
               height: 60,
               resizeMode: "cover",
               borderRadius: 25,
-              backgroundColor: GlobalStyles.colors.gray100,
+              backgroundColor: theme.colors.primary600,
               borderWidth: 1,
-              borderColor: GlobalStyles.colors.gray,
+              borderColor: theme.colors.mutedTextColor,
               borderStyle: "dashed",
             }}
           >
@@ -103,13 +115,13 @@ const Stories = ({ followingsData }) => {
             <Ionicons
               name="add-circle"
               size={30}
-              color={GlobalStyles.colors.yellow}
+              color={theme.colors.yellow}
             />
           </View>
         </View>
         <Text
           style={{
-            color: "white",
+            color: theme.colors.textColor,
             fontSize: 12,
             marginTop: 5,
           }}
@@ -150,7 +162,7 @@ const Stories = ({ followingsData }) => {
 
               <Text
                 style={{
-                  color: "white",
+                  color: theme.colors.textColor,
                   fontSize: 12,
                   marginTop: 5,
                 }}
@@ -182,13 +194,3 @@ const Stories = ({ followingsData }) => {
 };
 
 export default Stories;
-
-const styles = StyleSheet.create({
-  story: {
-    width: 70,
-    height: 70,
-    borderRadius: 50,
-    borderWidth: 3,
-    borderColor: GlobalStyles.colors.cyan,
-  },
-});

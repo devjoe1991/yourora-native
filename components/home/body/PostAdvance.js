@@ -15,11 +15,13 @@ import { DEFAULT_DP, GlobalStyles } from "../../../constants/Styles";
 import CommentSheet from "../../Comments/CommentSheet";
 import { timeDifference } from "../../../utils/helperFunctions";
 import { AuthContext } from "../../../store/auth-context";
+import { useTheme } from "../../../store/theme-context";
 import PressEffect from "../../UI/PressEffect";
 import { LinearGradient } from "expo-linear-gradient";
 const { height, width } = Dimensions.get("window");
 
 function PostAdvance({ post }) {
+  const { theme } = useTheme();
   const authCtx = useContext(AuthContext);
 
   function Avatar() {
@@ -61,9 +63,9 @@ function PostAdvance({ post }) {
                   width: 12,
                   height: 12,
                   borderRadius: 6,
-                  backgroundColor: GlobalStyles.colors.greenLight,
+                  backgroundColor: theme.colors.greenLight,
                   borderWidth: 2,
-                  borderColor: GlobalStyles.colors.primary300,
+                  borderColor: theme.colors.primary300,
                 }}
               />
             </View>
@@ -74,7 +76,7 @@ function PostAdvance({ post }) {
             >
               <Text
                 style={{
-                  color: "white",
+                  color: theme.colors.textColor,
                   fontWeight: "bold",
                   fontSize: 15,
                 }}
@@ -83,7 +85,7 @@ function PostAdvance({ post }) {
               </Text>
               <Text
                 style={{
-                  color: "rgba(255,255,255,0.3)",
+                  color: theme.colors.textSecondary,
                   fontSize: 10,
                   fontWeight: "bold",
                 }}
@@ -113,16 +115,16 @@ function PostAdvance({ post }) {
             <Ionicons
               name="location"
               size={15}
-              color={GlobalStyles.colors.gray}
+              color={theme.colors.mutedTextColor}
             />
             <Text
-              style={{ color: GlobalStyles.colors.gray, paddingHorizontal: 5 }}
+              style={{ color: theme.colors.mutedTextColor, paddingHorizontal: 5 }}
             >
               Tower Bridge, London
             </Text>
           </View>
           <Text
-            style={{ color: GlobalStyles.colors.gray, paddingHorizontal: 5 }}
+            style={{ color: theme.colors.mutedTextColor, paddingHorizontal: 5 }}
           >
             25 July, 2024
           </Text>
@@ -131,7 +133,7 @@ function PostAdvance({ post }) {
           onPress={() => setShowCaptions(!showCaptions)}
           numberOfLines={showCaptions ? undefined : 1}
           style={{
-            color: "white",
+            color: theme.colors.textColor,
             padding: 5,
             paddingBottom: 10,
             width: showCaptions ? undefined : "90%",
@@ -141,7 +143,7 @@ function PostAdvance({ post }) {
             style={{
               fontWeight: "bold",
               fontSize: 18,
-              color: GlobalStyles.colors.purple,
+              color: theme.colors.purple,
             }}
           >
             Post Title:{" "}
@@ -172,7 +174,7 @@ function PostAdvance({ post }) {
           borderRadius: 30,
           overflow: "hidden",
           borderWidth: 1,
-          borderColor: GlobalStyles.colors.primary600,
+          borderColor: theme.colors.primary600,
         }}
         onPress={() => {
           setResizeModeCover(!resizeModeCover);
@@ -184,14 +186,14 @@ function PostAdvance({ post }) {
           style={{
             width: "100%",
             aspectRatio: ratio,
-            backgroundColor: GlobalStyles.colors.primary500,
+            backgroundColor: theme.colors.primary500,
           }}
           imageStyle={{
             resizeMode: resizeModeCover ? "cover" : "contain",
           }}
         >
           <LinearGradient
-            colors={["rgba(0,0,0,.5)", "transparent"]}
+            colors={[theme.colors.primary500, "transparent"]}
             start={{ x: 0, y: 1 }}
             end={{ x: 0, y: 0 }}
             style={{
@@ -247,7 +249,7 @@ function PostAdvance({ post }) {
       }
     }
 
-    function FooterButton({ icon, number, onPress, onLongPress, color = "white", showReaction = false }) {
+    function FooterButton({ icon, number, onPress, onLongPress, color = theme.colors.textColor, showReaction = false }) {
       return (
         <View style={{ zIndex: 10 }}>
           <Pressable 
@@ -259,7 +261,7 @@ function PostAdvance({ post }) {
             <PressEffect>
               <View
                 style={{
-                  backgroundColor: GlobalStyles.colors.primary,
+                  backgroundColor: theme.colors.primary,
                   padding: 10,
                   borderRadius: 50,
                   flexDirection: "row",
@@ -281,7 +283,7 @@ function PostAdvance({ post }) {
 
                 {/* <Text
                   style={{
-                    color: "white",
+                    color: theme.colors.textColor,
                     fontWeight: "600",
                   }}
                 >
@@ -319,7 +321,7 @@ function PostAdvance({ post }) {
               number={totalLikes}
               onPress={handleLike}
               onLongPress={handleLongPress}
-              color={GlobalStyles.colors.greenLight}
+              color={theme.colors.greenLight}
               showReaction={true}
             />
             <FooterButton
@@ -353,7 +355,7 @@ function PostAdvance({ post }) {
               position: 'absolute',
               bottom: 50,
               right: 0,
-              backgroundColor: 'rgba(0,0,0,0.8)',
+              backgroundColor: theme.colors.primary500,
               borderRadius: 20,
               padding: 8,
               flexDirection: 'column',
@@ -370,7 +372,7 @@ function PostAdvance({ post }) {
                 style={{
                   padding: 8,
                   borderRadius: 15,
-                  backgroundColor: 'rgba(255,255,255,0.1)',
+                  backgroundColor: theme.colors.primary600,
                   width: 35,
                   height: 35,
                   justifyContent: 'center',
@@ -396,7 +398,7 @@ function PostAdvance({ post }) {
                 alignItems: 'center',
               }}
             >
-              <Ionicons name="add" size={20} color="white" />
+              <Ionicons name="add" size={20} color={theme.colors.textColor} />
             </Pressable>
             </View>
           </>
@@ -408,7 +410,7 @@ function PostAdvance({ post }) {
   return (
     <View
       style={{
-        backgroundColor: GlobalStyles.colors.primary300,
+        backgroundColor: theme.colors.primary300,
         borderRadius: 30,
         marginHorizontal: 10,
       }}

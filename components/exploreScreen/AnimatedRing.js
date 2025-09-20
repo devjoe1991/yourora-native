@@ -10,8 +10,10 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { View } from "react-native";
+import { useTheme } from "../../store/theme-context";
 
 const AnimatedRing = ({ index }) => {
+  const { theme } = useTheme();
   //   const AnimatedCircle = Animated.createAnimatedComponent(Circle);
   const radius = useSharedValue(0);
 
@@ -37,7 +39,7 @@ const AnimatedRing = ({ index }) => {
       height: radius.value,
       borderRadius: radius.value / 2,
       borderWidth: 2,
-      borderColor: GlobalStyles.colors.primary500,
+      borderColor: theme.colors.primary500,
     };
   });
   return (
@@ -54,7 +56,7 @@ const AnimatedRing = ({ index }) => {
     //     animatedProps={animatedProps}
     //     fill="none"
     //     strokeWidth={2}
-    //     stroke={GlobalStyles.colors.primary500}
+    //     stroke={theme.colors.primary500}
     //   />
     // </Svg>
     <View

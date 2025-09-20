@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { GlobalStyles } from "../../../constants/Styles";
+import { useTheme } from "../../../store/theme-context";
 import { FlatList } from "react-native";
 import { RefreshControl } from "react-native";
 import Post from "./Post";
@@ -10,9 +11,10 @@ import { useSharedValue } from "react-native-reanimated";
 import PostAdvance from "./PostAdvance";
 
 const Feed = ({ StoryTranslate }) => {
+  const { theme } = useTheme();
   const lastScrollY = useSharedValue(0);
   return (
-    <View style={{ flex: 1, backgroundColor: GlobalStyles.colors.primary }}>
+    <View style={{ flex: 1, backgroundColor: theme.colors.primary }}>
       <FlatList
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{

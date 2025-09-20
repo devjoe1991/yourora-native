@@ -4,10 +4,12 @@ import { useNavigation } from "@react-navigation/native";
 
 import RemoteImage from "./RemoteImage";
 import MainPost from "../home/body/Post";
+import { useTheme } from "../../store/theme-context";
 
 const { height, width } = Dimensions.get("window");
 
 const Post = ({ postData }) => {
+  const { theme } = useTheme();
   const navigation = useNavigation();
   const [showPost, setShowPost] = useState(false);
   return (

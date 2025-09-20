@@ -3,7 +3,9 @@ import { View, Text, Pressable, StyleSheet } from "react-native";
 import ActionSheet from "react-native-actions-sheet";
 import { Ionicons } from "@expo/vector-icons";
 import { GlobalStyles } from "../constants/Styles";
+import { useTheme } from "../store/theme-context";
 function BottomMenu({ menu, visible, setVisible }) {
+  const { theme } = useTheme();
   const actionSheetRef = useRef(null);
   useEffect(() => {
     if (visible) {
@@ -18,7 +20,7 @@ function BottomMenu({ menu, visible, setVisible }) {
       <ActionSheet
         ref={actionSheetRef}
         containerStyle={{
-          backgroundColor: GlobalStyles.colors.blue,
+          backgroundColor: theme.colors.blue,
           borderTopLeftRadius: 30,
           borderTopRightRadius: 30,
         }}
