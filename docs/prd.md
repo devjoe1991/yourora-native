@@ -133,7 +133,7 @@ YourOra maintains the familiar social media interface while transforming it into
   - Real-time messaging
   - Notification system
   - **Online Indicators:** Green dots on user avatars showing online status
-  - **Reaction Bar System:** Long-press heart icon to show 5 common emojis + plus icon for emoji keyboard
+  - **Reaction Bar System:** Long-press heart icon to show 5 common emojis + plus icon for emoji keyboard. Emoji selection acts as a "like" with that emoji, persists until unpress
 
 - **Visual Design:**  
   - Dark theme with fitness-focused colors

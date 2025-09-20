@@ -122,12 +122,20 @@ Premium features use a gold-based color scheme to indicate value and exclusivity
 * **Reaction Bar Design:** Short vertical bar with semi-transparent dark background (`rgba(0,0,0,0.8)`)
 * **Layout:** Vertical column (50px wide × 200px tall) positioned attached to heart icon
 * **Positioning:** Opens directly on top of heart icon (bottom: 50px, right: 0px)
-* **Emoji Selection:** Tap emoji to react, replaces heart icon temporarily
+* **Emoji Selection Behavior:** 
+  - Tap emoji to react → Acts as a "like" with that specific emoji
+  - Selected emoji replaces heart icon and persists until unpress
+  - Tap emoji/heart again to remove reaction and return to unliked state
 * **Reaction Bar Colors:** 
   - Background: `rgba(0,0,0,0.8)` - Dark semi-transparent overlay
   - Emoji Buttons: `rgba(255,255,255,0.1)` - Subtle white background (35×35px)
   - Plus Icon: White color for visibility
   - Border Radius: 20px for container, 15px for emoji buttons
+* **User Interaction Flow:**
+  1. Long-press heart → Reaction bar appears
+  2. Select emoji → Emoji shows as "liked" reaction (persists)
+  3. Tap emoji/heart again → Removes reaction, returns to unliked state
+  4. Tap outside bar → Closes bar without changing reaction state
 
 ---
 

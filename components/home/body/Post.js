@@ -184,22 +184,12 @@ function Post({ post }) {
     // Common emojis for reaction bar
     const commonEmojis = ['❤️', '🔥', '💪', '👏', '🎉'];
     
-    async function handleLike() {
-      setTotalLikes((prevData) => (liked ? prevData - 1 : prevData + 1));
-      setLiked(!liked);
-    }
-
     function handleReactionPress(emoji) {
       setSelectedReaction(emoji);
+      setLiked(true); // Set as liked with the selected emoji
       setShowReactionBar(false);
       // Handle reaction logic here
       console.log(`User reacted with: ${emoji}`);
-      
-      // Reset to original heart icon after 2 seconds
-      setTimeout(() => {
-        setSelectedReaction(null);
-        setLiked(false); // Reset to unliked state
-      }, 2000);
     }
 
     function handleLongPress() {
@@ -208,9 +198,20 @@ function Post({ post }) {
 
     function handleCloseReactionBar() {
       setShowReactionBar(false);
-      // Reset to original heart icon when closing
-      setSelectedReaction(null);
-      setLiked(false); // Reset to unliked state
+      // Don't reset anything when just closing the bar
+    }
+
+    function handleLike() {
+      if (selectedReaction) {
+        // If there's a selected reaction, clear it and set to unliked
+        setSelectedReaction(null);
+        setLiked(false);
+        setTotalLikes((prevData) => prevData - 1);
+      } else {
+        // Normal like/unlike behavior
+        setTotalLikes((prevData) => (liked ? prevData - 1 : prevData + 1));
+        setLiked(!liked);
+      }
     }
 
     function FooterButton({ icon, number, onPress, onLongPress, color = "white", showReaction = false }) {
