@@ -3,6 +3,7 @@ import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useTheme } from "./store/theme-context";
 
 import TabBar from "./components/tabBar/TabBar";
 
@@ -27,38 +28,44 @@ import ViewStoryScreen from "./screens/ViewStoryScreen";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const screenOptions = ({ navigation, route }) => ({
-  headerShown: false,
-  headerTitleStyle: {
-    fontWeight: "bold",
-  },
-  headerTitleAlign: "left",
-  headerTitleStyle: { fontSize: 30, fontWeight: "bold" },
-  headerTintColor: "white",
-  headerShadowVisible: false,
-  headerStyle: {
-    backgroundColor: GlobalStyles.colors.primary,
-    elevation: 0,
-    borderWidth: 0,
-  },
+const screenOptions = ({ navigation, route }) => {
+  const { theme } = useTheme();
+  
+  return {
+    headerShown: false,
+    headerTitleStyle: {
+      fontWeight: "bold",
+    },
+    headerTitleAlign: "left",
+    headerTitleStyle: { fontSize: 30, fontWeight: "bold" },
+    headerTintColor: theme.colors.textColor,
+    headerShadowVisible: false,
+    headerStyle: {
+      backgroundColor: theme.colors.primary,
+      elevation: 0,
+      borderWidth: 0,
+    },
 
-  headerLeft: () => (
-    <PressEffect>
-      <Pressable
-        style={{ marginLeft: 20 }}
-        onPress={() => {
-          navigation.goBack();
-        }}
-      >
-        <Ionicons name="arrow-back" size={25} color={"white"} />
-      </Pressable>
-    </PressEffect>
-  ),
-});
+    headerLeft: () => (
+      <PressEffect>
+        <Pressable
+          style={{ marginLeft: 20 }}
+          onPress={() => {
+            navigation.goBack();
+          }}
+        >
+          <Ionicons name="arrow-back" size={25} color={theme.colors.textColor} />
+        </Pressable>
+      </PressEffect>
+    ),
+  };
+};
 
 function HomeStack() {
+  const { theme } = useTheme();
+  
   return (
-    <View style={{ flex: 1, backgroundColor: "white" }}>
+    <View style={{ flex: 1, backgroundColor: theme.colors.primary }}>
       <Stack.Navigator screenOptions={screenOptions}>
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="UserProfileScreen" component={UserProfileScreen} />

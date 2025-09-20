@@ -10,11 +10,21 @@ import React from "react";
 import SignupForm from "../components/signupScreen/SignupForm";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { GlobalStyles } from "../constants/Styles";
+import { useTheme } from "../store/theme-context";
 
 const BACK_IMG = require("../assets/SignupScreenImage.jpg");
 const { height, width } = Dimensions.get("window");
 
 const SignupScreen = ({ navigation }) => {
+  const { theme } = useTheme();
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: theme.colors.primary,
+    },
+  });
+
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -29,7 +39,7 @@ const SignupScreen = ({ navigation }) => {
           style={{
             fontSize: 35,
             fontWeight: "bold",
-            color: "white",
+            color: theme.colors.textColor,
           }}
         >
           Welcome!
@@ -37,7 +47,7 @@ const SignupScreen = ({ navigation }) => {
         <Text
           style={{
             fontSize: 18,
-            color: "rgba(255,255,255,0.6)",
+            color: theme.colors.mutedTextColor,
           }}
         >
           Create your account
@@ -51,10 +61,3 @@ const SignupScreen = ({ navigation }) => {
 };
 
 export default SignupScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: GlobalStyles.colors.primary,
-  },
-});

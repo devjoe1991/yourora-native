@@ -2,9 +2,19 @@ import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import LoginForm from "../components/loginScreen/LoginForm";
 import { GlobalStyles } from "../constants/Styles";
+import { useTheme } from "../store/theme-context";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const LoginScreen = ({ navigation }) => {
+  const { theme } = useTheme();
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: theme.colors.primary,
+    },
+  });
+
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -19,7 +29,7 @@ const LoginScreen = ({ navigation }) => {
           style={{
             fontSize: 35,
             fontWeight: "bold",
-            color: "white",
+            color: theme.colors.textColor,
           }}
         >
           Welcome Back!
@@ -27,7 +37,7 @@ const LoginScreen = ({ navigation }) => {
         <Text
           style={{
             fontSize: 18,
-            color: "rgba(255,255,255,0.6)",
+            color: theme.colors.mutedTextColor,
           }}
         >
           Sign in to be continoue
@@ -41,12 +51,3 @@ const LoginScreen = ({ navigation }) => {
 };
 
 export default LoginScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: GlobalStyles.colors.primary,
-    // paddingTop: 50,
-    // paddingHorizontal: 12,
-  },
-});
