@@ -1,7 +1,7 @@
 
 # 🏋️ YourOra - Your Fitness Aura
 
-**Build the social layer of everyday effort. YourOra turns each workout or positive habit into a proud, judgment-free daily post that fuels accountability via streaks and community.**
+**Build the social layer of everyday effort. YourOra turns each workout or positive habit into a proud, judgement-free daily post that fuels accountability via streaks and community.**
 
 
 ## About YourOra
@@ -123,11 +123,6 @@ npx expo start
 - Premium subscription features
 - Advanced analytics dashboard
 - Health app integrations
-
-## Contributing
-
-Contributions are welcome! If you have ideas for new features, improvements, or bug fixes, feel free to submit a pull request or open an issue.
-
 ## License
 
 This project is private and proprietary.
