@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { GlobalStyles } from "../constants/Styles";
+import { useTheme } from "../store/theme-context";
 
 function Button({
   title,
@@ -10,18 +11,20 @@ function Button({
   containerStyle,
   secondary,
 }) {
+  const { theme } = useTheme();
+
   return (
     <View
       style={[
         {
-          backgroundColor: GlobalStyles.colors.blue,
+          backgroundColor: theme.colors.blue,
           borderRadius: 50,
           overflow: "hidden",
         },
         secondary && {
-          backgroundColor: GlobalStyles.colors.primary200,
+          backgroundColor: theme.colors.primary200,
           borderWidth: 1,
-          borderColor: GlobalStyles.colors.primary600,
+          borderColor: theme.colors.primary600,
         },
         containerStyle,
         disabled && { opacity: 0.8 },
@@ -30,8 +33,8 @@ function Button({
       <Pressable
         android_ripple={{
           color: secondary
-            ? "rgba(86, 86, 202,0.5)"
-            : "rgba(255, 255, 255,0.5)",
+            ? theme.colors.primary500
+            : theme.colors.textColor,
           foreground: true,
         }}
         style={{ justifyContent: "center", alignItems: "center" }}
@@ -41,12 +44,12 @@ function Button({
         <Text
           style={[
             {
-              color: "white",
+              color: theme.colors.textColor,
               fontWeight: "bold",
               fontSize: 18,
               padding: 20,
             },
-            secondary && { color: "white" },
+            secondary && { color: theme.colors.textColor },
             titleStyle,
           ]}
         >

@@ -7,12 +7,13 @@ import Animated, {
   withSpring,
   withTiming,
 } from "react-native-reanimated";
-import { GlobalStyles } from "../../constants/Styles";
+import { useTheme } from "../../store/theme-context";
 import { useNavigation } from "@react-navigation/native";
 import { AppContext } from "../../store/app-context";
 import Loader from "../UI/Loader";
 
 const NewPostIcon = ({ exploreActive, pressed, setPressed }) => {
+  const { theme } = useTheme();
   const appCtx = useContext(AppContext);
   const exiting = (values) => {
     "worklet";
@@ -77,8 +78,8 @@ const NewPostIcon = ({ exploreActive, pressed, setPressed }) => {
               overflow: "hidden",
               alignSelf: "baseline",
               borderWidth: 1,
-              borderColor: GlobalStyles.colors.gray100,
-              backgroundColor: "rgba(0,0,0,0.5)",
+              borderColor: theme.colors.primary600,
+              backgroundColor: theme.colors.primary500,
             }}
           >
             <Image
@@ -86,7 +87,7 @@ const NewPostIcon = ({ exploreActive, pressed, setPressed }) => {
               style={{
                 width: 30,
                 height: 30,
-                tintColor: "white",
+                tintColor: theme.colors.textColor,
               }}
             />
           </View>
@@ -101,8 +102,8 @@ const NewPostIcon = ({ exploreActive, pressed, setPressed }) => {
               overflow: "hidden",
               alignSelf: "baseline",
               borderWidth: 1,
-              borderColor: GlobalStyles.colors.gray100,
-              backgroundColor: "rgba(0,0,0,0.5)",
+              borderColor: theme.colors.primary600,
+              backgroundColor: theme.colors.primary500,
             }}
           >
             <Image
@@ -110,7 +111,7 @@ const NewPostIcon = ({ exploreActive, pressed, setPressed }) => {
               style={{
                 width: 30,
                 height: 30,
-                tintColor: "white",
+                tintColor: theme.colors.textColor,
               }}
             />
           </View>
@@ -132,7 +133,7 @@ const NewPostIcon = ({ exploreActive, pressed, setPressed }) => {
         }}
       >
         <LinearGradient
-          colors={[GlobalStyles.colors.blue, GlobalStyles.colors.cyan]}
+          colors={[theme.colors.blue, theme.colors.cyan]}
           start={{ x: 0, y: 1 }}
           end={{ x: 1, y: 0 }}
           style={{
@@ -145,7 +146,7 @@ const NewPostIcon = ({ exploreActive, pressed, setPressed }) => {
         {exploreActive ? (
           <View>
             {appCtx.fetchingUsers ? (
-              <Loader color="white" />
+              <Loader color={theme.colors.textColor} />
             ) : (
               <Animated.Image
                 resizeMode="contain"
@@ -153,7 +154,7 @@ const NewPostIcon = ({ exploreActive, pressed, setPressed }) => {
                   {
                     width: 30,
                     height: 30,
-                    tintColor: "white",
+                    tintColor: theme.colors.textColor,
                   },
                 ]}
                 source={require("../../assets/shuffle.png")}
@@ -167,7 +168,7 @@ const NewPostIcon = ({ exploreActive, pressed, setPressed }) => {
               {
                 width: 20,
                 height: 20,
-                tintColor: "white",
+                tintColor: theme.colors.textColor,
               },
               rotationAnimation,
             ]}

@@ -10,6 +10,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 import { DEFAULT_DP, GlobalStyles } from "../../../constants/Styles";
+import { useTheme } from "../../../store/theme-context";
 import CommentSheet from "../../Comments/CommentSheet";
 import { timeDifference } from "../../../utils/helperFunctions";
 import { AuthContext } from "../../../store/auth-context";
@@ -18,6 +19,7 @@ import PressEffect from "../../UI/PressEffect";
 const { height, width } = Dimensions.get("window");
 
 function Post({ post }) {
+  const { theme } = useTheme();
   const authCtx = useContext(AuthContext);
   function PostHeader() {
     const navigation = useNavigation();
@@ -34,13 +36,13 @@ function Post({ post }) {
               A20,20 0 0,0 0,0
               Z
         `}
-            fill={GlobalStyles.colors.primary500}
+            fill={theme.colors.primary500}
           />
         </Svg>
 
         <View
           style={{
-            backgroundColor: GlobalStyles.colors.primary500,
+            backgroundColor: theme.colors.primary500,
             padding: 5,
             borderBottomLeftRadius: 20,
             borderBottomRightRadius: 20,
@@ -86,9 +88,9 @@ function Post({ post }) {
                       width: 12,
                       height: 12,
                       borderRadius: 6,
-                      backgroundColor: GlobalStyles.colors.greenLight,
+                      backgroundColor: theme.colors.greenLight,
                       borderWidth: 2,
-                      borderColor: GlobalStyles.colors.primary300,
+                      borderColor: theme.colors.primary300,
                     }}
                   />
                 </View>
@@ -99,7 +101,7 @@ function Post({ post }) {
                 >
                   <Text
                     style={{
-                      color: "white",
+                      color: theme.colors.textColor,
                       fontWeight: "bold",
                       fontSize: 15,
                     }}
@@ -108,7 +110,7 @@ function Post({ post }) {
                   </Text>
                   <Text
                     style={{
-                      color: "rgba(255,255,255,0.3)",
+                      color: theme.colors.textSecondary,
                       fontSize: 10,
                       fontWeight: "bold",
                     }}
@@ -128,7 +130,7 @@ function Post({ post }) {
               A0,0 0 0,1 20,0
               Z
         `}
-            fill={GlobalStyles.colors.primary500}
+            fill={theme.colors.primary500}
           />
         </Svg>
       </View>
@@ -164,9 +166,9 @@ function Post({ post }) {
             aspectRatio: ratio,
             borderRadius: 15,
             resizeMode: resizeModeCover ? "cover" : "contain",
-            backgroundColor: GlobalStyles.colors.primary500,
+            backgroundColor: theme.colors.primary500,
             borderWidth: 1,
-            borderColor: GlobalStyles.colors.primary500,
+            borderColor: theme.colors.primary500,
           }}
         />
       </Pressable>
@@ -214,7 +216,7 @@ function Post({ post }) {
       }
     }
 
-    function FooterButton({ icon, number, onPress, onLongPress, color = "white", showReaction = false }) {
+    function FooterButton({ icon, number, onPress, onLongPress, color = theme.colors.textColor, showReaction = false }) {
       return (
         <View>
           <Pressable 
@@ -232,7 +234,7 @@ function Post({ post }) {
             </PressEffect>
             <Text
               style={{
-                color: "white",
+                color: theme.colors.textColor,
                 fontWeight: "600",
               }}
             >
@@ -260,7 +262,7 @@ function Post({ post }) {
               number={totalLikes}
               onPress={handleLike}
               onLongPress={handleLongPress}
-              color={GlobalStyles.colors.greenLight}
+              color={theme.colors.greenLight}
               showReaction={true}
             />
             <FooterButton
@@ -299,7 +301,7 @@ function Post({ post }) {
               position: 'absolute',
               bottom: 50,
               right: 0,
-              backgroundColor: 'rgba(0,0,0,0.8)',
+              backgroundColor: theme.colors.primary500,
               borderRadius: 20,
               padding: 8,
               flexDirection: 'column',
@@ -316,7 +318,7 @@ function Post({ post }) {
                 style={{
                   padding: 8,
                   borderRadius: 15,
-                  backgroundColor: 'rgba(255,255,255,0.1)',
+                  backgroundColor: theme.colors.primary600,
                   width: 35,
                   height: 35,
                   justifyContent: 'center',
@@ -335,14 +337,14 @@ function Post({ post }) {
               style={{
                 padding: 8,
                 borderRadius: 15,
-                backgroundColor: 'rgba(255,255,255,0.1)',
+                backgroundColor: theme.colors.primary600,
                 width: 35,
                 height: 35,
                 justifyContent: 'center',
                 alignItems: 'center',
               }}
             >
-              <Ionicons name="add" size={20} color="white" />
+              <Ionicons name="add" size={20} color={theme.colors.textColor} />
             </Pressable>
             </View>
           </>
@@ -353,7 +355,7 @@ function Post({ post }) {
             onPress={() => setShowCaptions(!showCaptions)}
             numberOfLines={showCaptions ? undefined : 1}
             style={{
-              color: "white",
+              color: theme.colors.textColor,
               paddingHorizontal: 5,
               paddingTop: 15,
               textAlign: "center",
@@ -372,7 +374,7 @@ function Post({ post }) {
   return (
     <View
       style={{
-        backgroundColor: GlobalStyles.colors.primary300,
+        backgroundColor: theme.colors.primary300,
         borderRadius: 25,
         padding: 15,
         margin: 10,

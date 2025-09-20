@@ -7,11 +7,13 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { GlobalStyles } from "../../constants/Styles";
+import { useTheme } from "../../store/theme-context";
 import TabBarSvg from "./TabBarSvg";
 import NewPostIcon from "./NewPostIcon";
 import { AppContext } from "../../store/app-context";
 
 const TabBar = ({ state, descriptors, navigation }) => {
+  const { theme } = useTheme();
   const appCtx = useContext(AppContext);
   const screens = [
     {
@@ -56,7 +58,7 @@ const TabBar = ({ state, descriptors, navigation }) => {
             onPress={() => setActionBtnPressed(false)}
             style={{
               flex: 1,
-              backgroundColor: GlobalStyles.colors.primary,
+              backgroundColor: theme.colors.primary,
               opacity: 0.8,
             }}
           />
@@ -72,7 +74,7 @@ const TabBar = ({ state, descriptors, navigation }) => {
           alignItems: "center",
           paddingHorizontal: 20,
           paddingVertical: 5,
-          backgroundColor: "transparent",
+          backgroundColor: theme.colors.tabBarColor,
           position: "absolute",
           bottom: 0,
           zIndex: 20,
@@ -112,8 +114,8 @@ const TabBar = ({ state, descriptors, navigation }) => {
                 { translateY: isFocused ? withTiming(-6) : withTiming(0) },
               ],
               tintColor: isFocused
-                ? withTiming("white")
-                : withTiming("rgba(255,255,255,0.2)"),
+                ? withTiming(theme.colors.textColor)
+                : withTiming(theme.colors.mutedTextColor),
             };
           });
           const animatedColor = useAnimatedStyle(() => {
@@ -142,7 +144,7 @@ const TabBar = ({ state, descriptors, navigation }) => {
                           width: 25,
                           height: 25,
                           position: "absolute",
-                          tintColor: GlobalStyles.colors.primary,
+                          tintColor: theme.colors.primary,
                           overflow: "visible",
                         },
                         animatedColor,
@@ -154,7 +156,7 @@ const TabBar = ({ state, descriptors, navigation }) => {
                         {
                           width: 25,
                           height: 25,
-                          tintColor: "white",
+                          tintColor: theme.colors.textColor,
                           opacity: 1,
                         },
                         animatedStyles,

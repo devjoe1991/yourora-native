@@ -1,8 +1,9 @@
 import { Dimensions, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Path, Svg } from "react-native-svg";
-import { GlobalStyles } from "../../constants/Styles";
+import { useTheme } from "../../store/theme-context";
 const TabBarSvg = ({ height }) => {
+  const { theme } = useTheme();
   const { width: WIDTH } = Dimensions.get("screen");
   const HEIGHT = height;
   const SPACE = 10;
@@ -34,7 +35,7 @@ const TabBarSvg = ({ height }) => {
       height={HEIGHT}
       viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
     >
-      <Path d={path} fill={GlobalStyles.colors.primary300} />
+      <Path d={path} fill={theme.colors.primary300} />
     </Svg>
   );
 };
