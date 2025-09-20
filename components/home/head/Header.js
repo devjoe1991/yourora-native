@@ -21,9 +21,10 @@ const Header = ({ navigation }) => (
     </Pressable>
 
     <View style={{ alignItems: "center" }}>
-      <Text style={{ color: "white", fontSize: 30, fontWeight: "bold" }}>
-        YourOra
-      </Text>
+      <Image
+        style={styles.logo}
+        source={require("../../../assets/logo-black.png")}
+      />
       <Text style={{ color: "rgba(255,255,255,0.5)", fontSize: 15 }}>
         Your fitness ora
       </Text>
@@ -74,10 +75,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   logo: {
-    width: 100,
-    height: 50,
+    width: 220,
+    height: 80,
     resizeMode: "contain",
-    tintColor: "white",
   },
   icon: {
     marginLeft: 10,
