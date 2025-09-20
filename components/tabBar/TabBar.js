@@ -6,7 +6,6 @@ import Animated, {
   useAnimatedStyle,
   withTiming,
 } from "react-native-reanimated";
-import { GlobalStyles } from "../../constants/Styles";
 import { useTheme } from "../../store/theme-context";
 import TabBarSvg from "./TabBarSvg";
 import NewPostIcon from "./NewPostIcon";
@@ -64,7 +63,7 @@ const TabBar = ({ state, descriptors, navigation }) => {
           />
         </Animated.View>
       )}
-      <View style={{ zIndex: 10 }}>
+      <View style={{ zIndex: 1 }}>
         <TabBarSvg height={tabBarHeight} />
       </View>
       <View
@@ -74,10 +73,13 @@ const TabBar = ({ state, descriptors, navigation }) => {
           alignItems: "center",
           paddingHorizontal: 20,
           paddingVertical: 5,
-          backgroundColor: theme.colors.tabBarColor,
+          backgroundColor: "transparent",
           position: "absolute",
           bottom: 0,
+          left: 0,
+          right: 0,
           zIndex: 20,
+          height: tabBarHeight,
         }}
         onLayout={(e) => {
           setTabBarHeight(e.nativeEvent.layout.height);
@@ -114,8 +116,8 @@ const TabBar = ({ state, descriptors, navigation }) => {
                 { translateY: isFocused ? withTiming(-6) : withTiming(0) },
               ],
               tintColor: isFocused
-                ? withTiming(theme.colors.textColor)
-                : withTiming(theme.colors.mutedTextColor),
+                ? withTiming("white")
+                : withTiming("rgba(255,255,255,0.2)"),
             };
           });
           const animatedColor = useAnimatedStyle(() => {
@@ -156,7 +158,7 @@ const TabBar = ({ state, descriptors, navigation }) => {
                         {
                           width: 25,
                           height: 25,
-                          tintColor: theme.colors.textColor,
+                          tintColor: "white",
                           opacity: 1,
                         },
                         animatedStyles,
