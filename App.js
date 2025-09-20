@@ -1,15 +1,19 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState, useContext } from "react";
 import { LogBox, StyleSheet, Text, View } from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
 import AuthNavigation from "./AuthNavigation";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ActivityIndicator } from "react-native";
 import AuthContentProvider, { AuthContext } from "./store/auth-context";
+import { ThemeProvider, useTheme } from "./store/theme-context";
 import { GlobalStyles } from "./constants/Styles";
 import Loader from "./components/UI/Loader";
 
-export default function App() {
-  LogBox.ignoreAllLogs();
+
+function AppContent() {
+  const { theme } = useTheme();
+
   function Root() {
     const [isTryingLogin, setIsTryingLogin] = useState(true);
     const authCtx = useContext(AuthContext);
@@ -31,7 +35,7 @@ export default function App() {
             flex: 1,
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: GlobalStyles.colors.primary,
+            backgroundColor: theme.colors.primary,
           }}
         >
           <Loader />
@@ -43,10 +47,25 @@ export default function App() {
   }
 
   return (
-    <AuthContentProvider>
-      <StatusBar backgroundColor={GlobalStyles.colors.primary} />
-      <Root />
-    </AuthContentProvider>
+    <NavigationContainer>
+      <AuthContentProvider>
+        <StatusBar 
+          backgroundColor={theme.colors.primary} 
+          barStyle={theme.colors.textColor === "#FFFFFF" ? "light-content" : "dark-content"}
+        />
+        <Root />
+      </AuthContentProvider>
+    </NavigationContainer>
+  );
+}
+
+export default function App() {
+  LogBox.ignoreAllLogs();
+
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

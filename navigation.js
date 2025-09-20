@@ -2,7 +2,6 @@ import { View, Text, Pressable } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import TabBar from "./components/tabBar/TabBar";
@@ -103,49 +102,45 @@ export const SignedInStack = () => {
   }
   return (
     <AppContextProvider>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={screenOptions}>
-          <Stack.Screen
-            name="BottomTabNavigator"
-            component={BottomTabNavigator}
-          />
+      <Stack.Navigator screenOptions={screenOptions}>
+        <Stack.Screen
+          name="BottomTabNavigator"
+          component={BottomTabNavigator}
+        />
 
-          <Stack.Screen name="NewPostScreen" component={NewPostScreen} />
-          <Stack.Screen name="AddStoryScreen" component={AddStoryScreen} />
-          <Stack.Screen name="ChatScreen" component={ChatScreen} />
+        <Stack.Screen name="NewPostScreen" component={NewPostScreen} />
+        <Stack.Screen name="AddStoryScreen" component={AddStoryScreen} />
+        <Stack.Screen name="ChatScreen" component={ChatScreen} />
 
-          <Stack.Screen
-            name="EditProfileScreen"
-            component={EditProfileScreen}
-          />
-          {/* <Stack.Screen name="CameraScreen" component={CameraScreen} /> */}
-          <Stack.Screen
-            name="NotificationsScreen"
-            component={NotificationsScreen}
-          />
-          {/* <Stack.Screen name="UsersListScreen" component={UsersListScreen} /> */}
-          <Stack.Screen
-            name="UserProfileScreen"
-            component={UserProfileScreen}
-          />
-          <Stack.Screen name="SearchScreen" component={SearchScreen} />
+        <Stack.Screen
+          name="EditProfileScreen"
+          component={EditProfileScreen}
+        />
+        {/* <Stack.Screen name="CameraScreen" component={CameraScreen} /> */}
+        <Stack.Screen
+          name="NotificationsScreen"
+          component={NotificationsScreen}
+        />
+        {/* <Stack.Screen name="UsersListScreen" component={UsersListScreen} /> */}
+        <Stack.Screen
+          name="UserProfileScreen"
+          component={UserProfileScreen}
+        />
+        <Stack.Screen name="SearchScreen" component={SearchScreen} />
 
-          <Stack.Screen name="MessagesScreen" component={MessagesScreen} />
-          <Stack.Screen name="ViewStoryScreen" component={ViewStoryScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
+        <Stack.Screen name="MessagesScreen" component={MessagesScreen} />
+        <Stack.Screen name="ViewStoryScreen" component={ViewStoryScreen} />
+      </Stack.Navigator>
     </AppContextProvider>
   );
 };
 
 export const SignedOutStack = () => (
-  <NavigationContainer>
-    <Stack.Navigator
-      initialRouteName="LoginScreen"
-      screenOptions={screenOptions}
-    >
-      <Stack.Screen name="LoginScreen" component={LoginScreen} />
-      <Stack.Screen name="SignupScreen" component={SignupScreen} />
-    </Stack.Navigator>
-  </NavigationContainer>
+  <Stack.Navigator
+    initialRouteName="LoginScreen"
+    screenOptions={screenOptions}
+  >
+    <Stack.Screen name="LoginScreen" component={LoginScreen} />
+    <Stack.Screen name="SignupScreen" component={SignupScreen} />
+  </Stack.Navigator>
 );
