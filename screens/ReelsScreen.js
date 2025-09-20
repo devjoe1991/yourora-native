@@ -18,7 +18,7 @@ const dummyPosts = [
     id: "2",
     video:
       "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/vertical-videos/2.mp4",
-    title: "My New Year View",
+    title: "Morning HIIT Challenge",
     date: "1 Jan, 2022",
     location: "Covent Garden, London",
   },
@@ -26,7 +26,7 @@ const dummyPosts = [
     id: "1",
     video:
       "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/vertical-videos/1.mp4",
-    title: "Some Workout",
+    title: "Upper Body Strength",
     date: "31 Dec, 2024",
     location: "Shoreditch, London",
   },
@@ -34,7 +34,7 @@ const dummyPosts = [
     id: "3",
     video:
       "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/vertical-videos/3.mp4",
-    title: "Some Workout",
+    title: "Cardio Blast Session",
     date: "31 Dec, 2024",
     location: "Camden, London",
   },
@@ -42,7 +42,7 @@ const dummyPosts = [
     id: "2",
     video:
       "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/vertical-videos/2.mp4",
-    title: "My New Year View",
+    title: "Yoga Flow Session",
     date: "1 Jan, 2022",
     location: "Notting Hill, London",
   },
@@ -50,7 +50,7 @@ const dummyPosts = [
     id: "1",
     video:
       "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/vertical-videos/1.mp4",
-    title: "Some Workout",
+    title: "HIIT Challenge",
     date: "31 Dec, 2024",
     location: "Brick Lane, London",
   },
@@ -58,7 +58,7 @@ const dummyPosts = [
     id: "3",
     video:
       "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/vertical-videos/3.mp4",
-    title: "Some Workout",
+    title: "HIIT Challenge",
     date: "31 Dec, 2024",
     location: "King's Cross, London",
   },
@@ -66,7 +66,7 @@ const dummyPosts = [
     id: "2",
     video:
       "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/vertical-videos/2.mp4",
-    title: "My New Year View",
+    title: "Yoga Flow Session",
     date: "1 Jan, 2022",
     location: "Greenwich, London",
   },
@@ -74,7 +74,7 @@ const dummyPosts = [
     id: "1",
     video:
       "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/vertical-videos/1.mp4",
-    title: "Some Workout",
+    title: "HIIT Challenge",
     date: "31 Dec, 2024",
     location: "Borough Market, London",
   },
@@ -82,7 +82,7 @@ const dummyPosts = [
     id: "3",
     video:
       "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/vertical-videos/3.mp4",
-    title: "Some Workout",
+    title: "HIIT Challenge",
     date: "31 Dec, 2024",
     location: "Spitalfields, London",
   },

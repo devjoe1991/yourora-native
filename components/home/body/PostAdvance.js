@@ -23,6 +23,7 @@ const { height, width } = Dimensions.get("window");
 function PostAdvance({ post }) {
   const { theme } = useTheme();
   const authCtx = useContext(AuthContext);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   function Avatar() {
     const navigation = useNavigation();
@@ -129,11 +130,8 @@ function PostAdvance({ post }) {
             25 July, 2024
           </Text>
         </View>
-        <Text
-          onPress={() => setShowCaptions(!showCaptions)}
-          numberOfLines={showCaptions ? undefined : 1}
+        <View
           style={{
-            color: theme.colors.textColor,
             padding: 5,
             paddingBottom: 10,
             width: showCaptions ? undefined : "90%",
@@ -144,12 +142,35 @@ function PostAdvance({ post }) {
               fontWeight: "bold",
               fontSize: 18,
               color: theme.colors.purple,
+              marginBottom: 8,
             }}
           >
-            Post Title:{" "}
+            {post.title || "Fitness Post"}
           </Text>
-          {post.description}
-        </Text>
+          <Text
+            style={{
+              fontSize: 14,
+              color: theme.colors.textColor,
+              lineHeight: 20,
+            }}
+          >
+            {isExpanded || !post.description || post.description.length <= 100 
+              ? post.description 
+              : post.description.substring(0, 100) + "... "}
+            {post.description && post.description.length > 100 && (
+              <Text
+                style={{
+                  fontSize: 14,
+                  color: theme.colors.blue,
+                  fontWeight: "600",
+                }}
+                onPress={() => setIsExpanded(!isExpanded)}
+              >
+                {isExpanded ? "See less" : "See more"}
+              </Text>
+            )}
+          </Text>
+        </View>
       </View>
     );
   }
