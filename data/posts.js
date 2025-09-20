@@ -5,7 +5,7 @@ export const POSTS = [
     comments: [],
     createdAt: "2024-03-04T18:18:13.313Z",
     title: "Morning Cardio Session",
-    description: "Started the day with an intense cardio workout! Feeling energized and ready to conquer the day. This morning's session included 30 minutes of high-intensity interval training, followed by a 15-minute cool-down stretch. The endorphin rush is incredible and I'm already looking forward to tomorrow's workout. Consistency is key in this fitness journey! 💪",
+    description: "Started the day with an intense cardio workout! Feeling energized and ready to conquer the day. This morning's session included 30 minutes of high-intensity interval training on the treadmill, followed by a 15-minute cool-down stretch. The endorphin rush is incredible and I'm already looking forward to tomorrow's workout. Consistency is key in this fitness journey! 💪",
     fileType: "image",
     likes: [],
     picturePath:
