@@ -66,16 +66,32 @@ function Post({ post }) {
                   });
                 }}
               >
-                <Image
-                  source={
-                    profilePic
-                      ? { uri: profilePic }
-                      : {
-                          uri: "https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg",
-                        }
-                  }
-                  style={styles.story}
-                />
+                <View style={{ position: "relative" }}>
+                  <Image
+                    source={
+                      profilePic
+                        ? { uri: profilePic }
+                        : {
+                            uri: "https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg",
+                          }
+                    }
+                    style={styles.story}
+                  />
+                  {/* Online indicator */}
+                  <View
+                    style={{
+                      position: "absolute",
+                      right: 2,
+                      bottom: 2,
+                      width: 12,
+                      height: 12,
+                      borderRadius: 6,
+                      backgroundColor: GlobalStyles.colors.greenLight,
+                      borderWidth: 2,
+                      borderColor: GlobalStyles.colors.primary300,
+                    }}
+                  />
+                </View>
                 <View
                   style={{
                     marginLeft: 10,

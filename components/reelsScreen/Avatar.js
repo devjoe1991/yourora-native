@@ -15,10 +15,26 @@ const Avatar = () => {
           marginVertical: 10,
         }}
       >
-        <Image
-          style={{ width: 40, height: 40, borderRadius: 50 }}
-          source={{ uri: USERS[0].image }}
-        />
+        <View style={{ position: "relative" }}>
+          <Image
+            style={{ width: 40, height: 40, borderRadius: 50 }}
+            source={{ uri: USERS[0].image }}
+          />
+          {/* Online indicator */}
+          <View
+            style={{
+              position: "absolute",
+              right: 0,
+              bottom: 0,
+              width: 12,
+              height: 12,
+              borderRadius: 6,
+              backgroundColor: GlobalStyles.colors.greenLight,
+              borderWidth: 2,
+              borderColor: GlobalStyles.colors.primary300,
+            }}
+          />
+        </View>
         <View style={{ marginHorizontal: 10 }}>
           <Text
             style={{

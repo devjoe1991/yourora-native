@@ -103,10 +103,26 @@ const Avatar = ({ imgUri, displayName, avatarSize, remainingSpace }) => {
           }}
           onPress={() => setShowOptions(!showOptions)}
         >
-          <Image
-            source={{ uri: imgUri }}
-            style={{ width: avatarSize, height: avatarSize, borderRadius: 50 }}
-          />
+          <View style={{ position: "relative" }}>
+            <Image
+              source={{ uri: imgUri }}
+              style={{ width: avatarSize, height: avatarSize, borderRadius: 50 }}
+            />
+            {/* Online indicator */}
+            <View
+              style={{
+                position: "absolute",
+                right: 2,
+                bottom: 2,
+                width: Math.max(8, avatarSize * 0.2),
+                height: Math.max(8, avatarSize * 0.2),
+                borderRadius: Math.max(4, avatarSize * 0.1),
+                backgroundColor: GlobalStyles.colors.greenLight,
+                borderWidth: 2,
+                borderColor: GlobalStyles.colors.primary300,
+              }}
+            />
+          </View>
           <Text
             style={{
               color: "white",
