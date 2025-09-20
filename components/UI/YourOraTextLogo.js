@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { useTheme } from '../../store/theme-context';
 
 const YourOraTextLogo = ({ 
@@ -43,11 +42,6 @@ const YourOraTextLogo = ({
 
   const config = sizeConfig[size] || sizeConfig.large;
 
-  // Gradient colors for both themes
-  const gradientColors = isDarkMode 
-    ? [theme.colors.blue, theme.colors.purple, theme.colors.cyan]
-    : [theme.colors.greenLight, theme.colors.blue, theme.colors.cyan];
-
   const styles = StyleSheet.create({
     container: {
       alignItems: 'center',
@@ -56,17 +50,20 @@ const YourOraTextLogo = ({
     logoContainer: {
       width: config.containerSize,
       height: config.containerSize,
+      backgroundColor: isDarkMode ? theme.colors.primary300 : theme.colors.greenLight,
       borderRadius: config.borderRadius,
       alignItems: 'center',
       justifyContent: 'center',
       padding: 8,
+      borderWidth: 1,
+      borderColor: isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)',
     },
     logoText: {
       fontSize: config.fontSize,
       fontWeight: 'bold',
       textAlign: 'center',
       letterSpacing: 0.5,
-      color: isDarkMode ? theme.colors.textColor : theme.colors.primary,
+      color: theme.colors.textColor,
       lineHeight: config.fontSize * 1.1,
       marginTop: 1,
     },
@@ -81,16 +78,11 @@ const YourOraTextLogo = ({
 
   return (
     <View style={[styles.container, style]}>
-      <LinearGradient
-        colors={gradientColors}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={styles.logoContainer}
-      >
+      <View style={styles.logoContainer}>
         <Text style={styles.logoText}>
           YOUR{'\n'}ORA
         </Text>
-      </LinearGradient>
+      </View>
     </View>
   );
 };
