@@ -3,12 +3,14 @@ import { Text, View, StyleSheet, Image, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { GlobalStyles } from "../../../constants/Styles";
 import { useTheme } from "../../../store/theme-context";
+import { useSidebar } from "../../../store/sidebar-context";
 import PressEffect from "../../UI/PressEffect";
-import ThemeToggleSwitch from "../../UI/ThemeToggleSwitch";
+import AnimatedHamburgerMenu from "../../UI/AnimatedHamburgerMenu";
 import YourOraTextLogo from "../../UI/YourOraTextLogo";
 
 const Header = ({ navigation }) => {
   const { theme, isDark } = useTheme();
+  const { isOpen, toggleSidebar } = useSidebar();
 
   const styles = StyleSheet.create({
     container: {
@@ -47,23 +49,11 @@ const Header = ({ navigation }) => {
   return (
     <View style={[styles.container]}>
       <View style={{ position: "absolute", left: 0, flexDirection: "row", alignItems: "center" }}>
-        <Pressable
-          onPress={() => navigation.navigate("UserProfileScreen")}
-        >
-          <PressEffect>
-            <Image
-              style={{ width: 30, height: 30, borderRadius: 50 }}
-              source={{
-                uri: "https://p16.tiktokcdn.com/tos-maliva-avt-0068/2f134ee6b5d3a1340aeb0337beb48f2d~c5_720x720.jpeg",
-              }}
-            />
-          </PressEffect>
-        </Pressable>
-        
-        {/* Theme Toggle Switch - Right side of profile avatar, perfectly aligned */}
-        <View style={{ marginLeft: 10 }}>
-          <ThemeToggleSwitch size={20} />
-        </View>
+        <AnimatedHamburgerMenu
+          onPress={toggleSidebar}
+          isOpen={isOpen}
+          size={30}
+        />
       </View>
 
       <View style={{ alignItems: "center" }}>

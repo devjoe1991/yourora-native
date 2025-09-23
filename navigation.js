@@ -4,8 +4,10 @@ import { Ionicons } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useTheme } from "./store/theme-context";
+import { SidebarProvider } from "./store/sidebar-context";
 
 import TabBar from "./components/tabBar/TabBar";
+import SidebarContainer from "./components/Navigation/SidebarContainer";
 
 import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/SignupScreen";
@@ -109,35 +111,39 @@ export const SignedInStack = () => {
   }
   return (
     <AppContextProvider>
-      <Stack.Navigator screenOptions={screenOptions}>
-        <Stack.Screen
-          name="BottomTabNavigator"
-          component={BottomTabNavigator}
-        />
+      <SidebarProvider>
+        <SidebarContainer>
+          <Stack.Navigator screenOptions={screenOptions}>
+            <Stack.Screen
+              name="BottomTabNavigator"
+              component={BottomTabNavigator}
+            />
 
-        <Stack.Screen name="NewPostScreen" component={NewPostScreen} />
-        <Stack.Screen name="AddStoryScreen" component={AddStoryScreen} />
-        <Stack.Screen name="ChatScreen" component={ChatScreen} />
+            <Stack.Screen name="NewPostScreen" component={NewPostScreen} />
+            <Stack.Screen name="AddStoryScreen" component={AddStoryScreen} />
+            <Stack.Screen name="ChatScreen" component={ChatScreen} />
 
-        <Stack.Screen
-          name="EditProfileScreen"
-          component={EditProfileScreen}
-        />
-        {/* <Stack.Screen name="CameraScreen" component={CameraScreen} /> */}
-        <Stack.Screen
-          name="NotificationsScreen"
-          component={NotificationsScreen}
-        />
-        {/* <Stack.Screen name="UsersListScreen" component={UsersListScreen} /> */}
-        <Stack.Screen
-          name="UserProfileScreen"
-          component={UserProfileScreen}
-        />
-        <Stack.Screen name="SearchScreen" component={SearchScreen} />
+            <Stack.Screen
+              name="EditProfileScreen"
+              component={EditProfileScreen}
+            />
+            {/* <Stack.Screen name="CameraScreen" component={CameraScreen} /> */}
+            <Stack.Screen
+              name="NotificationsScreen"
+              component={NotificationsScreen}
+            />
+            {/* <Stack.Screen name="UsersListScreen" component={UsersListScreen} /> */}
+            <Stack.Screen
+              name="UserProfileScreen"
+              component={UserProfileScreen}
+            />
+            <Stack.Screen name="SearchScreen" component={SearchScreen} />
 
-        <Stack.Screen name="MessagesScreen" component={MessagesScreen} />
-        <Stack.Screen name="ViewStoryScreen" component={ViewStoryScreen} />
-      </Stack.Navigator>
+            <Stack.Screen name="MessagesScreen" component={MessagesScreen} />
+            <Stack.Screen name="ViewStoryScreen" component={ViewStoryScreen} />
+          </Stack.Navigator>
+        </SidebarContainer>
+      </SidebarProvider>
     </AppContextProvider>
   );
 };

@@ -36,6 +36,12 @@ export const darkTheme = {
     persianRed: "#C44536",
     darkGreen: "#297e2b",
     yellow: "#E0FF55",
+    
+    // Sidebar-specific colors
+    sidebarBackground: "rgba(43, 44, 62, 0.95)", // Semi-transparent primary200
+    sidebarOverlay: "rgba(0, 0, 0, 0.5)", // Dark overlay for dark theme
+    sidebarBorder: "rgba(63, 65, 82, 0.3)", // Subtle border color
+    sidebarShadow: "rgba(0, 0, 0, 0.3)", // Shadow color
   }
 };
 
@@ -74,5 +80,11 @@ export const lightTheme = {
     persianRed: "#C44536",
     darkGreen: "#297e2b",
     yellow: "#E0FF55",
+    
+    // Sidebar-specific colors (light theme)
+    sidebarBackground: "rgba(249, 249, 249, 0.95)", // Semi-transparent primary200 for light theme
+    sidebarOverlay: "rgba(0, 0, 0, 0.3)", // Lighter overlay for light theme
+    sidebarBorder: "rgba(208, 208, 208, 0.3)", // Subtle border color for light theme
+    sidebarShadow: "rgba(0, 0, 0, 0.1)", // Lighter shadow for light theme
   }
 };

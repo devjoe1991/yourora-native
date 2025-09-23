@@ -35,6 +35,8 @@ YourOra is a streak-driven, fitness-first social app that leverages the power of
 - **Explore Feed:** Discover community effort, ranked by freshness and streak length
 - **Kind Support:** Friendly nudges and encouragement from the community
 - **Privacy Controls:** Granular control over who sees your posts
+- **Monthly Streak Badges:** Profile recognition for consistent monthly streaks
+- **Workout Groups:** Local community building with nearby feature integration
 
 ### **📱 Core Screens**
 
@@ -48,10 +50,11 @@ YourOra is a streak-driven, fitness-first social app that leverages the power of
 - Filter by activity type and streak length
 - Community challenges and inspiration
 
-#### **3. Progress Screen (Reels)**
-- Workout demonstration videos
+#### **3. Video Integration (In Feed)**
+- Workout demonstration videos integrated with photos
 - Before/after transformations
 - Quick fitness tips and progress tracking
+- Mixed media content in main feed
 
 #### **4. Community Screen (Messages)**
 - Workout buddy chats and fitness groups
@@ -64,6 +67,9 @@ YourOra is a streak-driven, fitness-first social app that leverages the power of
 - **Streak Insurance:** Manual save option (1 per 30 days)
 - **Real-time Updates:** Instant feed refresh and streak counter updates
 - **Privacy-First:** Strong privacy controls and safety features
+- **Video Integration:** Seamless video and photo content in main feed
+- **Local Groups:** Find and join workout groups in your area
+- **Monthly Recognition:** Special badges for consistent monthly streaks
 
 ## Technology Stack
 
@@ -120,6 +126,10 @@ npx expo start
 - **Navigation** - Bottom tab navigation with smooth transitions
 
 ### 🚧 **In Development**
+- **Video Integration** - Seamless video and photo content in main feed
+- **Monthly Streak Badges** - Profile recognition for consistent monthly streaks
+- **Workout Groups** - Local community building with nearby feature
+- **Sidebar Navigation** - Additional features accessible via expandable menu
 - Premium subscription features
 - Advanced analytics dashboard
 - Health app integrations

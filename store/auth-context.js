@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { USER_DATA } from "../data/USER";
 
 export const AuthContext = createContext({
@@ -9,6 +9,14 @@ export const AuthContext = createContext({
   authenticate: (token) => {},
   logout: () => {},
 });
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
+};
 
 function AuthContentProvider({ children }) {
   const [userData, setUserData] = useState(USER_DATA[0]);
