@@ -21,6 +21,8 @@ import ErrorOverlay from "../components/ErrorOverlay";
 import UploadIcon from "../assets/UploadIcon";
 import { Platform } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import VideoPlayer from "../components/UI/VideoPlayer";
+import { isVideoPost, isValidVideoDuration, getVideoDurationMessage } from "../utils/mediaUtils";
 
 const { width, height } = Dimensions.get("window");
 const PLACEHOLDER_IMAGE =
@@ -34,6 +36,9 @@ function NewPostScreen({ navigation, route }) {
   const [resizeModeCover, setResizeModeCover] = useState(true);
   const [showCamera, setShowCamera] = useState(true);
   const [caption, setCaption] = useState("");
+  const [isVideo, setIsVideo] = useState(false);
+  const [videoDuration, setVideoDuration] = useState(null);
+  const [durationError, setDurationError] = useState(null);
 
   const [uploading, setUploading] = useState({
     status: false,
@@ -56,17 +61,37 @@ function NewPostScreen({ navigation, route }) {
   async function newPostHandler() {
     if (post) {
       const filenameData = getFilename(post);
+      const isVideoContent = isVideoPost({ mediaUrl: post, type: type });
+
+      // Validate video duration if it's a video
+      if (isVideoContent && videoDuration && !isValidVideoDuration(videoDuration)) {
+        setDurationError(getVideoDurationMessage(videoDuration));
+        return;
+      }
 
       const formData = new FormData();
       formData.append("userId", authCtx.userData._id);
       formData.append("description", caption);
+      formData.append("type", isVideoContent ? "video" : "image");
 
-      formData.append("picture", {
-        uri: post,
-        type: "image/" + filenameData.fileType,
-        name: filenameData.name,
-      });
-      formData.append("picturePath", filenameData.name);
+      if (isVideoContent) {
+        formData.append("video", {
+          uri: post,
+          type: "video/" + filenameData.fileType,
+          name: filenameData.name,
+        });
+        formData.append("videoPath", filenameData.name);
+        formData.append("duration", videoDuration ? videoDuration.toString() : "15");
+        formData.append("fileSize", "2.5"); // This would come from video metadata
+      } else {
+        formData.append("picture", {
+          uri: post,
+          type: "image/" + filenameData.fileType,
+          name: filenameData.name,
+        });
+        formData.append("picturePath", filenameData.name);
+      }
+
       try {
         setUploading((prevData) => {
           return { ...prevData, status: true };
@@ -131,46 +156,58 @@ function NewPostScreen({ navigation, route }) {
                 overflow: "hidden",
               }}
             >
-              <ImageBackground
-                source={{
-                  uri: post,
-                }}
-                style={{
-                  flex: 1,
-                }}
-                imageStyle={{
-                  resizeMode: resizeModeCover ? "cover" : "contain",
-                }}
-              >
-                <Pressable
+              {isVideoPost({ mediaUrl: post, type: type }) ? (
+                <VideoPlayer
+                  videoUrl={post}
+                  isVisible={true}
+                  autoPlay={false}
+                  showControls={true}
                   style={{
                     flex: 1,
-                    alignItems: "flex-end",
-                    justifyContent: "flex-end",
-                    margin: 20,
                   }}
-                  onPress={() => {
-                    setResizeModeCover(!resizeModeCover);
+                />
+              ) : (
+                <ImageBackground
+                  source={{
+                    uri: post,
+                  }}
+                  style={{
+                    flex: 1,
+                  }}
+                  imageStyle={{
+                    resizeMode: resizeModeCover ? "cover" : "contain",
                   }}
                 >
                   <Pressable
                     style={{
-                      backgroundColor: theme.colors.textColor,
-                      borderRadius: 50,
-                      padding: 10,
+                      flex: 1,
+                      alignItems: "flex-end",
+                      justifyContent: "flex-end",
+                      margin: 20,
                     }}
                     onPress={() => {
-                      setShowCamera(true);
+                      setResizeModeCover(!resizeModeCover);
                     }}
                   >
-                    <Ionicons
-                      name="sync-outline"
-                      size={25}
-                      color={theme.colors.blue}
-                    />
+                    <Pressable
+                      style={{
+                        backgroundColor: theme.colors.textColor,
+                        borderRadius: 50,
+                        padding: 10,
+                      }}
+                      onPress={() => {
+                        setShowCamera(true);
+                      }}
+                    >
+                      <Ionicons
+                        name="sync-outline"
+                        size={25}
+                        color={theme.colors.blue}
+                      />
+                    </Pressable>
                   </Pressable>
-                </Pressable>
-              </ImageBackground>
+                </ImageBackground>
+              )}
             </View>
             <View style={{ marginTop: 10 }}>
               <InputField
@@ -181,6 +218,16 @@ function NewPostScreen({ navigation, route }) {
                 value={caption}
                 inValid={true}
               />
+              {durationError && (
+                <View style={{ marginTop: 10, padding: 10, backgroundColor: theme.colors.red + '20', borderRadius: 8 }}>
+                  <Text style={{ color: theme.colors.red, textAlign: 'center', fontWeight: 'bold' }}>
+                    {durationError}
+                  </Text>
+                  <Text style={{ color: theme.colors.textSecondary, textAlign: 'center', fontSize: 12, marginTop: 4 }}>
+                    Videos must be 3-30 seconds long
+                  </Text>
+                </View>
+              )}
             </View>
           </View>
         </View>

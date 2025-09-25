@@ -38,11 +38,11 @@ const Feed = ({ StoryTranslate }) => {
           <RefreshControl refreshing={false} onRefresh={() => {}} />
         }
         keyExtractor={(data, index) => index.toString()}
-        data={[1, 2, 3, 4, 5, 6]}
-        renderItem={({ data, index }) => {
+        data={POSTS}
+        renderItem={({ item, index }) => {
           return (
             <View>
-              <PostAdvance post={index % 2 === 0 ? POSTS[0] : POSTS[1]} />
+              <PostAdvance post={item} />
             </View>
           );
         }}

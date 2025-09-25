@@ -1,0 +1,51 @@
+---
+description: YourOra App Development Rules
+globs:
+alwaysApply: true
+---
+
+# YourOra App Development Rules
+
+## Core Principles
+
+### 1. **No Unnecessary Over-Complication**
+- Keep solutions simple and straightforward
+- Avoid complex patterns when simple ones work
+- Prefer readable, maintainable code over clever solutions
+- Don't add features that aren't explicitly requested
+
+### 2. **No Over-Engineering**
+- Build only what's needed for the current task
+- Avoid premature optimization
+- Don't create abstractions until they're actually needed
+- Keep components focused and single-purpose
+
+### 3. **Always Read Documentation First**
+- **MANDATORY**: Read through all relevant docs files before starting any task
+- Understand the project structure and existing patterns
+- Check implementation guides and theme guidelines
+- Review existing components to maintain consistency
+- Follow established patterns and conventions
+
+## Development Guidelines
+
+### Documentation Review Process
+1. **Read Project Docs**: Always start by reading relevant documentation
+2. **Understand Context**: Get full context of the task and existing implementation
+3. **Check Theme Guidelines**: Follow YourOra's theme system rules
+4. **Review Existing Code**: Understand current patterns before making changes
+5. **Maintain Consistency**: Follow established project conventions
+
+### Code Quality Standards
+- Keep components simple and focused
+- Use existing patterns and conventions
+- Follow YourOra's theme guidelines strictly
+- Maintain consistency with existing codebase
+- Write clear, readable code over complex solutions
+
+### Task Execution
+- Understand the full scope before starting
+- Read all relevant documentation first
+- Follow existing project patterns
+- Keep solutions simple and effective
+- Don't over-engineer or over-complicate

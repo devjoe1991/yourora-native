@@ -18,6 +18,16 @@ import { AuthContext } from "../../../store/auth-context";
 import { useTheme } from "../../../store/theme-context";
 import PressEffect from "../../UI/PressEffect";
 import { LinearGradient } from "expo-linear-gradient";
+import VideoPlayer from "../../UI/VideoPlayer";
+import { 
+  getContentType, 
+  getMediaUrl, 
+  getThumbnailUrl, 
+  getVideoDuration, 
+  isVideoPost, 
+  isImagePost,
+  getAspectRatio 
+} from "../../../utils/mediaUtils";
 const { height, width } = Dimensions.get("window");
 
 function PostAdvance({ post }) {
@@ -174,26 +184,46 @@ function PostAdvance({ post }) {
       </View>
     );
   }
-  function PostImage({ children }) {
+  function PostMedia({ children }) {
     const [resizeModeCover, setResizeModeCover] = useState(true);
     const [ratio, setRatio] = useState(1);
+    const [isVideoVisible, setIsVideoVisible] = useState(true);
+
+    const contentType = getContentType(post);
+    const mediaUrl = getMediaUrl(post);
+    const thumbnailUrl = getThumbnailUrl(post);
+    const videoDuration = getVideoDuration(post);
+    const aspectRatio = getAspectRatio(post);
 
     useEffect(() => {
-      Image.getSize(post.picturePath, (width, height) => {
-        const imageRatio = width / height;
-        // Instagram standard ratios
-        if (imageRatio >= 1.8) {
-          // Landscape: 1.91:1 ratio
-          setRatio(1.91);
-        } else if (imageRatio <= 0.8) {
-          // Portrait: 4:5 ratio
-          setRatio(0.8);
-        } else {
-          // Square: 1:1 ratio
-          setRatio(1);
-        }
-      });
-    }, [post]);
+      if (isImagePost(post)) {
+        Image.getSize(mediaUrl, (width, height) => {
+          const imageRatio = width / height;
+          // Instagram standard ratios
+          if (imageRatio >= 1.8) {
+            // Landscape: 1.91:1 ratio
+            setRatio(1.91);
+          } else if (imageRatio <= 0.8) {
+            // Portrait: 4:5 ratio
+            setRatio(0.8);
+          } else {
+            // Square: 1:1 ratio
+            setRatio(1);
+          }
+        });
+      } else {
+        // For videos, use the aspect ratio from dimensions or default
+        setRatio(aspectRatio);
+      }
+    }, [post, aspectRatio]);
+
+    const handleMediaPress = () => {
+      if (isImagePost(post)) {
+        setResizeModeCover(!resizeModeCover);
+        console.log("object");
+      }
+      // For videos, the VideoPlayer handles its own press events
+    };
 
     return (
       <Pressable
@@ -203,35 +233,49 @@ function PostAdvance({ post }) {
           borderWidth: 1,
           borderColor: theme.colors.primary600,
         }}
-        onPress={() => {
-          setResizeModeCover(!resizeModeCover);
-          console.log("object");
-        }}
+        onPress={handleMediaPress}
       >
-        <ImageBackground
-          source={{ uri: post.picturePath }}
-          style={{
-            width: "100%",
-            aspectRatio: ratio,
-            backgroundColor: theme.colors.primary500,
-          }}
-          imageStyle={{
-            resizeMode: resizeModeCover ? "cover" : "contain",
-          }}
-        >
-          <LinearGradient
-            colors={[theme.colors.primary500, "transparent"]}
-            start={{ x: 0, y: 1 }}
-            end={{ x: 0, y: 0 }}
+        {isVideoPost(post) ? (
+          <VideoPlayer
+            videoUrl={mediaUrl}
+            thumbnailUrl={thumbnailUrl}
+            duration={videoDuration}
+            isVisible={isVideoVisible}
+            autoPlay={true}
+            showControls={true}
             style={{
-              bottom: 0,
-              height: 40 + 50,
               width: "100%",
-              position: "absolute",
+              aspectRatio: ratio,
+              backgroundColor: theme.colors.primary500,
             }}
+            aspectRatio={ratio}
           />
-          {children}
-        </ImageBackground>
+        ) : (
+          <ImageBackground
+            source={{ uri: mediaUrl }}
+            style={{
+              width: "100%",
+              aspectRatio: ratio,
+              backgroundColor: theme.colors.primary500,
+            }}
+            imageStyle={{
+              resizeMode: resizeModeCover ? "cover" : "contain",
+            }}
+          >
+            <LinearGradient
+              colors={[theme.colors.primary500, "transparent"]}
+              start={{ x: 0, y: 1 }}
+              end={{ x: 0, y: 0 }}
+              style={{
+                bottom: 0,
+                height: 40 + 50,
+                width: "100%",
+                position: "absolute",
+              }}
+            />
+            {children}
+          </ImageBackground>
+        )}
       </Pressable>
     );
   }
@@ -442,9 +486,9 @@ function PostAdvance({ post }) {
         marginHorizontal: 10,
       }}
     >
-      <PostImage>
+      <PostMedia>
         <PostStats />
-      </PostImage>
+      </PostMedia>
       <PostFotter />
     </View>
   );

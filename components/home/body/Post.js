@@ -16,6 +16,16 @@ import { timeDifference } from "../../../utils/helperFunctions";
 import { AuthContext } from "../../../store/auth-context";
 import { Path, Svg } from "react-native-svg";
 import PressEffect from "../../UI/PressEffect";
+import VideoPlayer from "../../UI/VideoPlayer";
+import { 
+  getContentType, 
+  getMediaUrl, 
+  getThumbnailUrl, 
+  getVideoDuration, 
+  isVideoPost, 
+  isImagePost,
+  getAspectRatio 
+} from "../../../utils/mediaUtils";
 const { height, width } = Dimensions.get("window");
 
 function Post({ post }) {
@@ -137,46 +147,83 @@ function Post({ post }) {
     );
   }
 
-  function PostImage() {
+  function PostMedia() {
     const [resizeModeCover, setResizeModeCover] = useState(true);
     const [ratio, setRatio] = useState(1);
+    const [isVideoVisible, setIsVideoVisible] = useState(true);
+
+    const contentType = getContentType(post);
+    const mediaUrl = getMediaUrl(post);
+    const thumbnailUrl = getThumbnailUrl(post);
+    const videoDuration = getVideoDuration(post);
+    const aspectRatio = getAspectRatio(post);
 
     useEffect(() => {
-      Image.getSize(post.picturePath, (width, height) => {
-        const imageRatio = width / height;
-        // Instagram standard ratios
-        if (imageRatio >= 1.8) {
-          // Landscape: 1.91:1 ratio
-          setRatio(1.91);
-        } else if (imageRatio <= 0.8) {
-          // Portrait: 4:5 ratio
-          setRatio(0.8);
-        } else {
-          // Square: 1:1 ratio
-          setRatio(1);
-        }
-      });
-    }, [post]);
+      if (isImagePost(post)) {
+        Image.getSize(mediaUrl, (width, height) => {
+          const imageRatio = width / height;
+          // Instagram standard ratios
+          if (imageRatio >= 1.8) {
+            // Landscape: 1.91:1 ratio
+            setRatio(1.91);
+          } else if (imageRatio <= 0.8) {
+            // Portrait: 4:5 ratio
+            setRatio(0.8);
+          } else {
+            // Square: 1:1 ratio
+            setRatio(1);
+          }
+        });
+      } else {
+        // For videos, use the aspect ratio from dimensions or default
+        setRatio(aspectRatio);
+      }
+    }, [post, aspectRatio]);
+
+    const handleMediaPress = () => {
+      if (isImagePost(post)) {
+        setResizeModeCover(!resizeModeCover);
+      }
+      // For videos, the VideoPlayer handles its own press events
+    };
 
     return (
       <Pressable
-        onPress={() => {
-          setResizeModeCover(!resizeModeCover);
-        }}
+        onPress={handleMediaPress}
         style={{}}
       >
-        <Image
-          source={{ uri: post.picturePath }}
-          style={{
-            width: "100%",
-            aspectRatio: ratio,
-            borderRadius: 15,
-            resizeMode: resizeModeCover ? "cover" : "contain",
-            backgroundColor: theme.colors.primary500,
-            borderWidth: 1,
-            borderColor: theme.colors.primary500,
-          }}
-        />
+        {isVideoPost(post) ? (
+          <VideoPlayer
+            videoUrl={mediaUrl}
+            thumbnailUrl={thumbnailUrl}
+            duration={videoDuration}
+            isVisible={isVideoVisible}
+            autoPlay={true}
+            showControls={true}
+            style={{
+              width: "100%",
+              aspectRatio: ratio,
+              borderRadius: 15,
+              backgroundColor: theme.colors.primary500,
+              borderWidth: 1,
+              borderColor: theme.colors.primary500,
+            }}
+            aspectRatio={ratio}
+          />
+        ) : (
+          <Image
+            source={{ uri: mediaUrl }}
+            style={{
+              width: "100%",
+              aspectRatio: ratio,
+              borderRadius: 15,
+              resizeMode: resizeModeCover ? "cover" : "contain",
+              backgroundColor: theme.colors.primary500,
+              borderWidth: 1,
+              borderColor: theme.colors.primary500,
+            }}
+          />
+        )}
       </Pressable>
     );
   }
@@ -387,7 +434,7 @@ function Post({ post }) {
         marginHorizontal: 20,
       }}
     >
-      <PostImage />
+      <PostMedia />
 
       <PostStats />
     </View>
