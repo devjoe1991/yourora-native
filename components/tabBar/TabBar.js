@@ -1,5 +1,6 @@
 import { Fragment, useContext, useEffect, useRef, useState } from "react";
-import { View, Pressable, StyleSheet, Image } from "react-native";
+import { View, Pressable, StyleSheet } from "react-native";
+import { Ionicons } from '@expo/vector-icons';
 import Animated, {
   FadeIn,
   FadeOut,
@@ -17,24 +18,23 @@ const TabBar = ({ state, descriptors, navigation }) => {
   const screens = [
     {
       name: "Home",
-      icon: require("../../assets/home-focused.png"),
-      iconUnfocued: require("../../assets/home.png"),
+      icon: "home",
+      iconFocused: "home",
     },
     {
       name: "Explore",
-      icon: require("../../assets/explore-focused.png"),
-      iconUnfocued: require("../../assets/explore.png"),
+      icon: "compass",
+      iconFocused: "compass",
     },
-
     {
       name: "Reels",
-      icon: require("../../assets/reels-focused.png"),
-      iconUnfocued: require("../../assets/reels.png"),
+      icon: "play-circle",
+      iconFocused: "play-circle",
     },
     {
       name: "Chat",
-      icon: require("../../assets/chat-focused.png"),
-      iconUnfocued: require("../../assets/chat.png"),
+      icon: "chatbubbles",
+      iconFocused: "chatbubbles",
     },
   ];
   const [tabBarHeight, setTabBarHeight] = useState(50);
@@ -138,32 +138,23 @@ const TabBar = ({ state, descriptors, navigation }) => {
                       padding: 15,
                     }}
                   >
-                    <Animated.Image
-                      source={screens[index].icon}
-                      resizeMode={"contain"}
+                    <Animated.View
                       style={[
                         {
-                          width: 25,
-                          height: 25,
-                          position: "absolute",
-                          tintColor: theme.colors.primary,
-                          overflow: "visible",
-                        },
-                        animatedColor,
-                      ]}
-                    />
-                    <Animated.Image
-                      source={screens[index].iconUnfocued}
-                      style={[
-                        {
-                          width: 25,
-                          height: 25,
-                          tintColor: "white",
-                          opacity: 1,
+                          width: 24,
+                          height: 24,
+                          justifyContent: "center",
+                          alignItems: "center",
                         },
                         animatedStyles,
                       ]}
-                    />
+                    >
+                      <Ionicons
+                        name={isFocused ? screens[index].iconFocused : screens[index].icon}
+                        size={24}
+                        color={isFocused ? theme.colors.blue : theme.colors.textSecondary}
+                      />
+                    </Animated.View>
                   </View>
                 </Pressable>
               </View>
