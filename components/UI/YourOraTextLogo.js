@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { useTheme } from '../../store/theme-context';
 
-const YourOraTextLogo = ({ 
+const MahiTextLogo = ({ 
   size = 'large', 
   style = {} 
 }) => {
@@ -12,29 +12,21 @@ const YourOraTextLogo = ({
   const sizeConfig = {
     small: {
       fontSize: 12,
-      subtitleFontSize: 6,
-      spacing: 2,
       containerSize: 50,
       borderRadius: 6,
     },
     medium: {
       fontSize: 16,
-      subtitleFontSize: 7,
-      spacing: 2,
       containerSize: 65,
       borderRadius: 10,
     },
     large: {
       fontSize: 20,
-      subtitleFontSize: 8,
-      spacing: 3,
       containerSize: 80,
       borderRadius: 12,
     },
     xlarge: {
       fontSize: 24,
-      subtitleFontSize: 10,
-      spacing: 4,
       containerSize: 95,
       borderRadius: 16,
     }
@@ -60,31 +52,55 @@ const YourOraTextLogo = ({
     },
     logoText: {
       fontSize: config.fontSize,
-      fontWeight: 'bold',
+      fontWeight: '900',
       textAlign: 'center',
-      letterSpacing: 0.5,
+      letterSpacing: 2,
       color: theme.colors.textColor,
       lineHeight: config.fontSize * 1.1,
-      marginTop: 1,
     },
-    subtitle: {
-      fontSize: config.subtitleFontSize,
-      color: theme.colors.mutedTextColor,
+    // Individual letter styling for the "short to tall" effect
+    m: {
+      fontSize: config.fontSize * 0.8, // Shortest
+      fontWeight: '900',
+      color: theme.colors.textColor,
       textAlign: 'center',
-      marginTop: config.spacing,
-      fontWeight: '500',
+      letterSpacing: 2,
+    },
+    a: {
+      fontSize: config.fontSize * 0.9, // Slightly taller
+      fontWeight: '900',
+      color: theme.colors.textColor,
+      textAlign: 'center',
+      letterSpacing: 2,
+    },
+    h: {
+      fontSize: config.fontSize * 1.1, // Taller
+      fontWeight: '900',
+      color: theme.colors.textColor,
+      textAlign: 'center',
+      letterSpacing: 2,
+    },
+    i: {
+      fontSize: config.fontSize * 1.2, // Tallest
+      fontWeight: '900',
+      color: theme.colors.textColor,
+      textAlign: 'center',
+      letterSpacing: 2,
     },
   });
 
   return (
     <View style={[styles.container, style]}>
       <View style={styles.logoContainer}>
-        <Text style={styles.logoText}>
-          YOUR{'\n'}ORA
-        </Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={styles.m}>M</Text>
+          <Text style={styles.a}>A</Text>
+          <Text style={styles.h}>H</Text>
+          <Text style={styles.i}>I</Text>
+        </View>
       </View>
     </View>
   );
 };
 
-export default YourOraTextLogo;
+export default MahiTextLogo;
