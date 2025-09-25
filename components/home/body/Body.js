@@ -41,16 +41,12 @@ const Body = ({ StoryTranslate }) => {
         tabBarInactiveTintColor: theme.colors.textSecondary,
       }}
     >
-      <TopTab.Screen 
-        name="Feed" 
-        component={() => <Feed StoryTranslate={StoryTranslate} />}
-        options={{ title: "Feed" }}
-      />
-      <TopTab.Screen 
-        name="YourOra" 
-        component={YourOraTab}
-        options={{ title: "YourOra" }}
-      />
+      <TopTab.Screen name="Feed" options={{ title: "Feed" }}>
+        {() => <Feed StoryTranslate={StoryTranslate} />}
+      </TopTab.Screen>
+      <TopTab.Screen name="YourOra" options={{ title: "YourOra" }}>
+        {() => <YourOraTab />}
+      </TopTab.Screen>
     </TopTab.Navigator>
   );
 };
