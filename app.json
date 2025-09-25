@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "YourOra",
-    "slug": "YourOra",
+    "name": "Mahi",
+    "slug": "mahi",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,7 +20,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/noserdivers_logo_iupl55.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#262938"
       }
     },
