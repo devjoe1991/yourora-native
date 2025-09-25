@@ -91,13 +91,11 @@ const MahiTextLogo = ({
 
   return (
     <View style={[styles.container, style]}>
-      <View style={styles.logoContainer}>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Text style={styles.m}>M</Text>
-          <Text style={styles.a}>A</Text>
-          <Text style={styles.h}>H</Text>
-          <Text style={styles.i}>I</Text>
-        </View>
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <Text style={styles.m}>M</Text>
+        <Text style={styles.a}>A</Text>
+        <Text style={styles.h}>H</Text>
+        <Text style={styles.i}>I</Text>
       </View>
     </View>
   );
