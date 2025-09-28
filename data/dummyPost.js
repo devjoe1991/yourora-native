@@ -1,5 +1,5 @@
 export default dummyPost = {
-  username: "amasoojay",
+  username: "maximus",
   time: "37 min ago",
   profilepic:
     "https://i.pinimg.com/736x/92/4a/1c/924a1c019c78ba81ee39eb4bd72a820d.jpg",
