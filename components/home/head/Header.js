@@ -6,7 +6,7 @@ import { useTheme } from "../../../store/theme-context";
 import { useSidebar } from "../../../store/sidebar-context";
 import PressEffect from "../../UI/PressEffect";
 import AnimatedHamburgerMenu from "../../UI/AnimatedHamburgerMenu";
-import YourOraTextLogo from "../../UI/YourOraTextLogo";
+import MahiTextLogo from "../../UI/MahiTextLogo";
 
 const Header = ({ navigation }) => {
   const { theme, isDark } = useTheme();
@@ -57,7 +57,7 @@ const Header = ({ navigation }) => {
       </View>
 
       <View style={{ alignItems: "center" }}>
-        <YourOraTextLogo 
+        <MahiTextLogo 
           size="large" 
           showSubtitle={true}
         />

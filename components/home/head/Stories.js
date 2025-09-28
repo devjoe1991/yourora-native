@@ -701,7 +701,7 @@ const Stories = ({ followingsData }) => {
                     >
                       <View>
                         <Text style={{ color: '#FFD700', fontSize: 14, fontWeight: 'bold' }}>
-                          YourOra+ Subscription
+                          Your Mahi+ Subscription
                         </Text>
                         <Text style={{ color: '#FFD700', fontSize: 12 }}>
                           £8.99/month
