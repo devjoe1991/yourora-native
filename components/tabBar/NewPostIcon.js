@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet, Image, View, Dimensions } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
+import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from "expo-linear-gradient";
 import Animated, {
   useSharedValue,
@@ -162,18 +163,21 @@ const NewPostIcon = ({ exploreActive, pressed, setPressed }) => {
             )}
           </View>
         ) : (
-          <Animated.Image
-            resizeMode="contain"
+          <Animated.View
             style={[
               {
-                width: 20,
-                height: 20,
-                tintColor: theme.colors.textColor,
+                justifyContent: "center",
+                alignItems: "center",
               },
               rotationAnimation,
             ]}
-            source={require("../../assets/add.png")}
-          />
+          >
+            <Ionicons
+              name="add"
+              size={24}
+              color={theme.colors.textColor}
+            />
+          </Animated.View>
         )}
       </Pressable>
     </Pressable>
