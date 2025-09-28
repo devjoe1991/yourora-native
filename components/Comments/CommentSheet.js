@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import { View, Text, Pressable, StyleSheet, TouchableOpacity } from "react-native";
 import ActionSheet from "react-native-actions-sheet";
 import { Ionicons } from "@expo/vector-icons";
 import CommentCard from "./CommentCard";
@@ -8,6 +8,7 @@ import { FlatList } from "react-native-gesture-handler";
 import InputField from "../InputField";
 import EmojiInput from "../UI/EmojiInput";
 import { useTheme } from "../../store/theme-context";
+import PressEffect from "../UI/PressEffect";
 
 function CommentSheet({ visible, setVisible }) {
   const { theme } = useTheme();
@@ -21,6 +22,10 @@ function CommentSheet({ visible, setVisible }) {
     }
   }, [visible]);
 
+  const handleClose = () => {
+    setVisible();
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <ActionSheet
@@ -29,6 +34,7 @@ function CommentSheet({ visible, setVisible }) {
           backgroundColor: theme.colors.primary,
           borderTopLeftRadius: 30,
           borderTopRightRadius: 30,
+          height: '90%',
         }}
         indicatorStyle={{
           width: 50,
@@ -36,44 +42,75 @@ function CommentSheet({ visible, setVisible }) {
           backgroundColor: theme.colors.textColor,
         }}
         gestureEnabled={true}
+        snapPoints={[90]}
         onClose={() => {
           setVisible();
         }}
       >
+        {/* Header with close button */}
+        <View style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          paddingHorizontal: 20,
+          paddingVertical: 15,
+          borderBottomWidth: 1,
+          borderBottomColor: theme.colors.primary500,
+        }}>
+          <Text style={{
+            fontSize: 18,
+            fontWeight: 'bold',
+            color: theme.colors.textColor,
+          }}>
+            Comments
+          </Text>
+          <PressEffect>
+            <TouchableOpacity
+              onPress={handleClose}
+              style={{
+                width: 35,
+                height: 35,
+                borderRadius: 17.5,
+                backgroundColor: theme.colors.primary500,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Ionicons 
+                name="close" 
+                size={20} 
+                color={theme.colors.textColor} 
+              />
+            </TouchableOpacity>
+          </PressEffect>
+        </View>
+
+        {/* Comments List */}
         <FlatList
           keyExtractor={(item, index) => index.toString()}
           data={[1, 2, 3, 4, 5, 6, 7, 7, 8, 9, 5]}
           renderItem={({ item, index }) => {
             return <CommentCard />;
           }}
+          style={{ flex: 1 }}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingVertical: 10,
+          }}
         />
+
+        {/* Input Section */}
         <View
           style={{
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
             marginHorizontal: 10,
+            paddingVertical: 10,
+            borderTopWidth: 1,
+            borderTopColor: theme.colors.primary500,
           }}
         >
-          {/* <View style={{ flex: 1, marginVertical: 10 }}>
-            <InputField
-              onChangeText={setComment}
-              value={comment}
-              placeholder="Type Somthing"
-              keyboardType="default"
-              inValid={true}
-            />
-          </View>
-          <View
-            style={{
-              backgroundColor: "rgba(122, 64, 248,0.5)",
-              padding: 10,
-              borderRadius: 50,
-              marginLeft: 10,
-            }}
-          >
-            <Ionicons name="send" color={theme.colors.textColor} size={30} />
-          </View> */}
           <EmojiInput />
         </View>
       </ActionSheet>
