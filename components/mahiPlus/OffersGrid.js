@@ -32,13 +32,15 @@ const OffersGrid = () => {
       icon: "🏋️",
       iconName: "fitness",
       color: "#FF6B6B", // Gym red
+      showPremiumBadge: false,
     },
     {
       title: "Spotify Playlists",
-      subtitle: "Build custom workout playlists",
+      subtitle: "Join Spotify & build workout playlists",
       icon: "🎵",
       iconName: "musical-notes",
       color: "#1DB954", // Spotify green
+      showPremiumBadge: false,
     },
     {
       title: "Streak Packs",
@@ -46,13 +48,15 @@ const OffersGrid = () => {
       icon: "📦",
       iconName: "gift",
       color: "#FFD700", // Gold
+      showPremiumBadge: true,
     },
     {
       title: "Merch Coming Soon",
-      subtitle: "Exclusive YourOra merchandise",
+      subtitle: "Exclusive Mahi merch",
       icon: "👕",
       iconName: "shirt",
       color: "#A8E6CF", // Mint
+      showPremiumBadge: false,
     },
   ];
   

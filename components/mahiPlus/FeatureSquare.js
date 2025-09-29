@@ -6,7 +6,7 @@ import { useTheme } from '../../store/theme-context';
 
 const { width } = Dimensions.get('window');
 
-const FeatureSquare = ({ title, subtitle, icon, color, iconName, onPress }) => {
+const FeatureSquare = ({ title, subtitle, icon, color, iconName, onPress, showPremiumBadge = true }) => {
   const { theme } = useTheme();
   
   const styles = StyleSheet.create({
@@ -94,9 +94,11 @@ const FeatureSquare = ({ title, subtitle, icon, color, iconName, onPress }) => {
         end={{ x: 1, y: 1 }}
         style={styles.gradient}
       >
-        <View style={styles.premiumBadge}>
-          <Text style={styles.premiumText}>PREMIUM</Text>
-        </View>
+        {showPremiumBadge && (
+          <View style={styles.premiumBadge}>
+            <Text style={styles.premiumText}>PREMIUM</Text>
+          </View>
+        )}
         <View style={styles.iconContainer}>
           {iconName ? (
             <Ionicons name={iconName} size={28} color="#FFFFFF" />

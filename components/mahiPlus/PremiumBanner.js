@@ -70,6 +70,30 @@ const PremiumBanner = () => {
       borderRadius: 4,
       backgroundColor: 'rgba(255, 215, 0, 0.6)',
     },
+    progressContainer: {
+      marginTop: 12,
+      alignItems: 'center',
+    },
+    progressBar: {
+      width: 120,
+      height: 4,
+      backgroundColor: 'rgba(255, 255, 255, 0.3)',
+      borderRadius: 2,
+      overflow: 'hidden',
+      marginBottom: 6,
+    },
+    progressFill: {
+      height: '100%',
+      width: '70%',
+      backgroundColor: '#FFD700',
+      borderRadius: 2,
+    },
+    progressText: {
+      fontSize: 12,
+      fontWeight: '500',
+      color: 'rgba(255, 255, 255, 0.8)',
+      textAlign: 'center',
+    },
   });
   
   return (
@@ -89,6 +113,12 @@ const PremiumBanner = () => {
         <Text style={styles.title}>Mahi+ Premium</Text>
         <Text style={styles.subtitle}>Unlock the full Mahi experience</Text>
         <Text style={styles.healthFocus}>Track • Analyze • Transform</Text>
+        <View style={styles.progressContainer}>
+          <View style={styles.progressBar}>
+            <View style={styles.progressFill} />
+          </View>
+          <Text style={styles.progressText}>3 days to unlock Level 6</Text>
+        </View>
         <View style={styles.accentLine} />
         <View style={styles.cornerAccent} />
       </LinearGradient>

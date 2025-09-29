@@ -59,6 +59,13 @@ const OffersBanner = () => {
       borderRadius: 3,
       backgroundColor: 'rgba(255, 255, 255, 0.5)',
     },
+    socialProof: {
+      fontSize: 12,
+      fontWeight: '500',
+      color: 'rgba(255, 255, 255, 0.7)',
+      textAlign: 'center',
+      marginTop: 4,
+    },
   });
   
   return (
@@ -71,6 +78,7 @@ const OffersBanner = () => {
       >
         <Text style={styles.title}>Exclusive Offers</Text>
         <Text style={styles.subtitle}>Limited time premium deals</Text>
+        <Text style={styles.socialProof}>Join 2,847 users who upgraded this week</Text>
         <View style={styles.accentLine} />
         <View style={styles.cornerAccent} />
       </LinearGradient>
