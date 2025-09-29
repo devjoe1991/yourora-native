@@ -33,7 +33,7 @@ const OffersGrid = () => {
       subtitle: "Exclusive gym discounts & access",
       icon: "🏋️",
       iconName: "fitness",
-      color: "#FF6B6B", // Gym red
+      color: "#8B0000", // Deep red
       showPremiumBadge: false,
     },
     {
@@ -41,7 +41,7 @@ const OffersGrid = () => {
       subtitle: "Join Spotify & build workout playlists",
       icon: "🎵",
       iconName: "musical-notes",
-      color: "#1DB954", // Spotify green
+      color: "#1B4D3E", // Deep forest green
       showPremiumBadge: false,
     },
     {
@@ -49,7 +49,7 @@ const OffersGrid = () => {
       subtitle: "Join and compete in local competitions",
       icon: "🏆",
       iconName: "trophy",
-      color: "#FFD700", // Gold
+      color: "#D4AF37", // Premium gold
       showPremiumBadge: false,
     },
     {
@@ -57,7 +57,7 @@ const OffersGrid = () => {
       subtitle: "10% off to all Mahi+ members",
       icon: "👕",
       iconName: "shirt",
-      color: "#A8E6CF", // Mint
+      color: "#4A6741", // Deep forest green
       showPremiumBadge: false,
     },
   ];

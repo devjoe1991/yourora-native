@@ -40,6 +40,9 @@ const PremiumBanner = () => {
       marginBottom: 8,
       textAlign: 'center',
       letterSpacing: 1,
+      textShadowColor: 'rgba(212, 175, 55, 0.3)',
+      textShadowOffset: { width: 0, height: 2 },
+      textShadowRadius: 4,
     },
     subtitle: {
       fontSize: 18,
@@ -51,17 +54,25 @@ const PremiumBanner = () => {
     },
     healthFocus: {
       fontSize: 14,
-      color: 'rgba(255, 215, 0, 0.9)',
+      color: '#D4AF37',
       textAlign: 'center',
-      fontWeight: '500',
+      fontWeight: '600',
       letterSpacing: 0.5,
+      textShadowColor: 'rgba(0, 0, 0, 0.5)',
+      textShadowOffset: { width: 0, height: 1 },
+      textShadowRadius: 2,
     },
     accentLine: {
       width: 60,
       height: 4,
-      backgroundColor: 'rgba(255, 215, 0, 0.8)',
+      backgroundColor: '#D4AF37',
       borderRadius: 2,
       marginTop: 16,
+      shadowColor: '#D4AF37',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.4,
+      shadowRadius: 4,
+      elevation: 2,
     },
     cornerAccent: {
       position: 'absolute',
@@ -87,8 +98,12 @@ const PremiumBanner = () => {
     progressFill: {
       height: '100%',
       width: '70%',
-      backgroundColor: '#FFD700',
+      backgroundColor: '#D4AF37',
       borderRadius: 2,
+      shadowColor: '#D4AF37',
+      shadowOffset: { width: 0, height: 1 },
+      shadowOpacity: 0.3,
+      shadowRadius: 2,
     },
     progressText: {
       fontSize: 12,
@@ -116,8 +131,11 @@ const PremiumBanner = () => {
     discountedPrice: {
       fontSize: 22,
       fontWeight: '800',
-      color: '#FFD700',
+      color: '#D4AF37',
       letterSpacing: 0.5,
+      textShadowColor: 'rgba(0, 0, 0, 0.5)',
+      textShadowOffset: { width: 0, height: 1 },
+      textShadowRadius: 2,
     },
     discountBadge: {
       backgroundColor: 'rgba(255, 215, 0, 0.2)',
@@ -148,7 +166,7 @@ const PremiumBanner = () => {
         activeOpacity={0.9}
       >
         <LinearGradient
-          colors={['#0a0a0a', '#1a1a1a', '#0a0a0a']}
+          colors={['#000000', '#1a1a1a', '#2a2a2a', '#1a1a1a', '#000000']}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
           style={styles.gradient}
