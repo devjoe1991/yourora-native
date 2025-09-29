@@ -527,19 +527,27 @@ const Stories = ({ followingsData }) => {
         >
           <View style={{
             flex: 1,
-            backgroundColor: 'rgba(0,0,0,0.8)',
+            backgroundColor: 'rgba(0,0,0,0.7)',
             justifyContent: 'center',
             alignItems: 'center',
             padding: 20,
+            backdropFilter: 'blur(10px)',
           }}>
             <Animated.View 
               style={[{
-                backgroundColor: theme.colors.primary300,
-                borderRadius: 20,
-                padding: 30,
+                backgroundColor: 'rgba(10, 10, 10, 0.95)',
+                borderRadius: 28,
+                padding: 32,
                 alignItems: 'center',
                 width: '90%',
                 transform: [{ translateY: modalTranslateY }],
+                borderWidth: 1,
+                borderColor: 'rgba(255, 215, 0, 0.3)',
+                shadowColor: '#FFD700',
+                shadowOffset: { width: 0, height: 8 },
+                shadowOpacity: 0.3,
+                shadowRadius: 20,
+                elevation: 20,
               }]}
               {...panResponder.panHandlers}
             >
@@ -548,59 +556,71 @@ const Stories = ({ followingsData }) => {
                 onPress={() => setSelectedStreakFeed(null)}
                 style={{
                   position: 'absolute',
-                  top: 15,
-                  right: 15,
-                  width: 30,
-                  height: 30,
-                  borderRadius: 15,
-                  backgroundColor: 'rgba(255,255,255,0.2)',
+                  top: 20,
+                  right: 20,
+                  width: 36,
+                  height: 36,
+                  borderRadius: 18,
+                  backgroundColor: 'rgba(255, 255, 255, 0.15)',
                   justifyContent: 'center',
                   alignItems: 'center',
                   zIndex: 1,
+                  borderWidth: 1,
+                  borderColor: 'rgba(255, 255, 255, 0.2)',
                 }}
               >
-                <Ionicons name="close" size={20} color={theme.colors.textColor} />
+                <Ionicons name="close" size={22} color="rgba(255, 255, 255, 0.9)" />
               </Pressable>
               <View style={{
-                width: 80,
-                height: 80,
-                borderRadius: 40,
+                width: 90,
+                height: 90,
+                borderRadius: 45,
                 backgroundColor: getStreakLevelColor(selectedStreakFeed.streak_level, selectedStreakFeed.feedType, selectedStreakFeed.isLocked, selectedStreakFeed.streak_days),
                 justifyContent: 'center',
                 alignItems: 'center',
-                marginBottom: 20,
+                marginBottom: 24,
                 opacity: selectedStreakFeed.isLocked ? 0.6 : 1,
+                borderWidth: 3,
+                borderColor: selectedStreakFeed.isLocked ? 'rgba(255, 215, 0, 0.4)' : 'rgba(255, 215, 0, 0.6)',
+                shadowColor: selectedStreakFeed.isLocked ? '#FFD700' : '#00BFA5',
+                shadowOffset: { width: 0, height: 4 },
+                shadowOpacity: 0.4,
+                shadowRadius: 8,
+                elevation: 8,
               }}>
                 {selectedStreakFeed.isLocked ? (
                   <Ionicons
                     name="lock-closed"
-                    size={40}
-                    color={theme.colors.textColor}
+                    size={44}
+                    color="rgba(255, 255, 255, 0.9)"
                   />
                 ) : (
                   <Ionicons
                     name={selectedStreakFeed.icon}
-                    size={40}
-                    color={theme.colors.textColor}
+                    size={44}
+                    color="rgba(255, 255, 255, 0.9)"
                   />
                 )}
               </View>
               
               <Text style={{
-                fontSize: 24,
-                fontWeight: 'bold',
-                color: theme.colors.textColor,
-                marginBottom: 10,
+                fontSize: 26,
+                fontWeight: '800',
+                color: '#FFFFFF',
+                marginBottom: 12,
                 textAlign: 'center',
+                letterSpacing: 0.5,
               }}>
                 {selectedStreakFeed.isLocked ? `${selectedStreakFeed.title} - LOCKED` : getStreakFeedTitle(selectedStreakFeed.feedType, selectedStreakFeed.streak_days)}
               </Text>
               
               <Text style={{
                 fontSize: 16,
-                color: theme.colors.textColor,
-                marginBottom: 20,
+                color: 'rgba(255, 255, 255, 0.8)',
+                marginBottom: 24,
                 textAlign: 'center',
+                lineHeight: 22,
+                fontWeight: '500',
               }}>
                 {selectedStreakFeed.description}
               </Text>
@@ -608,78 +628,110 @@ const Stories = ({ followingsData }) => {
               {selectedStreakFeed.isLocked ? (
                 <View style={{ alignItems: 'center', marginBottom: 30 }}>
                   <Text style={{
-                    fontSize: 18,
-                    fontWeight: 'bold',
+                    fontSize: 20,
+                    fontWeight: '800',
                     color: '#FFD700',
-                    marginBottom: 10,
+                    marginBottom: 12,
+                    letterSpacing: 0.5,
                   }}>
                     🔒 Locked Streak
                   </Text>
                   <Text style={{
-                    fontSize: 14,
-                    color: '#FFD700',
+                    fontSize: 15,
+                    color: 'rgba(255, 215, 0, 0.9)',
                     textAlign: 'center',
-                    marginBottom: 20,
+                    marginBottom: 24,
+                    fontWeight: '500',
+                    lineHeight: 20,
                   }}>
                     Complete today's daily goal by making a new post to unlock this streak!
                   </Text>
                   
                   {/* Premium Unlock Options */}
                   <View style={{
-                    backgroundColor: 'rgba(255,255,255,0.1)',
-                    borderRadius: 15,
-                    padding: 20,
-                    marginBottom: 20,
+                    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+                    borderRadius: 20,
+                    padding: 24,
+                    marginBottom: 24,
                     width: '100%',
+                    borderWidth: 1,
+                    borderColor: 'rgba(255, 215, 0, 0.2)',
+                    shadowColor: '#FFD700',
+                    shadowOffset: { width: 0, height: 4 },
+                    shadowOpacity: 0.2,
+                    shadowRadius: 8,
+                    elevation: 4,
                   }}>
                     <Text style={{
-                      fontSize: 16,
+                      fontSize: 18,
                       fontWeight: 'bold',
                       color: '#FFD700',
                       textAlign: 'center',
+                      marginBottom: 8,
+                    }}>
+                      💎 Mahi+ Premium
+                    </Text>
+                    <Text style={{
+                      fontSize: 14,
+                      color: 'rgba(255, 255, 255, 0.8)',
+                      textAlign: 'center',
                       marginBottom: 15,
                     }}>
-                      💎 Unlock Streaks Ahead
+                      Unlock the full Mahi experience
                     </Text>
                     
                     {/* Streak Packages */}
                     <View style={{ marginBottom: 15 }}>
                       <Pressable
                         style={{
-                          backgroundColor: '#00BFA5',
-                          paddingHorizontal: 20,
-                          paddingVertical: 12,
-                          borderRadius: 20,
-                          marginBottom: 10,
+                          backgroundColor: 'rgba(0, 191, 165, 0.9)',
+                          paddingHorizontal: 24,
+                          paddingVertical: 16,
+                          borderRadius: 24,
+                          marginBottom: 12,
                           flexDirection: 'row',
                           justifyContent: 'space-between',
                           alignItems: 'center',
+                          borderWidth: 1,
+                          borderColor: 'rgba(0, 191, 165, 0.3)',
+                          shadowColor: '#00BFA5',
+                          shadowOffset: { width: 0, height: 4 },
+                          shadowOpacity: 0.3,
+                          shadowRadius: 8,
+                          elevation: 4,
                         }}
                       >
-                        <Text style={{ color: theme.colors.textColor, fontSize: 14, fontWeight: 'bold' }}>
+                        <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '700' }}>
                           Unlock 5 Streaks
                         </Text>
-                        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>
+                        <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
                           £2.49
                         </Text>
                       </Pressable>
                       
                       <Pressable
                         style={{
-                          backgroundColor: '#0077B6',
-                          paddingHorizontal: 20,
-                          paddingVertical: 12,
-                          borderRadius: 20,
-                          marginBottom: 10,
+                          backgroundColor: 'rgba(0, 119, 182, 0.9)',
+                          paddingHorizontal: 24,
+                          paddingVertical: 16,
+                          borderRadius: 24,
+                          marginBottom: 12,
                           flexDirection: 'row',
                           justifyContent: 'space-between',
                           alignItems: 'center',
+                          borderWidth: 1,
+                          borderColor: 'rgba(0, 119, 182, 0.3)',
+                          shadowColor: '#0077B6',
+                          shadowOffset: { width: 0, height: 4 },
+                          shadowOpacity: 0.3,
+                          shadowRadius: 8,
+                          elevation: 4,
                         }}
                       >
-                        <Text style={{ color: theme.colors.textColor, fontSize: 14, fontWeight: 'bold' }}>
+                        <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '700' }}>
                           Unlock 10 Streaks
                         </Text>
-                        <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold' }}>
+                        <Text style={{ color: '#FFFFFF', fontSize: 16, fontWeight: '800' }}>
                           £4.49
                         </Text>
                       </Pressable>
@@ -688,22 +740,30 @@ const Stories = ({ followingsData }) => {
                     {/* Subscription Option */}
                     <Pressable
                       style={{
-                        backgroundColor: 'rgba(255,255,255,0.2)',
-                        paddingHorizontal: 20,
-                        paddingVertical: 12,
-                        borderRadius: 20,
+                        backgroundColor: 'rgba(255, 215, 0, 0.15)',
+                        paddingHorizontal: 24,
+                        paddingVertical: 16,
+                        borderRadius: 24,
                         borderWidth: 2,
                         borderColor: '#FFD700',
                         flexDirection: 'row',
                         justifyContent: 'space-between',
                         alignItems: 'center',
+                        shadowColor: '#FFD700',
+                        shadowOffset: { width: 0, height: 4 },
+                        shadowOpacity: 0.3,
+                        shadowRadius: 8,
+                        elevation: 6,
                       }}
                     >
                       <View>
-                        <Text style={{ color: '#FFD700', fontSize: 14, fontWeight: 'bold' }}>
-                          Your Mahi+ Subscription
+                        <Text style={{ color: '#FFD700', fontSize: 16, fontWeight: 'bold' }}>
+                          Mahi+ Premium
                         </Text>
-                        <Text style={{ color: '#FFD700', fontSize: 12 }}>
+                        <Text style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: 12 }}>
+                          Unlimited streak access
+                        </Text>
+                        <Text style={{ color: '#FFD700', fontSize: 14, fontWeight: 'bold' }}>
                           £8.99/month
                         </Text>
                       </View>
