@@ -180,18 +180,18 @@ const HuelPartnership = () => {
 
   const partnerships = [
     {
-      image: require('../../assets/heul.jpg'),
-      title: 'Join Huel',
-      subtitle: 'The future of nutrition',
-      description: 'Complete nutrition in minutes. Huel provides all the protein, carbs, essential fats, fiber, and 26 vitamins and minerals your body needs.',
-      benefits: ['Complete nutrition', 'Ready in 2 minutes', 'Sustainable'],
-    },
-    {
       image: require('../../assets/bulk.jpg'),
       title: 'Join Bulk',
       subtitle: 'Premium supplements',
       description: 'High-quality supplements for serious athletes. Bulk offers the best value protein powders, vitamins, and fitness supplements.',
       benefits: ['Premium quality', 'Best value', 'Athlete tested'],
+    },
+    {
+      image: require('../../assets/heul.jpg'),
+      title: 'Join Huel',
+      subtitle: 'The future of nutrition',
+      description: 'Complete nutrition in minutes. Huel provides all the protein, carbs, essential fats, fiber, and 26 vitamins and minerals your body needs.',
+      benefits: ['Complete nutrition', 'Ready in 2 minutes', 'Sustainable'],
     },
     {
       image: require('../../assets/frive.png'),
