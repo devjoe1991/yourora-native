@@ -43,16 +43,16 @@ const OffersGrid = () => {
       showPremiumBadge: false,
     },
     {
-      title: "Streak Packs",
-      subtitle: "Unlock premium streak features",
-      icon: "📦",
-      iconName: "gift",
+      title: "Competitions",
+      subtitle: "Join and compete in local competitions",
+      icon: "🏆",
+      iconName: "trophy",
       color: "#FFD700", // Gold
-      showPremiumBadge: true,
+      showPremiumBadge: false,
     },
     {
-      title: "Merch Coming Soon",
-      subtitle: "Exclusive Mahi merch",
+      title: "Mahi Merch",
+      subtitle: "Releasing soon",
       icon: "👕",
       iconName: "shirt",
       color: "#A8E6CF", // Mint
