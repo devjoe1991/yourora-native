@@ -104,7 +104,7 @@ const FeaturesGrid = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.sectionTitle}>Luxury Health Features</Text>
+      <Text style={styles.sectionTitle}>Some Mahi+ benefits</Text>
       <View style={{ position: 'relative' }}>
         <ScrollView 
           ref={scrollViewRef}

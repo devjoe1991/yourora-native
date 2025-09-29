@@ -52,7 +52,7 @@ const OffersGrid = () => {
     },
     {
       title: "Mahi Merch",
-      subtitle: "Releasing soon",
+      subtitle: "10% off to all Mahi+ members",
       icon: "👕",
       iconName: "shirt",
       color: "#A8E6CF", // Mint

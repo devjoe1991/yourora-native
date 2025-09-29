@@ -117,7 +117,7 @@ const PremiumBanner = () => {
           <View style={styles.progressBar}>
             <View style={styles.progressFill} />
           </View>
-          <Text style={styles.progressText}>3 days to unlock Level 6</Text>
+          <Text style={styles.progressText}>50% before midnight</Text>
         </View>
         <View style={styles.accentLine} />
         <View style={styles.cornerAccent} />
