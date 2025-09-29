@@ -5,6 +5,7 @@ import PremiumBanner from './PremiumBanner';
 import FeaturesGrid from './FeaturesGrid';
 import OffersBanner from './OffersBanner';
 import OffersGrid from './OffersGrid';
+import HuelPartnership from './HuelPartnership';
 
 const MahiPlusTab = () => {
   const { theme } = useTheme();
@@ -25,17 +26,18 @@ const MahiPlusTab = () => {
   
   return (
     <View style={styles.container}>
-      <ScrollView 
-        style={styles.scrollContainer}
-        contentContainerStyle={styles.contentContainer}
-        showsVerticalScrollIndicator={false}
-        bounces={true}
-      >
-        <PremiumBanner />
-        <FeaturesGrid />
-        <OffersBanner />
-        <OffersGrid />
-      </ScrollView>
+              <ScrollView
+                style={styles.scrollContainer}
+                contentContainerStyle={styles.contentContainer}
+                showsVerticalScrollIndicator={false}
+                bounces={true}
+              >
+                <PremiumBanner />
+                <FeaturesGrid />
+                <OffersBanner />
+                <OffersGrid />
+                <HuelPartnership />
+              </ScrollView>
     </View>
   );
 };

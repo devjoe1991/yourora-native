@@ -103,9 +103,8 @@ const FeaturesGrid = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.sectionTitle}>Some Mahi+ benefits</Text>
-      <View style={{ position: 'relative' }}>
+            <View style={styles.container}>
+              <View style={{ position: 'relative' }}>
         <ScrollView 
           ref={scrollViewRef}
           horizontal 
