@@ -94,6 +94,49 @@ const PremiumBanner = () => {
       color: 'rgba(255, 255, 255, 0.8)',
       textAlign: 'center',
     },
+    pricingContainer: {
+      marginTop: 16,
+      alignItems: 'center',
+    },
+    priceRow: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    originalPrice: {
+      fontSize: 16,
+      fontWeight: '600',
+      color: 'rgba(255, 255, 255, 0.5)',
+      textDecorationLine: 'line-through',
+      textDecorationStyle: 'solid',
+      marginRight: 8,
+    },
+    discountedPrice: {
+      fontSize: 22,
+      fontWeight: '800',
+      color: '#FFD700',
+      letterSpacing: 0.5,
+    },
+    discountBadge: {
+      backgroundColor: 'rgba(255, 215, 0, 0.2)',
+      paddingHorizontal: 8,
+      paddingVertical: 2,
+      borderRadius: 8,
+      marginLeft: 8,
+    },
+    discountText: {
+      fontSize: 10,
+      fontWeight: '700',
+      color: '#FFD700',
+      letterSpacing: 0.3,
+    },
+    cancelText: {
+      fontSize: 12,
+      fontWeight: '500',
+      color: 'rgba(255, 255, 255, 0.7)',
+      textAlign: 'center',
+      marginTop: 4,
+    },
   });
   
   return (
@@ -118,6 +161,16 @@ const PremiumBanner = () => {
             <View style={styles.progressFill} />
           </View>
           <Text style={styles.progressText}>50% before midnight</Text>
+        </View>
+        <View style={styles.pricingContainer}>
+          <View style={styles.priceRow}>
+            <Text style={styles.originalPrice}>£8.99</Text>
+            <Text style={styles.discountedPrice}>£4.49</Text>
+            <View style={styles.discountBadge}>
+              <Text style={styles.discountText}>50% OFF</Text>
+            </View>
+          </View>
+          <Text style={styles.cancelText}>Cancel anytime</Text>
         </View>
         <View style={styles.accentLine} />
         <View style={styles.cornerAccent} />
