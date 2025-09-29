@@ -1,13 +1,15 @@
-import React from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../../store/theme-context';
+import AppleSubscriptionModal from './AppleSubscriptionModal';
 
 const { width } = Dimensions.get('window');
 
 const PremiumBanner = () => {
   const { theme } = useTheme();
+  const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
   
   const styles = StyleSheet.create({
     container: {
@@ -141,12 +143,16 @@ const PremiumBanner = () => {
   
   return (
     <View style={styles.container}>
-      <LinearGradient
-        colors={['#0a0a0a', '#1a1a1a', '#0a0a0a']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={styles.gradient}
+      <TouchableOpacity 
+        onPress={() => setShowSubscriptionModal(true)}
+        activeOpacity={0.9}
       >
+        <LinearGradient
+          colors={['#0a0a0a', '#1a1a1a', '#0a0a0a']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={styles.gradient}
+        >
         <Ionicons 
           name="diamond" 
           size={36} 
@@ -174,7 +180,18 @@ const PremiumBanner = () => {
         </View>
         <View style={styles.accentLine} />
         <View style={styles.cornerAccent} />
-      </LinearGradient>
+        </LinearGradient>
+      </TouchableOpacity>
+      
+      <AppleSubscriptionModal
+        visible={showSubscriptionModal}
+        onClose={() => setShowSubscriptionModal(false)}
+        onSubscribe={() => {
+          // Handle Apple subscription logic here
+          console.log('Subscribe with Apple pressed');
+          setShowSubscriptionModal(false);
+        }}
+      />
     </View>
   );
 };

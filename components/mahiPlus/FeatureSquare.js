@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../../store/theme-context';
+import AppleSubscriptionModal from './AppleSubscriptionModal';
 
 const { width } = Dimensions.get('window');
 
 const FeatureSquare = ({ title, subtitle, icon, color, iconName, onPress, showPremiumBadge = true }) => {
   const { theme } = useTheme();
+  const [showSubscriptionModal, setShowSubscriptionModal] = useState(false);
   
   const styles = StyleSheet.create({
     container: {
@@ -86,32 +88,51 @@ const FeatureSquare = ({ title, subtitle, icon, color, iconName, onPress, showPr
     },
   });
   
-  return (
-    <TouchableOpacity style={styles.container} onPress={onPress} activeOpacity={0.8}>
-      <LinearGradient
-        colors={[color, color + 'DD', color + 'BB']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={styles.gradient}
-      >
-        {showPremiumBadge && (
-          <View style={styles.premiumBadge}>
-            <Text style={styles.premiumText}>PREMIUM</Text>
-          </View>
-        )}
-        <View style={styles.iconContainer}>
-          {iconName ? (
-            <Ionicons name={iconName} size={28} color="#FFFFFF" />
-          ) : (
-            <Text style={styles.icon}>{icon}</Text>
-          )}
-        </View>
-        <Text style={styles.title}>{title}</Text>
-        {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
-        <View style={styles.accentDot} />
-      </LinearGradient>
-    </TouchableOpacity>
-  );
+          const handlePress = () => {
+            if (showPremiumBadge) {
+              setShowSubscriptionModal(true);
+            } else if (onPress) {
+              onPress();
+            }
+          };
+
+          return (
+            <>
+              <TouchableOpacity style={styles.container} onPress={handlePress} activeOpacity={0.8}>
+                <LinearGradient
+                  colors={[color, color + 'DD', color + 'BB']}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 1 }}
+                  style={styles.gradient}
+                >
+                  {showPremiumBadge && (
+                    <View style={styles.premiumBadge}>
+                      <Text style={styles.premiumText}>PREMIUM</Text>
+                    </View>
+                  )}
+                  <View style={styles.iconContainer}>
+                    {iconName ? (
+                      <Ionicons name={iconName} size={28} color="#FFFFFF" />
+                    ) : (
+                      <Text style={styles.icon}>{icon}</Text>
+                    )}
+                  </View>
+                  <Text style={styles.title}>{title}</Text>
+                  {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
+                  <View style={styles.accentDot} />
+                </LinearGradient>
+              </TouchableOpacity>
+              
+              <AppleSubscriptionModal
+                visible={showSubscriptionModal}
+                onClose={() => setShowSubscriptionModal(false)}
+                onSubscribe={() => {
+                  console.log('Subscribe with Apple pressed from feature');
+                  setShowSubscriptionModal(false);
+                }}
+              />
+            </>
+          );
 };
 
 export default FeatureSquare;
