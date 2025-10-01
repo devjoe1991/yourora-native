@@ -1,6 +1,6 @@
 # 🎨 Theme Development Guide
 
-## **Future-Proof Theme System for YourOra App**
+## **Future-Proof Theme System for Miha App**
 
 This guide ensures that any new components or features you add will automatically work with the theme system.
 

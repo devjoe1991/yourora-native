@@ -205,7 +205,7 @@ const streakFeeds = [
 - **Complete Daily Goal Button:** Direct navigation to AddStoryScreen
 - **Premium Streak Unlock:** Pay to unlock future streaks ahead of schedule
 - **Streak Unlock Packages:** Unlock 5 or 10 streaks (£2.49-£4.49)
-- **YourOra+ Subscription:** Monthly subscription for unlimited access (£8.99/month)
+- **Miha+ Subscription:** Monthly subscription for unlimited access (£8.99/month)
 
 ### **Visual Design (IMPLEMENTED)**
 - **Color Progression:** Blue ORA for Streak 1, red for milestone streaks (10, 20, 30, etc.)

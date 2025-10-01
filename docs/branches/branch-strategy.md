@@ -12,7 +12,7 @@ Why this is best:
 Branch Naming Convention
 Feature Branches:
 navigation - Sidebar and mixed media feed
-yourora-tab - YourOra tab content
+yourora-tab - Miha tab content
 user-profiles - User profile features
 notifications - Notification system
 settings - Settings and preferences
@@ -20,7 +20,7 @@ settings - Settings and preferences
 Merging Strategy
 When to Merge:
 Navigation branch → main (when navigation is complete)
-YourOra tab → main (when tab is ready)
+Miha tab → main (when tab is ready)
 Never merge feature branches into each other
 
 Example merging process:
@@ -29,7 +29,7 @@ git checkout main
 git merge navigation
 git push origin main
 
-# Merge YourOra tab to main
+# Merge Miha tab to main
 git checkout main
 git merge yourora-tab
 git push origin main
@@ -99,11 +99,11 @@ No data loss: Everything is preserved
 
 Before merge:
 main ← navigation (has sidebar + mixed media)
-main ← yourora-tab (has YourOra tab)
+main ← yourora-tab (has Miha tab)
 
 After merging to demo:
 main ← navigation (STILL HAS sidebar + mixed media)
-main ← yourora-tab (STILL HAS YourOra tab)
+main ← yourora-tab (STILL HAS Miha tab)
 main ← demo-all-features (has BOTH features)
 
 
@@ -127,7 +127,7 @@ git checkout demo-all-features
 git merge navigation
 git push origin demo-all-features
 
-# Add YourOra tab later
+# Add Miha tab later
 git checkout demo-all-features
 git merge yourora-tab
 git push origin demo-all-features

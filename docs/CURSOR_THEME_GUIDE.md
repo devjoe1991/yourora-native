@@ -1,7 +1,7 @@
 # 🎨 Cursor AI: Theme Integration Guide for New Components
 
 ## **Purpose**
-This guide instructs Cursor AI on how to automatically integrate any new components with the YourOra app's light/dark theme system.
+This guide instructs Cursor AI on how to automatically integrate any new components with the Miha app's light/dark theme system.
 
 ---
 

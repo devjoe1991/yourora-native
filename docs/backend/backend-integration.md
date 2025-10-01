@@ -1,4 +1,4 @@
-# YourOra App - Feature-by-Feature Supabase Integration
+# Miha App - Feature-by-Feature Supabase Integration
 
 This document maps each existing app feature/component to its Supabase backend requirements. It shows exactly how each screen and component will connect to the database, storage, and realtime features.
 

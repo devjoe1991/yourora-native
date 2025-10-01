@@ -1,4 +1,4 @@
-// YourOra App Theme Definitions
+// Miha App Theme Definitions
 // This file contains both dark and light theme definitions with proper color inversions
 
 export const darkTheme = {

@@ -1,7 +1,7 @@
 # Light Mode Implementation Prompts
 
 ## Overview
-This document contains step-by-step prompts to implement light mode for YourOra app. Each prompt is designed to be executed one at a time with extreme caution to avoid any app errors. The current app uses dark theme hard-coded colors, and we're creating a light mode version.
+This document contains step-by-step prompts to implement light mode for Miha app. Each prompt is designed to be executed one at a time with extreme caution to avoid any app errors. The current app uses dark theme hard-coded colors, and we're creating a light mode version.
 
 ---
 

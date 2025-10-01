@@ -1,8 +1,8 @@
-# 🍔 YourOra Sidebar Navigation System - Implementation Documentation
+# 🍔 Miha Sidebar Navigation System - Implementation Documentation
 
 ## 📋 Overview
 
-This document provides comprehensive documentation for the sidebar navigation system implemented in YourOra app. The sidebar replaces the profile avatar in the header with an animated hamburger menu and provides a beautiful slide-out navigation experience.
+This document provides comprehensive documentation for the sidebar navigation system implemented in Miha app. The sidebar replaces the profile avatar in the header with an animated hamburger menu and provides a beautiful slide-out navigation experience.
 
 ## 🏗️ Architecture
 
@@ -185,7 +185,7 @@ const { userData } = useAuth();
 ## 🎨 Design System Integration
 
 ### Theme Colors
-The sidebar system integrates seamlessly with YourOra's existing theme system:
+The sidebar system integrates seamlessly with Miha's existing theme system:
 
 **Dark Theme**:
 ```javascript
@@ -449,4 +449,4 @@ The sidebar implementation achieves:
 
 ---
 
-*This documentation provides a complete guide to the YourOra sidebar navigation system, ensuring developers can understand, maintain, and extend the implementation effectively.*
+*This documentation provides a complete guide to the Miha sidebar navigation system, ensuring developers can understand, maintain, and extend the implementation effectively.*

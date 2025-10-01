@@ -1,4 +1,4 @@
-# Light Mode Implementation Plan for YourOra App
+# Light Mode Implementation Plan for Miha App
 
 ## Current Project Analysis
 

@@ -1,7 +1,7 @@
-# 🍔 YourOra Sidebar Navigation System - Implementation Plan
+# 🍔 Miha Sidebar Navigation System - Implementation Plan
 
 ## 📋 Overview
-This document outlines the complete implementation plan for integrating a sophisticated sidebar navigation system into YourOra app. The sidebar will replace the current profile avatar in the header with an animated hamburger menu and provide a beautiful slide-out navigation experience.
+This document outlines the complete implementation plan for integrating a sophisticated sidebar navigation system into Miha app. The sidebar will replace the current profile avatar in the header with an animated hamburger menu and provide a beautiful slide-out navigation experience.
 
 ## 🎯 Core Features
 - **Animated Hamburger Menu**: Replaces profile avatar with smooth hamburger-to-X transformation
@@ -117,7 +117,7 @@ Update the existing Header component to replace the profile avatar with the anim
 The updated header should:
 - Remove the current profile avatar and theme toggle from the header
 - Add the new AnimatedHamburgerMenu component in place of the avatar
-- Keep the YourOra logo centered
+- Keep the Miha logo centered
 - Maintain the search and notifications icons on the right
 - Integrate with the sidebar context for opening/closing
 - Preserve all existing functionality
@@ -373,4 +373,4 @@ The documentation should include:
 
 ---
 
-*This implementation plan provides a comprehensive roadmap for integrating a sophisticated sidebar navigation system into YourOra app while maintaining the existing design language and performance standards.*
+*This implementation plan provides a comprehensive roadmap for integrating a sophisticated sidebar navigation system into Miha app while maintaining the existing design language and performance standards.*

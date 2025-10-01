@@ -3,7 +3,7 @@
 ## 🎯 **Strategic Overview**
 
 ### **Why Replace Video Tab?**
-The current Video tab doesn't align with YourOra's core value proposition of streak-based fitness tracking and social accountability. Replacing it with a comprehensive "Your Ora" tab (personalized progress section) will:
+The current Video tab doesn't align with Miha's core value proposition of streak-based fitness tracking and social accountability. Replacing it with a comprehensive "Your Ora" tab (personalized progress section) will:
 
 - **Strengthen core functionality** - Focus on what users actually need
 - **Increase user engagement** - Progress tracking is more motivating than video consumption
@@ -285,10 +285,10 @@ Replacing the Video tab with a comprehensive "Your Ora" tab will:
 1. **Align with user needs** - Focus on what fitness users actually want
 2. **Increase engagement** - Progress tracking is inherently motivating
 3. **Improve retention** - Users stay engaged with their personal journey
-4. **Strengthen brand** - Reinforces YourOra's core value proposition
+4. **Strengthen brand** - Reinforces Miha's core value proposition
 5. **Drive growth** - Better user experience leads to more referrals
 
-This strategic change will transform YourOra from a generic social app into a focused fitness progress platform that users will love and return to daily.
+This strategic change will transform Miha from a generic social app into a focused fitness progress platform that users will love and return to daily.
 
 ### **Why Video Content Isn't Needed:**
 - **Feed Integration** - Video content already appears in the main Home feed alongside posts
@@ -300,4 +300,4 @@ This strategic change will transform YourOra from a generic social app into a fo
 ---
 
 *Last Updated: September 2025*
-*Strategic Planning Document for YourOra "Your Ora" Tab Implementation*
+*Strategic Planning Document for Miha "Your Ora" Tab Implementation*

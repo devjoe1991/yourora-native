@@ -2,7 +2,7 @@
 
 ## Overview
 
-YourOra's feed will be transformed to support a **unified content experience** where users can post both images and videos, creating a rich, diverse fitness community feed. This replaces the separate "Video" tab with a single, intelligent feed that handles all content types seamlessly.
+Miha's feed will be transformed to support a **unified content experience** where users can post both images and videos, creating a rich, diverse fitness community feed. This replaces the separate "Video" tab with a single, intelligent feed that handles all content types seamlessly.
 
 ## 🎯 **How It Will Work**
 
@@ -194,6 +194,6 @@ YourOra's feed will be transformed to support a **unified content experience** w
 
 ## **Conclusion**
 
-This mixed media feed implementation will transform YourOra into a comprehensive fitness social platform where users can share their journey through both images and videos. The unified experience eliminates the need for separate tabs while providing rich, engaging content that keeps the community active and motivated.
+This mixed media feed implementation will transform Miha into a comprehensive fitness social platform where users can share their journey through both images and videos. The unified experience eliminates the need for separate tabs while providing rich, engaging content that keeps the community active and motivated.
 
-The technical implementation ensures smooth performance while the user experience remains intuitive and engaging. Users will enjoy a seamless feed that adapts to their content preferences while maintaining the fitness-focused community that makes YourOra special.
+The technical implementation ensures smooth performance while the user experience remains intuitive and engaging. Users will enjoy a seamless feed that adapts to their content preferences while maintaining the fitness-focused community that makes Miha special.

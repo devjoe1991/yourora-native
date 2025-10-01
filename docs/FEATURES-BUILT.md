@@ -1,4 +1,4 @@
-# 🚀 YourOra - Features Built
+# 🚀 Miha - Features Built
 
 *Simple tracking of all implemented features as they're developed*
 
@@ -46,7 +46,7 @@
 ### **💰 Monetization System**
 - [x] **Premium Streak Unlock System** - Pay to unlock future streaks ahead
 - [x] **Streak Unlock Packages** - Unlock 5 or 10 streaks (£2.49-£4.49)
-- [x] **YourOra+ Subscription** - Subscribe for unlimited streak access (£8.99/month)
+- [x] **Miha+ Subscription** - Subscribe for unlimited streak access (£8.99/month)
 - [x] **Premium Modal Design** - Monetization options in locked streak popup
 - [x] **Mahi+ Premium Tab** - Dedicated premium upgrade interface
 - [x] **Premium Banner Component** - Black/silver gradient banner with upgrade messaging
@@ -84,7 +84,7 @@
 ### **🎨 Visual Design System**
 - [x] Dark theme with fitness-focused colors
 - [x] Smooth animations and transitions
-- [x] YourOra branding throughout
+- [x] Miha branding throughout
 - [x] Responsive design for different screen sizes
 - [x] Consistent color palette (Aura White, Vapor Cream, Spirit Blue, Ember Green, Shadow Gray)
 
@@ -179,7 +179,7 @@
 
 ## 📝 **NOTES**
 
-- All features are built following the YourOra Design System
+- All features are built following the Miha Design System
 - Progressive streak system is the core differentiator
 - Focus on user experience and smooth interactions
 - Regular testing and iteration on all features

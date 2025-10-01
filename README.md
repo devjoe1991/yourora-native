@@ -1,12 +1,12 @@
 
-# 🏋️ YourOra - Your Fitness Aura
+# 🏋️ Miha - Your Fitness Aura
 
-**Build the social layer of everyday effort. YourOra turns each workout or positive habit into a proud, judgement-free daily post that fuels accountability via streaks and community.**
+**Build the social layer of everyday effort. Miha turns each workout or positive habit into a proud, judgement-free daily post that fuels accountability via streaks and community.**
 
 
-## About YourOra
+## About Miha
 
-YourOra is a streak-driven, fitness-first social app that leverages the power of social accountability and social proof to keep users engaged and consistent. By posting daily proof of effort, users not only track their personal progress but also contribute to a collective environment of positive action.
+Miha is a streak-driven, fitness-first social app that leverages the power of social accountability and social proof to keep users engaged and consistent. By posting daily proof of effort, users not only track their personal progress but also contribute to a collective environment of positive action.
 
 ### **Key Principles**
 - **Effort > Aesthetics:** We reward showing up, not perfection. A quick selfie after a walk or a screenshot of a finished workout is more valuable than a heavily edited gym photo.

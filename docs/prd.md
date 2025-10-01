@@ -1,11 +1,11 @@
-# YourOra - Product Requirements Document (Enhanced)
+# Miha - Product Requirements Document (Enhanced)
 
 ---
 
 ## 1. Vision & Principles
 
 **Vision:**  
-Build the social layer of everyday effort. YourOra turns each workout or positive habit into a proud, judgment-free daily post that fuels accountability via streaks and community.
+Build the social layer of everyday effort. Miha turns each workout or positive habit into a proud, judgment-free daily post that fuels accountability via streaks and community.
 
 **Product Principles:**
 - **Effort > Aesthetics:** We reward showing up, not perfection. A quick selfie after a walk or a screenshot of a finished workout is more valuable than a heavily edited gym photo.  
@@ -22,7 +22,7 @@ Build the social layer of everyday effort. YourOra turns each workout or positiv
 The fitness journey is often a lonely one. Motivation wanes, and without a reliable support system, even the best intentions can fail. Many social platforms focus on aspirational, "finish-line" content, which can feel intimidating and discouraging for people just starting out. There's no dedicated space to share and celebrate the small, daily acts of effort that truly build a consistent habit.
 
 **The Solution:**  
-YourOra is a streak-driven, fitness-first social app that leverages the power of social accountability and social proof to keep users engaged and consistent. By posting daily proof of effort, users not only track their personal progress but also contribute to a collective environment of positive action.  
+Miha is a streak-driven, fitness-first social app that leverages the power of social accountability and social proof to keep users engaged and consistent. By posting daily proof of effort, users not only track their personal progress but also contribute to a collective environment of positive action.  
 
 Each user's post, no matter how small, serves as a ripple effect—a **"butterfly effect" of motivation**—inspiring their followers and the wider community to show up and keep their own streaks alive.  
 
@@ -47,8 +47,8 @@ Our core audience is the "everyday mover" and the "status tracker"—individuals
 
 ## 4. Core Use Cases & Current App Flow
 
-### **Current App Structure (YourOra)**
-YourOra maintains the familiar social media interface while transforming it into a fitness-focused platform:
+### **Current App Structure (Miha)**
+Miha maintains the familiar social media interface while transforming it into a fitness-focused platform:
 
 - **Bottom Tab Navigation:** Home, Explore, Reels, Chat
 - **Streak Circles:** Color-coded circles showing fitness journey levels (replacing traditional story avatars)
@@ -77,7 +77,7 @@ YourOra maintains the familiar social media interface while transforming it into
 
 ## 5. Feature Set (Current Implementation)
 
-### 5.1 Current Features (YourOra)
+### 5.1 Current Features (Miha)
 
 - **Authentication:**  
   Login/Signup screens with email validation (currently bypassed for development)
@@ -91,7 +91,7 @@ YourOra maintains the familiar social media interface while transforming it into
   - **Interactive Modal:** Tap locked streaks to see unlock requirements and "Complete Daily Goal" button
   - **Premium Streak Unlock:** Pay to unlock future streaks ahead of schedule
   - **Streak Unlock Packages:** Unlock 5 or 10 streaks (£2.49-£4.49)
-  - **YourOra+ Subscription:** Subscribe for unlimited streak access (£8.99/month)
+  - **Miha+ Subscription:** Subscribe for unlimited streak access (£8.99/month)
   - **Premium Modal Design:** Monetization options integrated into locked streak popup
 
 - **Streak Circle Features:**  
@@ -139,7 +139,7 @@ YourOra maintains the familiar social media interface while transforming it into
   - Dark theme with fitness-focused colors
   - Smooth animations and transitions
   - London-based location data
-  - YourOra branding throughout  
+  - Miha branding throughout  
 
 ---
 
@@ -168,7 +168,7 @@ YourOra maintains the familiar social media interface while transforming it into
 - **Monetization Features:**  
   - **Premium Streak Unlock System:** Pay to unlock future streaks ahead
   - **Streak Unlock Packages:** Unlock 5 or 10 streaks (£2.49-£4.49)
-  - **YourOra+ Subscription:** Monthly subscription for unlimited access (£8.99/month)
+  - **Miha+ Subscription:** Monthly subscription for unlimited access (£8.99/month)
   - **Subscription Management:** Monthly/yearly subscription options
   - **Payment Integration:** Stripe/Apple Pay/Google Pay integration
   - **Premium Analytics:** Advanced streak insights for subscribers

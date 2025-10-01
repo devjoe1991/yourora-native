@@ -1,4 +1,4 @@
-# 🏋️ YourOra - Maximus & Verity Features & Business Roadmap
+# 🏋️ Miha - Maximus & Verity Features & Business Roadmap
 
 *Maximus & Verity-friendly overview of app development progress and business strategies*
 
@@ -6,7 +6,7 @@
 
 ## 📊 **PROJECT OVERVIEW**
 
-**YourOra** is a fitness-focused social app that helps people build consistent workout habits through streaks, community support, and social accountability. Think Instagram meets fitness tracking with a focus on daily consistency rather than perfect workouts.
+**Miha** is a fitness-focused social app that helps people build consistent workout habits through streaks, community support, and social accountability. Think Instagram meets fitness tracking with a focus on daily consistency rather than perfect workouts.
 
 ### **🎯 Core Value Proposition**
 - **Effort > Perfection:** We reward showing up, not perfect form
@@ -27,7 +27,7 @@
 - ✅ Daily workout tracking with streak counters
 - ✅ Progressive unlock system (Streak 1, 2, 3, etc.)
 - ✅ Premium unlock options for advanced users (£2.49-£4.49 packages)
-- ✅ YourOra+ subscription for unlimited access (£8.99/month)
+- ✅ Miha+ subscription for unlimited access (£8.99/month)
 - ✅ Visual progress indicators and celebrations
 - ✅ Locked streak indicators with clear instructions
 
@@ -49,7 +49,7 @@
 - ✅ Smooth animations and transitions
 - ✅ Bottom navigation (Home, Explore, Chat)
 - ✅ Responsive design for all screen sizes
-- ✅ YourOra branding throughout
+- ✅ Miha branding throughout
 
 ### **💰 Monetization (Already Working!)**
 - ✅ Premium streak unlock system
@@ -153,7 +153,7 @@
 - [ ] **Premium Music Features** - Ad-free workout music for subscribers
 
 ### **🏷️ Branding & Identity**
-- [ ] **Brand Name Evaluation** - Consider if "YourOra" resonates with target market
+- [ ] **Brand Name Evaluation** - Consider if "Miha" resonates with target market
 - [ ] **Logo Redesign** - Modern, fitness-focused logo that works across platforms
 - [ ] **Brand Guidelines** - Consistent visual identity across all touchpoints
 - [ ] **Brand Positioning** - Clear messaging for different user segments
@@ -170,7 +170,7 @@
 - [ ] **In-App Purchases** - Special badges, themes, and features
 - [ ] **Affiliate Marketing** - Partner with fitness brands and equipment
 - [ ] **Sponsored Content** - Fitness brands can sponsor challenges
-- [ ] **Merchandise** - YourOra branded fitness gear
+- [ ] **Merchandise** - Miha branded fitness gear
 
 ### **📊 Growth & Analytics**
 - [ ] **User Retention Analysis** - Track what keeps users engaged
@@ -201,7 +201,7 @@
 ## 💬 **MAXIMUS & VERITY FEEDBACK & UPDATES**
 
 ### **Questions for Maximus & Verity Input:**
-1. **Branding Direction:** How do you feel about the "YourOra" name? Should we consider alternatives?
+1. **Branding Direction:** How do you feel about the "Miha" name? Should we consider alternatives?
 2. **Pricing Strategy:** Are the current subscription prices (£8.99/month) competitive?
 3. **Feature Priorities:** Which planned features are most important for your business goals?
 4. **Target Market:** Who should we focus on first - beginners, intermediate, or advanced fitness enthusiasts?

@@ -1,6 +1,6 @@
-# Light Mode Setup Guide for YourOra App
+# Light Mode Setup Guide for Miha App
 
-This guide explains how to restructure the YourOra app so that the current hard-coded "dark" theme becomes **Dark Mode**, and a new **Light Mode** is created with opposite backgrounds and surfaces, while keeping brand colors unchanged.
+This guide explains how to restructure the Miha app so that the current hard-coded "dark" theme becomes **Dark Mode**, and a new **Light Mode** is created with opposite backgrounds and surfaces, while keeping brand colors unchanged.
 
 ## Current Project Analysis
 
@@ -108,7 +108,7 @@ export const lightTheme = {
 | `rgba(255,255,255,0.5)` | `rgba(0, 0, 0, 0.6)` | Secondary text |
 | `rgba(255,255,255,0.3)` | `rgba(0, 0, 0, 0.3)` | Muted text |
 
-**Brand colors remain unchanged** to maintain YourOra's visual identity.
+**Brand colors remain unchanged** to maintain Miha's visual identity.
 
 ⚠️ Cursor: Ask human for confirmation of each mapping before finalizing.
 
@@ -228,4 +228,4 @@ Cursor must pause and request approval at each of these checkpoints:
 - LightTheme = inverted backgrounds, preserved brand colors
 - Every component uses theme context instead of hard-coded values
 - Human approval checkpoints ensure control and no unwanted changes
-- YourOra's visual identity maintained through consistent brand colors
+- Miha's visual identity maintained through consistent brand colors

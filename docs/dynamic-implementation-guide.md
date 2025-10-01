@@ -1,7 +1,7 @@
 # 🔄 Dynamic Implementation Guide
 
 ## 📋 **Overview**
-This guide provides a comprehensive framework for implementing dynamic components in YourOra that will seamlessly integrate with your backend when it's ready. All components should be built with dynamic data in mind from the start.
+This guide provides a comprehensive framework for implementing dynamic components in Miha that will seamlessly integrate with your backend when it's ready. All components should be built with dynamic data in mind from the start.
 
 ---
 

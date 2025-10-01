@@ -14,7 +14,7 @@ The mixed media feed has been successfully implemented according to the specific
 - ✅ Sample video post included in data for testing
 
 ### **2. VideoPlayer Component**
-- ✅ **Theme-Aware**: Follows YourOra's theme system with dynamic colors
+- ✅ **Theme-Aware**: Follows Miha's theme system with dynamic colors
 - ✅ **Auto-Play**: Videos start when scrolled into view
 - ✅ **Mute by Default**: Videos play silently until user interaction
 - ✅ **Duration Validation**: Enforces 3-30 second limit with error display
@@ -51,7 +51,7 @@ The mixed media feed has been successfully implemented according to the specific
 
 ## 🎨 **Theme Integration**
 
-All components follow the YourOra theme guidelines:
+All components follow the Miha theme guidelines:
 
 - ✅ **Dynamic Colors**: Uses `theme.colors` for all styling
 - ✅ **StyleSheet Inside Components**: Proper theme access
@@ -147,7 +147,7 @@ The implementation is complete and ready for:
 
 ## 📝 **Summary**
 
-**Bruv**, the mixed media feed implementation is complete! YourOra now has a unified, intelligent feed that seamlessly handles both images and videos. Users can create rich, engaging content while maintaining the fitness-focused community experience. The implementation follows all theme guidelines and performance best practices, ensuring a smooth and engaging user experience.
+**Bruv**, the mixed media feed implementation is complete! Miha now has a unified, intelligent feed that seamlessly handles both images and videos. Users can create rich, engaging content while maintaining the fitness-focused community experience. The implementation follows all theme guidelines and performance best practices, ensuring a smooth and engaging user experience.
 
 The feed now supports the exact specifications from the documentation:
 - ✅ 3-30 second video duration limit

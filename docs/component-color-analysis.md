@@ -1,7 +1,7 @@
 # Component Color Usage Analysis
 
 ## Overview
-This document provides a comprehensive analysis of all components and their color usage patterns in the YourOra app, as required by Prompt 4.
+This document provides a comprehensive analysis of all components and their color usage patterns in the Miha app, as required by Prompt 4.
 
 ---
 
