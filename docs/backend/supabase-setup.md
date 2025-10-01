@@ -23,7 +23,7 @@
 ### **✅ User Data Continuity**
 - **Waitlist users** → automatically become Miha users
 - **Email list** already built for marketing
-- **User profiles** can be pre-populated
+- **User profiles** can be pre-populated with fitness goals
 - **No data migration** needed
 
 ### **✅ Cost Efficient**
@@ -35,6 +35,10 @@
 - **Same authentication** system
 - **Same user base** across platforms
 - **Easy to contact** waitlist users about app launch
+- **Rich user data** from waitlist (fitness goals, names, etc.)
+
+### **📋 Complete Migration Guide**
+See `WAITLIST_TO_MIHA_MIGRATION.md` for detailed steps on how your waitlist data flows into the full Miha app with personalized user experiences!
 
 ---
 
