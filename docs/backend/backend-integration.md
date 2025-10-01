@@ -61,14 +61,16 @@ This document maps each existing app feature/component to its Supabase backend r
 ## 🏗️ **Database Schema Overview**
 
 ```sql
--- Core tables needed
-profiles (id, username, display_name, avatar_url, bio, created_at, updated_at)
-posts (id, author_id, content, image_url, created_at, updated_at)
-comments (id, post_id, author_id, content, created_at, updated_at)
-post_likes (post_id, user_id, created_at)
-comment_likes (comment_id, user_id, created_at)
-follows (follower_id, following_id, created_at)
-notifications (id, user_id, type, actor_id, entity_id, created_at, read)
+-- Core tables needed (aligned with existing Supabase schema)
+profiles (id, email, full_name, avatar_url, bio, timezone, created_at, updated_at)
+posts (id, user_id, media_url, caption, created_at, post_type, streak_day)
+streaks (user_id, current_streak, longest_streak, last_posted_at)
+follows (follower_id, following_id)
+post_likes (post_id, user_id, emoji_type)
+comments (id, post_id, user_id, text, created_at)
+notifications (id, user_id, type, message, read_at)
+messages (id, sender_id, receiver_id, content, created_at)
+user_roles (user_id, role, status)
 ```
 
 ---
@@ -109,11 +111,11 @@ notifications (id, user_id, type, actor_id, entity_id, created_at, read)
     .from('posts')
     .select(`
       *, 
-      author:author_id(*),
+      author:user_id(*),
       post_likes(count),
       comments(count)
     `)
-    .in('author_id', followedUserIds)
+    .in('user_id', followedUserIds)
     .order('created_at', { ascending: false })
   ```
 - **Realtime**: Subscribe to `posts` table for live feed updates
@@ -126,7 +128,7 @@ notifications (id, user_id, type, actor_id, entity_id, created_at, read)
   // Fetch all posts for discovery
   const { data } = await supabase
     .from('posts')
-    .select('*, author:author_id(*), post_likes(count)')
+    .select('*, author:user_id(*), post_likes(count)')
     .order('created_at', { ascending: false })
   ```
 - **Realtime**: Subscribe to `posts` table for new content
@@ -164,8 +166,8 @@ notifications (id, user_id, type, actor_id, entity_id, created_at, read)
   // Search posts
   const { data } = await supabase
     .from('posts')
-    .select('*, author:author_id(*)')
-    .ilike('content', `%${searchTerm}%`)
+    .select('*, author:user_id(*)')
+    .ilike('caption', `%${searchTerm}%`)
   ```
 - **Realtime**: None needed
 - **Storage**: User avatars and post images
@@ -199,7 +201,7 @@ notifications (id, user_id, type, actor_id, entity_id, created_at, read)
   const { data: posts } = await supabase
     .from('posts')
     .select('*, post_likes(count), comments(count)')
-    .eq('author_id', userId)
+    .eq('user_id', userId)
     .order('created_at', { ascending: false })
   
   // Check if current user follows this user
@@ -234,9 +236,9 @@ notifications (id, user_id, type, actor_id, entity_id, created_at, read)
   const { data } = await supabase
     .from('posts')
     .insert({
-      author_id: userId,
-      content,
-      image_url: uploadedImageUrl
+      user_id: userId,
+      caption,
+      media_url: uploadedImageUrl
     })
     .select()
     .single()
@@ -281,7 +283,7 @@ notifications (id, user_id, type, actor_id, entity_id, created_at, read)
     .from('posts')
     .select(`
       *,
-      author:author_id(*),
+      author:user_id(*),
       post_likes(count),
       comments(count)
     `)
@@ -298,15 +300,15 @@ notifications (id, user_id, type, actor_id, entity_id, created_at, read)
   // Fetch comments for post
   const { data } = await supabase
     .from('comments')
-    .select('*, author:author_id(*)')
+    .select('*, author:user_id(*)')
     .eq('post_id', postId)
     .order('created_at', { ascending: true })
   
   // Add comment
   await supabase.from('comments').insert({
     post_id,
-    author_id: userId,
-    content
+    user_id: userId,
+    text: content
   })
   
   // Like comment
@@ -530,16 +532,30 @@ EXPO_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
 
 ---
 
-## 📋 **ROLLOUT CHECKLIST**
+## 📋 **IMPLEMENTATION STATUS**
 
+### ✅ **COMPLETED FEATURES**
+- **Mixed Media Feed**: ✅ Fully implemented with video/image support
+- **Theme Integration**: ✅ All components follow Miha theme system
+- **Video Player**: ✅ 3-30 second validation with auto-play
+- **Component Architecture**: ✅ Post.js, PostAdvance.js, VideoPlayer.js
+- **Performance**: ✅ Lazy loading and memory management
+
+### 🔄 **PENDING BACKEND INTEGRATION**
 - [ ] Create Supabase project
 - [ ] Set up database schema with RLS
 - [ ] Create storage buckets with policies
 - [ ] Install Supabase client
 - [ ] Implement auth flows
-- [ ] Wire up feed components
+- [ ] Wire up feed components to Supabase
 - [ ] Add realtime subscriptions
 - [ ] Test all features end-to-end
 - [ ] Deploy and monitor
+
+### 📊 **CURRENT STATE**
+- **Frontend**: ✅ Complete with mixed media support
+- **Backend**: ⏳ Ready for Supabase integration
+- **Database**: ⏳ Schema defined, needs implementation
+- **Storage**: ⏳ Bucket structure planned
 
 
