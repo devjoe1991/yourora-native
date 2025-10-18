@@ -49,3 +49,36 @@ alwaysApply: true
 - Follow existing project patterns
 - Keep solutions simple and effective
 - Don't over-engineer or over-complicate
+
+## EAS Development Workflows
+
+### Build and Deployment Process
+1. **Development Phase**: Use `npx eas-cli@latest workflow:run create-development-builds.yml` for internal testing
+2. **Beta Testing**: Use `npx eas-cli@latest workflow:run create-testflight-builds.yml` for client testing
+3. **Production**: Use `npx eas-cli@latest workflow:run create-production-builds.yml` for app stores
+4. **Updates**: Use `pnpm run update:testflight` or `pnpm run update:production` for over-the-air updates
+
+### Branch Strategy
+- **demo-all-features**: Main branch for client demonstrations and builds
+- **Feature branches**: Develop individual features, then merge to demo-all-features
+- **Always build from demo-all-features**: This branch contains all features and is build-ready
+
+### Client Management
+- **Use EAS workflows** for automated builds and deployments
+- **TestFlight for iOS**: Professional beta testing through Apple's TestFlight
+- **Updates are free**: Use `eas update` for 90% of client work, only build when adding native dependencies
+- **30 free builds per month**: Use builds strategically, updates for most changes
+
+### Development Commands
+```bash
+# Daily development (most common)
+pnpm run update:testflight
+
+# Weekly builds (when adding native dependencies)
+npx eas-cli@latest workflow:run create-testflight-builds.yml
+pnpm run submit:testflight
+
+# Production releases
+npx eas-cli@latest workflow:run create-production-builds.yml
+pnpm run submit:production
+```
