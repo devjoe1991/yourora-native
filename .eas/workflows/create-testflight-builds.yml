@@ -1,0 +1,8 @@
+name: Create TestFlight Builds
+
+jobs:
+  build_testflight:
+    type: build # This job type creates a TestFlight build for iOS
+    params:
+      platform: ios
+      profile: testflight

@@ -1,0 +1,14 @@
+name: Push Updates to Clients
+
+jobs:
+  update_testflight:
+    type: update # This job type pushes updates to TestFlight users
+    params:
+      branch: testflight
+      message: "Update for TestFlight users"
+  
+  update_production:
+    type: update # This job type pushes updates to production users
+    params:
+      branch: production
+      message: "Update for production users"

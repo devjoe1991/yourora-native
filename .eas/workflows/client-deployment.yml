@@ -1,0 +1,30 @@
+name: Client Deployment Workflow
+
+jobs:
+  # Build for TestFlight (iOS beta testing)
+  build_testflight:
+    type: build
+    params:
+      platform: ios
+      profile: testflight
+  
+  # Build for Android beta testing
+  build_android_beta:
+    type: build
+    params:
+      platform: android
+      profile: preview
+  
+  # Push updates to TestFlight users
+  update_testflight:
+    type: update
+    params:
+      branch: testflight
+      message: "New features and improvements for beta testers"
+  
+  # Push updates to Android beta users
+  update_android_beta:
+    type: update
+    params:
+      branch: preview
+      message: "New features and improvements for Android beta testers"
