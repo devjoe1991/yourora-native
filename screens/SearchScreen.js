@@ -43,12 +43,15 @@ const SearchScreen = ({ navigation }) => {
     navigation.setOptions({
       headerShown: true,
       title: "Search Friends",
+      headerStyle: { backgroundColor: theme.colors.primary },
+      headerTitleStyle: { color: theme.colors.textColor },
+      headerTintColor: theme.colors.textColor,
     });
   }, []);
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colors.primary,
     },
   });
 
@@ -57,7 +60,7 @@ const SearchScreen = ({ navigation }) => {
       keyboardVerticalOffset={Platform.OS === "ios" ? 40 : 0}
       style={styles.container}
     >
-      <StatusBar backgroundColor={theme.colors.primary} />
+      <StatusBar backgroundColor={theme.colors.primary} barStyle={theme.colors.textColor === "#FFFFFF" ? "light-content" : "dark-content"} />
       <View
         style={{
           margin: 10,

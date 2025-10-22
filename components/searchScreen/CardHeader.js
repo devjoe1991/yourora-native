@@ -46,7 +46,7 @@ const CardHeader = ({ radius }) => {
         <Pressable
           style={{
             padding: 5,
-            backgroundColor: "rgba(255,255,255,0.5)",
+            backgroundColor: theme.colors.primary500,
             borderRadius: 50,
           }}
         >
